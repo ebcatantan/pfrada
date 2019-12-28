@@ -1,0 +1,43 @@
+System Data Buildup
+- CRUD Business Types
+- CRUD BUsiness Permit Fees
+- CRUD Clearance Fees
+- CRUD Clearance Purpose
+- CRUD Facilities
+- CRUD Reservation Fees
+
+Process Clearance/Business Permit
+1. Search for Citizens/Corporation
+2. if exist, go to old timer else go to first request
+
+(First Request)
+1. Admin will profile the Citizens/Corporations (with picture uploading)
+2. Admin will create a Document Requests for the Citizens/Corporations
+3. Admin will print the document, validate and released the document
+
+(Old Timer)
+1. Citizen/Corporation will login
+2. Citizen/Corporation create a request for document
+3. System will notify the admin for the request date needed
+4. Admin will approve the date ASAP and will give a Date and time when the document will be available
+
+note: update the released by and processed by including the date related field
+of the Document Requests Table
+
+Reservations
+
+1. Admin will profile the Citizens (with picture uploading)(First Reservation)
+2. Admin will give the initial username and password (First Reservation)
+3. Citizen will login to the System
+4. Citizen will check for availality of the facility,
+5. Citizen will create a reservation
+6. Citizen will go to the brgy hall to pay for the reservation payment
+5. Admin will approve or change the reservation
+
+
+Blotter
+1. Admin can add a Blotter
+2. Admin will create an Action Blotter to the blotter
+3. Admin can close the case after actions has been taken
+4. System will notify the Citizen about the blotter (not priority)
+5. Admin will send a message thru the system to the Citizen involved (not priority)
