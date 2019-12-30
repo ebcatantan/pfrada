@@ -17,34 +17,36 @@ if (! function_exists('hasPrimary'))
 
 if (! function_exists('user_primary_links'))
 {
-	function user_primary_links($module_id, array $array_permissions)
+	function user_primary_links(array $array_permissions)
 	{
-		if(hasPrimary($module_id, $array_permissions))
+		foreach($_SESSION['appmodules'] as $module)
 		{
-			echo '<li class="nav-item active">';
-            echo '<div class="dropdown primary-menu-top">';
-              	echo '<button class="btn btn-secondary btn-sm dropdown-toggle" type="button" id="'.str_replace(' ', '', ucwords(name_on_system($module_id, $_SESSION['appmodules'], 'modules'))).'" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">';
-                	echo getIcon($module_id, $_SESSION['appmodules'], false).' '. ucwords(name_on_system($module_id, $_SESSION['appmodules'], 'modules'));
-            	echo '</button>';
-            	echo '<div class="dropdown-menu drop-items-primary" aria-labelledby="'.str_replace(' ', '', ucwords(name_on_system($module_id, $_SESSION['appmodules'], 'modules'))).'">';
-					foreach($array_permissions as $permission)
+			if(hasPrimary($module['id'], $array_permissions))
+			{
+				echo '<li class="nav-item active">';
+				echo '<div class="dropdown primary-menu-top">';
+				echo '<button class="btn btn-secondary btn-sm dropdown-toggle" type="button" id="'.str_replace(' ', '', ucwords(name_on_system($module['id'], $_SESSION['appmodules'], 'modules'))).'" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">';
+				echo getIcon($module['id'], $_SESSION['appmodules'], false).' '. ucwords(name_on_system($module['id'], $_SESSION['appmodules'], 'modules'));
+				echo '</button>';
+				echo '<div class="dropdown-menu drop-items-primary" aria-labelledby="'.str_replace(' ', '', ucwords(name_on_system($module['id'], $_SESSION['appmodules'], 'modules'))).'">';
+				foreach($array_permissions as $permission)
+				{
+					if($permission['module_id'] == $module['id'] && $permission['func_type'] == 1 && in_array($_SESSION['rid'], json_decode($permission['allowed_roles'])))
 					{
-						if($permission['module_id'] == $module_id && $permission['func_type'] == 1 && in_array($_SESSION['rid'], json_decode($permission['allowed_roles'])))
+						if($permission['slugs'] == 'user-own-profile')
 						{
-							if($permission['slugs'] == 'user-own-profile')
-							{
-								echo '<a class="dropdown-item" title="'.ucwords($permission['function_name']) .'" data-toggle="tooltip" data-placement="bottom" class="nav-link" href="'. base_url() .''.str_replace("_","-",$permission['table_name']).'/own/'.$_SESSION['uid'] .'">'.getIcon($permission['id'], $_SESSION['userPermmissions']).' '.ucwords($permission['function_name']) .' </a>';
-							}
-							else
-							{
-								echo '<a class="dropdown-item" title="'.ucwords($permission['function_name']) .'" data-toggle="tooltip" data-placement="bottom" class="nav-link" href="'. base_url() .''.str_replace("_","-",$permission['table_name']).'">'.getIcon($permission['id'], $_SESSION['userPermmissions']).' '.ucwords($permission['function_name']) .' </a>';
-							}
+							echo '<a class="dropdown-item" title="'.ucwords($permission['function_name']) .'" data-toggle="tooltip" data-placement="bottom" class="nav-link" href="'. base_url() .''.str_replace("_","-",$permission['table_name']).'/own/'.$_SESSION['uid'] .'">'.getIcon($permission['id'], $_SESSION['userPermmissions']).' '.ucwords($permission['function_name']) .' </a>';
+						}
+						else
+						{
+							echo '<a class="dropdown-item" title="'.ucwords($permission['function_name']) .'" data-toggle="tooltip" data-placement="bottom" class="nav-link" href="'. base_url() .''.str_replace("_","-",$permission['table_name']).'">'.getIcon($permission['id'], $_SESSION['userPermmissions']).' '.ucwords($permission['function_name']) .' </a>';
 						}
 					}
+				}
 				echo '</div>';
-			echo '</div>';
-			echo '</li>';
-				
+				echo '</div>';
+				echo '</li>';
+			}
 		}
 	}
 }
@@ -85,7 +87,7 @@ if (! function_exists('users_action'))
 {
 	function users_action(string $table, array $array_permissions, $id)
 	{
-		
+
 		foreach($array_permissions as $permission)
 		{
 			if($permission['table_name'] == $table && $permission['func_type'] == 3 && in_array($_SESSION['rid'], json_decode($permission['allowed_roles'])))
@@ -101,7 +103,7 @@ if (! function_exists('users_action'))
 					case 'delete':
 						echo  '<a class="btn btn-danger btn-sm remove" onClick="confirmDelete(\'delete/\','.$id.')" title="delete"><i class="far fa-trash-alt"></i></a>';
 						break;
-				}	
+				}
 			}
 		}
 	}
@@ -119,7 +121,7 @@ if (! function_exists('user_link'))
 			{
 				if(in_array($slugs, $permission))
 				{
-					return 1;	
+					return 1;
 				}
 			}
 

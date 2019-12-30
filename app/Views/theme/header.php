@@ -20,7 +20,7 @@
 
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav ml-auto">
-          <?php user_primary_links(1, $_SESSION['userPermmissions']) ?>
+          <?php user_primary_links($_SESSION['userPermmissions']) ?>
           <li class="nav-item">
             <a class="nav-link" href="<?php echo base_url() ?>logout"><i class="fas fa-power-off"></i></a>
           </li>
