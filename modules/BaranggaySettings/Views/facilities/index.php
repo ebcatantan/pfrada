@@ -14,7 +14,7 @@
       <tr class="text-center">
         <th>#</th>
         <th>Facility Name</th>
-        <th>Description</th>
+        <th>Description</th> 
         <th>Action</th>
       </tr>
     </thead>
