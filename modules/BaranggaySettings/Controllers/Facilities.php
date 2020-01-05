@@ -43,7 +43,7 @@ class Facilities extends BaseController
 
 		$data['facility'] = $model->getFacilityWithCondition(['id' => $id]);
 
-		$data['function_title'] = "facility Details";
+		$data['function_title'] = "Facility Details";
         $data['viewName'] = 'Modules\BaranggaySettings\Views\facilities\facilityDetails';
         echo view('App\Views\theme\index', $data);
 	}
@@ -63,10 +63,9 @@ class Facilities extends BaseController
     	{
 	    	if (!$this->validate('facility'))
 		    {
-
 		    	$data['errors'] = \Config\Services::validation()->getErrors();
 		        $data['function_title'] = "Adding Facility";
-		        $data['viewName'] = 'Modules\BaranggaySettings\Views\facilities\frmFacilityz3';
+		        $data['viewName'] = 'Modules\BaranggaySettings\Views\facilities\frmFacility';
 		        echo view('App\Views\theme\index', $data);
 		    }
 		    else
@@ -123,7 +122,7 @@ class Facilities extends BaseController
 		        }
 		        else
 		        {
-		        	$_SESSION['error'] = 'You an error in updating a record';
+		        	$_SESSION['error'] = 'You have an error in updating a record';
 					$this->session->markAsFlashdata('error');
 		        	return redirect()->to( base_url('facilities'));
 		        }

@@ -75,12 +75,13 @@ class Validation
         ],
 
     ];
+
     public $facility = [
         'facility_name' => [
             'label'  => 'Facility Name',
             'rules'  => 'required',
             'errors' => [
-                'required' => 'facility Name field is required.'
+                'required' => 'Facility Name field is required.'
             ]
         ],
 
@@ -88,7 +89,7 @@ class Validation
             'label'  => 'Facility Description',
             'rules'  => 'required',
             'errors' => [
-                'required' => 'facility desciption field is required.'
+                'required' => 'Facility description field is required.'
             ]
         ]
     ];
@@ -215,6 +216,132 @@ class Validation
             ]
         ],
 
+    ];
+
+		public $citizen = [
+        'user_id' => [
+            'label'  => 'User ID',
+            'rules'  => 'required',
+            'errors' => [
+                'required' => 'User ID field is required.'
+            ]
+        ],
+
+        'citizen_image' => [
+            'label'  => 'Citizen Image',
+            'rules'  => 'required',
+            'errors' => [
+                'required' => 'Citizen image field is required.'
+            ]
+        ],
+
+        'lastname' => [
+            'label'  => 'Last Name',
+            'rules'  => 'required|alpha',
+            'errors' => [
+                'required' => 'Last name field is required.',
+								'alpha' => 'Last name must not have numbers.'
+            ]
+        ],
+
+        'firstname' => [
+            'label'  => 'First Name',
+            'rules'  => 'required|alpha',
+            'errors' => [
+                'required' => 'First name field is required.',
+								'alpha' => 'First name must not have numbers.'
+            ]
+        ],
+
+        'middlename' => [
+            'label'  => 'Middle Name',
+            'rules'  => 'alpha',
+            'errors' => [
+								'alpha' => 'Middle name must not have numbers.'
+            ]
+        ],
+
+        'extension_name' => [
+            'label'  => 'Extension Name',
+            'rules'  => 'alpha',
+            'errors' => [
+								'alpha' => 'Extension name must not have numbers.'
+            ]
+        ],
+
+        'maiden_name' => [
+            'label'  => 'Maiden Name',
+            'rules'  => 'alpha',
+            'errors' => [
+								'alpha' => 'Maiden name must not have numbers.'
+            ]
+        ],
+
+        'address' => [
+            'label'  => 'Address',
+            'rules'  => 'required',
+            'errors' => [
+                'required' => 'Address field is required.'
+            ]
+        ],
+
+        'barangay' => [
+            'label'  => 'Barangay',
+            'rules'  => 'required',
+            'errors' => [
+                'required' => 'Barangay field is required.'
+            ]
+        ],
+
+        'birth_date' => [
+            'label'  => 'Birth Date',
+            'rules'  => 'required',
+            'errors' => [
+                'required' => 'Birth date field is required.'
+            ]
+        ],
+
+        'gender' => [
+            'label'  => 'Gender',
+            'rules'  => 'required|alpha',
+            'errors' => [
+                'required' => 'Gender field is required.',
+								'alpha' => 'Lastname must not have numbers.'
+            ]
+        ],
+
+        'civil_status' => [
+            'label'  => 'Civil Status',
+            'rules'  => 'required|alpha',
+            'errors' => [
+                'required' => 'Civil Status field is required.',
+								'alpha' => 'Civil Status must not have numbers.'
+							]
+        ],
+
+        'email' => [
+            'label'  => 'Email',
+            'rules'  => 'required',
+            'errors' => [
+                'required' => 'Email field is required.'
+            ]
+        ],
+
+        'contact_no' => [
+            'label'  => 'Contact Number',
+            'rules'  => 'required',
+            'errors' => [
+                'required' => 'Contact number field is required.'
+            ]
+        ],
+
+        'citizen_voter_id' => [
+            'label'  => 'Citizen Voter ID',
+            'rules'  => 'required',
+            'errors' => [
+                'required' => 'Citizen Voter ID field is required.'
+            ]
+        ]
     ];
 
 	//--------------------------------------------------------------------

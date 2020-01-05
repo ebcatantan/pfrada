@@ -16,10 +16,18 @@ class ModuleSeeder extends \CodeIgniter\Database\Seeder
                         'created_at' => date('Y-m-d H:i:s')
                     ],
                     [
-                        'module_name' => 'baranggay settings',
-                        'module_description' => 'barrangay settings',
-                        'module_icon' => '<i class="far fa-building"></i>',
+                        'module_name' => 'barangay settings',
+                        'module_description' => 'barangay settings',
+                        'module_icon' => '<i class="fas fa-city"></i>',
                         'order' =>2,
+                        'status' => 'a',
+                        'created_at' => date('Y-m-d H:i:s')
+                    ],
+                    [
+                        'module_name' => 'citizen management',
+                        'module_description' => 'citizen management',
+                        'module_icon' => '<i class="far fa-address-book"></i>',
+                        'order' =>3, //module order number
                         'status' => 'a',
                         'created_at' => date('Y-m-d H:i:s')
                     ],
