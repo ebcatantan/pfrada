@@ -26,7 +26,7 @@ class ModuleSeeder extends \CodeIgniter\Database\Seeder
                     [
                         'module_name' => 'system settings',
                         'module_description' => 'system settings',
-                        'module_icon' => '<i class="fa fa-cog"></i>',
+                        'module_icon' => '<i class="fas fa-cog"></i>',
                         'order' =>3,
                         'status' => 'a',
                         'created_at' => date('Y-m-d H:i:s')
