@@ -12,8 +12,18 @@
       <div class="row">
         <div class="col-md-6 offset-md-3">
           <div class="form-group">
-            <label for="document_id">Document ID</label>
-            <input name="document_id" type="text" value="<?= isset($rec['document_id']) ? $rec['document_id'] : set_value('document_id') ?>" class="form-control <?= $errors['document_id'] ? 'is-invalid':'is-valid' ?>" id="document_id" placeholder="Document ID">
+            <label for="document_id">Document Name: </label>
+            <select name="document_id" class="form-control <? $errors['document_id'] ? 'is-invalid':'is-valid' ?>">
+            <?php if (isset($rec['document_id'])): ?>
+              <option value="<?= $rec['document_id'] ?>"><?= strtoupper(name_on_system($rec['document_id'], $clearance_purposes, 'clearance_purposes')) ?></option>
+            <?php else: ?>
+              <option value="">Select Document Name</option>
+            <?php endif; ?>
+
+              <?php foreach ($clearance_purposes as $document): ?>
+                <option value="<?= $document['id'] ?>" ><?= strtoupper($document['document_name'])?></option>
+              <?php endforeach; ?>
+            </select>
               <?php if($errors['document_id']): ?>
                 <div class="invalid-feedback">
                   <?= $errors['document_id'] ?>
@@ -23,11 +33,21 @@
         </div>
       </div>
 
-      <div class="row">
+      <!-- <div class="row">
         <div class="col-md-6 offset-md-3">
           <div class="form-group">
-            <label for="clearance_purpose_id">Clearance Purpose ID</label>
-            <input name="clearance_purpose_id" type="text" value="<?= isset($rec['clearance_purpose_id']) ? $rec['clearance_purpose_id'] : set_value('clearance_purpose_id') ?>" class="form-control <?= $errors['clearance_purpose_id'] ? 'is-invalid':'is-valid' ?>" id="clearance_purpose_id" placeholder="Document Purpose ID">
+            <label for="clearance_purpose_id">Clearance Purpose</label>
+            <select name="clearance_purpose_id" class="form-control <? $errors['clearance_purpose_id'] ? 'is-invalid':'is-valid' ?>">
+            <?php if (isset($rec['clearance_purpose_id'])): ?>
+              <option value="<?= $rec['clearance_purpose_id'] ?>"><?= strtoupper(name_on_system($rec['clearance_purpose_id'], $clearance_purposes, 'clearance_purposes')) ?></option>
+            <?php else: ?>
+              <option value="">Select Document Name</option>
+            <?php endif; ?>
+
+              <?php foreach ($clearance_purposes as $clearance_purpose): ?>
+                <option value="<?= $clearance_purpose['id'] ?>" ><?= strtoupper($clearance_purpose['purpose'])?></option>
+              <?php endforeach; ?>
+            </select>
               <?php if($errors['clearance_purpose_id']): ?>
                 <div class="invalid-feedback">
                   <?= $errors['clearance_purpose_id'] ?>
@@ -35,7 +55,7 @@
               <?php endif; ?>
           </div>
         </div>
-      </div>
+      </div> -->
 
       <div class="row">
         <div class="col-md-6 offset-md-3">

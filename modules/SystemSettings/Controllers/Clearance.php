@@ -3,6 +3,8 @@ namespace Modules\SystemSettings\Controllers;
 
 use Modules\SystemSettings\Models\ClearanceModel;
 use Modules\UserManagement\Models\PermissionsModel;
+use Modules\BaranggaySettings\Models\DocumentsModel;
+
 use App\Controllers\BaseController;
 
 class Clearance extends BaseController
@@ -53,8 +55,10 @@ class Clearance extends BaseController
     	$this->hasPermissionRedirect('add-clearance');
 
     	$permissions_model = new PermissionsModel();
-
     	$data['permissions'] = $this->permissions;
+
+			$model_document_name = new DocumentsModel();
+			$data['documents'] = $model_document_name->where('status', 'a')->findAll();
 
     	helper(['form', 'url']);
     	$model = new ClearanceModel();
@@ -65,7 +69,7 @@ class Clearance extends BaseController
 	    	if (!$this->validate('clearance'))
 		    {
 
-		    	$data['errors'] = \Config\Services::validation()->getErrors();
+		    		$data['errors'] = \Config\Services::validation()->getErrors();
 		        $data['function_title'] = "Adding Clearance";
 		        $data['viewName'] = 'Modules\SystemSettings\Views\clearance\frmClearance';
 		        echo view('App\Views\theme\index', $data);
