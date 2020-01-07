@@ -91,7 +91,24 @@ class Validation
                 'required' => 'facility desciption field is required.'
             ]
         ]
-    ];
+			];
+		public $clearancepurposes = [
+        'purpose' => [
+            'label'  => 'purpose',
+            'rules'  => 'required',
+            'errors' => [
+                'required' => 'purpose field is required.'
+            ]
+        ],
+
+        'description' => [
+            'label'  => 'Purpose Description',
+            'rules'  => 'required',
+            'errors' => [
+                'required' => 'purpose description field is required.'
+            ]
+        ]
+			];
 
 	public $user = [
         'lastname' => [
