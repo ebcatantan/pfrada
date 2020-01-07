@@ -216,6 +216,36 @@ class Validation
         ],
 
     ];
+		public $permit = [
+        'document_id' => [
+            'label'  => 'Document Id',
+            'rules'  => 'required',
+            'errors' => [
+                'required' => 'Business Name field is required.'
+            ]
+        ],
+        'business_type_id' => [
+            'label'  => 'Bussiness Type Id',
+            'rules'  => 'required',
+            'errors' => [
+                'required' => 'Business desciption field is required.'
+            ]
+        ],
+				'new_applicant_charge' => [
+						'label'  => 'New Applicant Charge',
+						'rules'  => 'required',
+						'errors' => [
+								'required' => 'Business Name field is required.'
+						]
+				],
+				'nrenewal_charge' => [
+						'label'  => 'Renewal Charge',
+						'rules'  => 'required',
+						'errors' => [
+								'required' => 'Business Name field is required.'
+						]
+				]
+    ];
 
 	//--------------------------------------------------------------------
 	// Rules

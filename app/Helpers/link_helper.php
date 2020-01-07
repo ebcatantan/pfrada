@@ -101,7 +101,7 @@ if (! function_exists('users_action'))
 						echo '<a class="btn btn-warning btn-sm" title="show" href="'. base_url() .''.str_replace("_","-",$table).'/'.$permission['func_action'].'/'. $id.'"><i class="far fa-edit"></i></a> ';
 						break;
 					case 'delete':
-						echo  '<a class="btn btn-danger btn-sm remove" onClick="confirmDelete(\''.str_replace("_","-",$table).'/delete/\','.$id.')" title="delete"><i class="far fa-trash-alt"></i></a>';
+						echo  '<a class="btn btn-danger btn-sm remove" onClick="confirmDelete(\''.base_url().''.str_replace("_","-",$table).'/delete/\','.$id.')" title="delete"><i class="far fa-trash-alt"></i></a>';
 						break;
 				}
 			}
