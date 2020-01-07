@@ -92,6 +92,7 @@ class Validation
             ]
         ]
     ];
+
 		public $clearance = [
         'document_id' => [
             'label'  => 'Document',
@@ -122,6 +123,7 @@ class Validation
 						]
 				]
     ];
+
 	public $user = [
         'lastname' => [
             'label'  => 'Lastname',
@@ -246,6 +248,24 @@ class Validation
 
     ];
 
+
+		public $document = [
+				'document_name' => [
+						'label'  => 'Document Name',
+						'rules'  => 'required',
+						'errors' => [
+								'required' => 'document Name field is required.'
+						]
+				],
+
+				'description' => [
+						'label'  => 'Document Description',
+						'rules'  => 'required',
+						'errors' => [
+								'required' => 'document desciption field is required.'
+						]
+				]
+		];
 	//--------------------------------------------------------------------
 	// Rules
 	//--------------------------------------------------------------------
