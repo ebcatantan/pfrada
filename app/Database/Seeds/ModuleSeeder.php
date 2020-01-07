@@ -23,6 +23,14 @@ class ModuleSeeder extends \CodeIgniter\Database\Seeder
                         'status' => 'a',
                         'created_at' => date('Y-m-d H:i:s')
                     ],
+                    [
+                        'module_name' => 'system settings',
+                        'module_description' => 'system settings',
+                        'module_icon' => '<i class="fa fa-cog"></i>',
+                        'order' =>3,
+                        'status' => 'a',
+                        'created_at' => date('Y-m-d H:i:s')
+                    ],
                 ];
                 $db      = \Config\Database::connect();
                 $builder = $db->table($this->table);
