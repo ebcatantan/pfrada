@@ -92,7 +92,36 @@ class Validation
             ]
         ]
     ];
-
+		public $clearance = [
+        'document_id' => [
+            'label'  => 'Document',
+            'rules'  => 'required',
+            'errors' => [
+                'required' => 'Clearance ID field is required.'
+            ]
+        ],
+				'clearance_purpose_id' => [
+						'label'  => 'Document',
+						'rules'  => 'required',
+						'errors' => [
+								'required' => 'Clearance Purpose ID field is required.'
+						]
+				],
+				'voter_fee_amount' => [
+						'label'  => 'Document',
+						'rules'  => 'required',
+						'errors' => [
+								'required' => 'Amount field is required.'
+						]
+				],
+				'non_voter_fee_amount' => [
+						'label'  => 'Document',
+						'rules'  => 'required',
+						'errors' => [
+								'required' => 'Amount field is required.'
+						]
+				]
+    ];
 	public $user = [
         'lastname' => [
             'label'  => 'Lastname',
