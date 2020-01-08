@@ -93,6 +93,24 @@ class Validation
         ]
     ];
 
+		public $businesstype = [
+        'business_type_name' => [
+            'label'  => 'Business Types Name',
+            'rules'  => 'required',
+            'errors' => [
+                'required' => 'businessTypes Name field is required.'
+            ]
+        ],
+
+        'description' => [
+            'label'  => 'Business Types Description',
+            'rules'  => 'required',
+            'errors' => [
+                'required' => 'businessTypes desciption field is required.'
+            ]
+        ]
+    ];
+
 	public $user = [
         'lastname' => [
             'label'  => 'Lastname',
