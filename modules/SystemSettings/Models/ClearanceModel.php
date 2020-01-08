@@ -21,7 +21,7 @@ class ClearanceModel extends \CodeIgniter\Model
 	{
 		$db = \Config\Database::connect();
 
-		$str = "SELECT a.*, c.document_name FROM clearance_fees a LEFT JOIN clearance_purposes b ON a.id = b.purpose LEFT JOIN documents c ON b.id = c.document_name WHERE a.status = '".$args['status']."' LIMIT ". $args['offset'] .','.$args['limit'];
+		$str = "SELECT a.*, b.purpose, c.document_name FROM clearance_fees a LEFT JOIN clearance_purposes b ON b.id = a.clearance_purpose_id LEFT JOIN documents c ON c.id = a.document_id WHERE a.status = '".$args['status']."' LIMIT ". $args['offset'] .','.$args['limit'];
 		// print_r($str); die();
 		$query = $db->query($str);
 

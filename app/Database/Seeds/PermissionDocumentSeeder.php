@@ -46,7 +46,7 @@ class PermissionDocumentSeeder extends \CodeIgniter\Database\Seeder
                         'name_on_class' => 'index',
                         'page_title' => 'list of documents',
                         'module_id' => '2',
-                        'link_icon' => '<i class="fas fa-document"></i>',
+                        'link_icon' => '<i class="fas fa-folder-open"></i>',
                         'order' => '62',
                         'table_name' => 'documents',
                         'func_action' => 'link',

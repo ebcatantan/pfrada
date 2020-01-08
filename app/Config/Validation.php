@@ -271,7 +271,7 @@ class Validation
 						'label'  => 'Document Name',
 						'rules'  => 'required',
 						'errors' => [
-								'required' => 'document Name field is required.'
+								'required' => 'Document name field is required.'
 						]
 				],
 
@@ -279,7 +279,7 @@ class Validation
 						'label'  => 'Document Description',
 						'rules'  => 'required',
 						'errors' => [
-								'required' => 'document desciption field is required.'
+								'required' => 'Document description field is required.'
 						]
 				]
 		];

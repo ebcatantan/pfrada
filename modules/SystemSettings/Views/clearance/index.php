@@ -13,8 +13,8 @@
     <thead class="thead-dark">
       <tr class="text-center">
         <th>#</th>
-        <th>Document ID</th>
-        <th>Clearance Purpose ID</th>
+        <th>Document Name</th>
+        <th>Clearance Purpose</th>
         <th>Voter fee amount</th>
         <th>Non-voter fee amount</th>
         <th>Action</th>
@@ -25,8 +25,8 @@
       <?php foreach($clearance_fees as $clearance): ?>
       <tr id="<?php echo $clearance['id']; ?>">
         <th scope="row"><?= $cnt++ ?></th>
-        <td><?= ucwords($clearance['document_id']) ?></td>
-        <td><?= ucwords($clearance['clearance_purpose_id']) ?></td>
+        <td><?= ucwords($clearance['document_name']) ?></td>
+        <td><?= ucwords($clearance['purpose']) ?></td>
         <td><?= ucwords($clearance['voter_fee_amount']) ?></td>
         <td><?= ucwords($clearance['non_voter_fee_amount']) ?></td>
         <td class="text-center">

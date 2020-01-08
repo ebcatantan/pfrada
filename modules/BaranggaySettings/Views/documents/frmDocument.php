@@ -14,7 +14,7 @@
         <div class="col-md-6 offset-md-3">
           <div class="form-group">
             <label for="document_name">Document Name</label>
-            <input name="document_name" type="text" value="<?= isset($rec['document_name']) ? $rec['document_name'] : set_value('document_name') ?>" class="form-control <?= $errors['document_name'] ? 'is-invalid':'is-valid' ?>" id="document_name" placeholder="document name">
+            <input name="document_name" type="text" value="<?= isset($rec['document_name']) ? $rec['document_name'] : set_value('document_name') ?>" class="form-control <?= $errors['document_name'] ? 'is-invalid':'is-valid' ?>" id="document_name" placeholder="Document name">
               <?php if($errors['document_name']): ?>
                 <div class="invalid-feedback">
                   <?= $errors['document_name'] ?>
@@ -27,7 +27,7 @@
         <div class="col-md-6 offset-md-3">
           <div class="form-group">
             <label for="description">Document Description</label>
-            <textarea name="description" type="text" class="form-control <?= $errors['description'] ? 'is-invalid':'is-valid'  ?>" id="description" placeholder="document description" rows="5"><?= isset($rec['description']) ? $rec['description'] : set_value('description') ?></textarea>
+            <textarea name="description" type="text" class="form-control <?= $errors['description'] ? 'is-invalid':'is-valid'  ?>" id="description" placeholder="Document description" rows="5"><?= isset($rec['description']) ? $rec['description'] : set_value('description') ?></textarea>
             <?php if($errors['description']): ?>
                 <div class="invalid-feedback">
                   <?= $errors['description'] ?>

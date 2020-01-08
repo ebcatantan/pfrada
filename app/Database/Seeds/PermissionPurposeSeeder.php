@@ -40,13 +40,13 @@ class PermissionPurposeSeeder extends \CodeIgniter\Database\Seeder
                         'created_at' => date('Y-m-d H:i:s')
                     ],
                     [
-                        'function_name' => 'list of clearancepurposes',
-                        'function_description' => 'list of clearancepurposes',
+                        'function_name' => 'list of clearance purposes',
+                        'function_description' => 'list of clearance purposes',
                         'slugs' => 'list-clearancepurpose',
                         'name_on_class' => 'list_clearancepurpose',
                         'page_title' => 'list of clearance purposes',
                         'module_id' => '3',
-                        'link_icon' => '<i class="far fa-building"></i>',
+                        'link_icon' => '<i class="fas fa-file-invoice-dollar"></i>',
                         'order' => '142',
                         'table_name' => 'clearance_purposes',
                         'func_action' => 'link',

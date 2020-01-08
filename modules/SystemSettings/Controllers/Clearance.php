@@ -4,7 +4,7 @@ namespace Modules\SystemSettings\Controllers;
 use Modules\SystemSettings\Models\ClearanceModel;
 use Modules\UserManagement\Models\PermissionsModel;
 use Modules\BaranggaySettings\Models\DocumentsModel;
-
+use Modules\SystemSettings\Models\ClearancePurposesModel;
 use App\Controllers\BaseController;
 
 class Clearance extends BaseController
@@ -30,7 +30,6 @@ class Clearance extends BaseController
        	$data['offset'] = $offset;
 
         $data['clearance_fees'] = $model->getClearanceWithFunction(['status'=> 'a', 'limit' => PERPAGE, 'offset' =>  $offset]);
-
         $data['function_title'] = "Clearance List";
         $data['viewName'] = 'Modules\SystemSettings\Views\clearance\index';
         echo view('App\Views\theme\index', $data);
@@ -45,7 +44,7 @@ class Clearance extends BaseController
 
 		$data['clearance_fees'] = $model->getClearanceWithCondition(['id' => $id]);
 
-		$data['function_title'] = "clearance Details";
+		$data['function_title'] = "Clearance Fee Details";
         $data['viewName'] = 'Modules\SystemSettings\Views\clearance\clearanceDetails';
         echo view('App\Views\theme\index', $data);
 	}
@@ -60,6 +59,9 @@ class Clearance extends BaseController
 			$model_document_name = new DocumentsModel();
 			$data['documents'] = $model_document_name->where('status', 'a')->findAll();
 
+			$model_purposes = new ClearancePurposesModel();
+			$data['clearance_purposes'] = $model_purposes->where('status', 'a')->findAll();
+
     	helper(['form', 'url']);
     	$model = new ClearanceModel();
 
@@ -70,7 +72,7 @@ class Clearance extends BaseController
 		    {
 
 		    		$data['errors'] = \Config\Services::validation()->getErrors();
-		        $data['function_title'] = "Adding Clearance";
+		        $data['function_title'] = "Adding Clearance Fee";
 		        $data['viewName'] = 'Modules\SystemSettings\Views\clearance\frmClearance';
 		        echo view('App\Views\theme\index', $data);
 		    }
@@ -93,7 +95,7 @@ class Clearance extends BaseController
     	else
     	{
 
-	    	$data['function_title'] = "Adding Clearance";
+	    	$data['function_title'] = "Adding Clearance Fee";
 	        $data['viewName'] = 'Modules\SystemSettings\Views\clearance\frmClearance';
 	        echo view('App\Views\theme\index', $data);
     	}
@@ -107,15 +109,20 @@ class Clearance extends BaseController
     	$data['rec'] = $model->find($id);
 
     	$permissions_model = new PermissionsModel();
-
     	$data['permissions'] = $this->permissions;
+
+			$model_document_name = new DocumentsModel();
+			$data['documents'] = $model_document_name->where('status', 'a')->findAll();
+
+			$model_purposes = new ClearancePurposesModel();
+			$data['clearance_purposes'] = $model_purposes->where('status', 'a')->findAll();
 
     	if(!empty($_POST))
     	{
 	    	if (!$this->validate('clearance'))
 		    {
 		    	$data['errors'] = \Config\Services::validation()->getErrors();
-		        $data['function_title'] = "Edit of clearance";
+		        $data['function_title'] = "Edit Clearance Fee";
 		        $data['viewName'] = 'Modules\SystemSettings\Views\clearance\frmClearance';
 		        echo view('App\Views\theme\index', $data);
 		    }
@@ -128,7 +135,7 @@ class Clearance extends BaseController
 		        }
 		        else
 		        {
-		        	$_SESSION['error'] = 'You an error in updating a record';
+		        	$_SESSION['error'] = 'You have an error in updating a record';
 					$this->session->markAsFlashdata('error');
 		        	return redirect()->to( base_url('clearance-fees'));
 		        }
@@ -136,7 +143,7 @@ class Clearance extends BaseController
     	}
     	else
     	{
-	    	$data['function_title'] = "Editing of clearance";
+	    	$data['function_title'] = "Editing Clearance Fee";
 	        $data['viewName'] = 'Modules\SystemSettings\Views\clearance\frmClearance';
 	        echo view('App\Views\theme\index', $data);
     	}

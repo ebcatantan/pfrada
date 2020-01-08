@@ -46,7 +46,7 @@ class PermissionClearanceSeeder extends \CodeIgniter\Database\Seeder
                         'name_on_class' => 'index',
                         'page_title' => 'list of clearance',
                         'module_id' => '3',
-                        'link_icon' => '<i class="far fa-building"></i>',
+                        'link_icon' => '<i class="fas fa-money-check-alt"></i>',
                         'order' => '202',
                         'table_name' => 'clearance_fees',
                         'func_action' => 'link',
