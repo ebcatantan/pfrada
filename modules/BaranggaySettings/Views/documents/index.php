@@ -3,7 +3,7 @@
       search here
    </div>
    <div class="col-md-2">
-    <?php user_add_link('facilities', $_SESSION['userPermmissions']) ?>
+    <?php user_add_link('documents', $_SESSION['userPermmissions']) ?>
    </div>
  </div>
 <br>
@@ -13,21 +13,21 @@
     <thead class="thead-dark">
       <tr class="text-center">
         <th>#</th>
-        <th>Facility Name</th>
+        <th>Document Name</th>
         <th>Description</th>
         <th>Action</th>
       </tr>
     </thead>
     <tbody>
       <?php $cnt = 1; ?>
-      <?php foreach($facilities as $facility): ?>
-      <tr id="<?php echo $facility['id']; ?>">
+      <?php foreach($documents as $document): ?>
+      <tr id="<?php echo $document['id']; ?>">
         <th scope="row"><?= $cnt++ ?></th>
-        <td><?= ucwords($facility['facility_name']) ?></td>
-        <td><?= ucwords($facility['description']) ?></td>
+        <td><?= ucwords($document['document_name']) ?></td>
+        <td><?= ucwords($document['description']) ?></td>
         <td class="text-center">
           <?php
-            users_action('facilities', $_SESSION['userPermmissions'], $facility['id']);
+            users_action('documents', $_SESSION['userPermmissions'], $document['id']);
           ?>
         </td>
       </tr>
@@ -39,6 +39,6 @@
 
 <div class="row">
   <div class="col-md-6 offset-md-6">
-    <?php paginater('facilities', count($all_items), PERPAGE, $offset) ?>
+    <?php paginater('documents', count($all_items), PERPAGE, $offset) ?>
   </div>
 </div>
