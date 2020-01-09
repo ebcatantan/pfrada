@@ -57,7 +57,7 @@ class Autoload extends \CodeIgniter\Config\AutoloadConfig
 			'Modules\Node'  => ROOTPATH.'modules/Node',
 			'Modules\UserManagement'  => ROOTPATH.'modules/UserManagement',
 			'Modules\BaranggaySettings'  => ROOTPATH.'modules/BaranggaySettings',
-			'Modules\CitizenManagement'  => ROOTPATH.'modules/CitizenManagement'
+			'Modules\CitizenManagement'  => ROOTPATH.'modules/CitizenManagement',
 			'Modules\SystemSettings'  => ROOTPATH.'modules/SystemSettings'
 		];
 
