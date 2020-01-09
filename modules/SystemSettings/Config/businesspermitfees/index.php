@@ -12,7 +12,6 @@
    <table class="table table-bordered">
     <thead class="thead-dark">
       <tr class="text-center">
-        <th>ID</th>
         <th>Document Id</th>
         <th>Business Type Id</th>
         <th>New Applicant Charge</th>
@@ -25,10 +24,9 @@
       <?php foreach($business_permit_fees as $businesspermitfees): ?>
       <tr id="<?php echo $businesspermitfees['id']; ?>">
         <th scope="row"><?= $cnt++ ?></th>
-        <td><?= ucwords($businesspermitfees['document_name']) ?></td>
-        <td><?= ucwords($businesspermitfees['business_type_name']) ?></td>
+        <td><?= ucwords($businesspermitfees['document_id']) ?></td>
+        <td><?= ucwords($businesspermitfees['business_type_id']) ?></td>
         <td><?= ucwords($businesspermitfees['new_applicant_charge']) ?></td>
-        <td><?= ucwords($businesspermitfees['nrenewal_charge']) ?></td>
         <td class="text-center">
           <?php
             users_action('business_permit_fees', $_SESSION['userPermmissions'], $businesspermitfees['id']);

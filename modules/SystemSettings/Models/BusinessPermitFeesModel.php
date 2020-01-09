@@ -21,7 +21,7 @@ class BusinessPermitFeesModel extends \CodeIgniter\Model
 	{
 		$db = \Config\Database::connect();
 
-    $str = "SELECT a.*, c.document_name FROM business_permit_fees a LEFT JOIN business_types b ON a.id = b.business_type_name LEFT JOIN documents c ON b.id = c.document_name WHERE a.status = '".$args['status']."' LIMIT ". $args['offset'] .','.$args['limit'];
+    $str = "SELECT a.*, b.business_type_name, c.document_name FROM business_permit_fees a LEFT JOIN business_types b ON a.business_type_id = b.id LEFT JOIN documents c ON a.document_id = c.id WHERE a.status = '".$args['status']."' LIMIT ". $args['offset'] .','.$args['limit'];
 
     // print_r($str); die();
 		$query = $db->query($str);

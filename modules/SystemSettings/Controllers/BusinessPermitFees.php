@@ -3,6 +3,10 @@ namespace Modules\SystemSettings\Controllers;
 
 use Modules\SystemSettings\Models\BusinessPermitFeesModel;
 use Modules\UserManagement\Models\PermissionsModel;
+use Modules\SystemSettings\Models\BusinessTypesModel;
+use Modules\BaranggaySettings\Models\DocumentsModel;
+
+
 use App\Controllers\BaseController;
 
 class BusinessPermitFees extends BaseController
@@ -53,10 +57,15 @@ class BusinessPermitFees extends BaseController
 	public function add_BusinessPermitFees()
      {
      	$this->hasPermissionRedirect('add-businesspermitfees');
-
     	$permissions_model = new PermissionsModel();
-
     	$data['permissions'] = $this->permissions;
+
+			$model_document_name = new DocumentsModel();
+			$data['documents'] = $model_document_name->where('status', 'a')->findAll();
+
+			$model_business_types = new BusinessTypesModel();
+			$data['business_types'] = $model_business_types->where('status', 'a')->findAll();
+
 
 			// die('here');
     	helper(['form', 'url']);
@@ -108,6 +117,12 @@ class BusinessPermitFees extends BaseController
 
     	$data['permissions'] = $this->permissions;
 
+			$model_document_name = new DocumentsModel();
+			$data['documents'] = $model_document_name->where('status', 'a')->findAll();
+
+			$model_business_types = new BusinessTypesModel();
+			$data['business_types'] = $model_business_types->where('status', 'a')->findAll();
+
     	if(!empty($_POST))
     	{
 	    	if (!$this->validate('permit'))
@@ -121,7 +136,8 @@ class BusinessPermitFees extends BaseController
 		    {
 		    	if($model->editBusinessPermitFees($_POST, $id))
 		        {
-					$this->session->markAsFlashdata('success');
+							$_SESSION['success'] = 'You have updated a record';
+							$this->session->markAsFlashdata('success');
 		        	return redirect()->to(base_url('business-permit-fees'));
 		        }
 		        else

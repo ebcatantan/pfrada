@@ -14,7 +14,7 @@
       <tr class="text-center">
         <th>#</th>
         <th>Facility Name</th>
-        <th>Description</th> 
+        <th>Description</th>
         <th>Action</th>
       </tr>
     </thead>
@@ -39,6 +39,6 @@
 
 <div class="row">
   <div class="col-md-6 offset-md-6">
-    <?php paginater('roles', count($all_items), PERPAGE, $offset) ?>
+    <?php paginater('facilities', count($all_items), PERPAGE, $offset) ?>
   </div>
 </div>
