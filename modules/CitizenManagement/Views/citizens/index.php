@@ -1,8 +1,15 @@
  <div class="row">
-   <div class="col-md-10">
-      search here
+   <div class="col-md-6 offset-0">
+     <div class="input-group">
+      <input type="text" name="search_item" class="form-control" placeholder="Search for documents">
+      <div class="input-group-append">
+        <button class="btn btn-dark" type="button">
+          <i class="fa fa-search"></i>
+        </button>
+      </div>
+    </div>
    </div>
-   <div class="col-md-2">
+   <div class="col-md-2 offset-md-4">
     <?php user_add_link('citizens', $_SESSION['userPermmissions']) ?>
    </div>
  </div>

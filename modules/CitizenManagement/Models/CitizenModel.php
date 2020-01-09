@@ -22,10 +22,10 @@ class CitizenModel extends \CodeIgniter\Model
 	{
 		$db = \Config\Database::connect();
 
-    $str = "SELECT a.*, b.username, b.email FROM citizens a LEFT JOIN users b ON a.user_id = b.id WHERE a.status = '".$args['status']."' LIMIT ". $args['offset'] .','.$args['limit'];
-		// print_r($str); die();
+    $str = "SELECT a.*, b.username FROM citizens a LEFT JOIN users b ON b.id = a.user_id WHERE a.status = '" .$args['status']."'";
+    // '" .$args['status']."''"
 		$query = $db->query($str);
-
+    // print_r($str); die();
 		// print_r($query->getResultArray()); die();
 	    return $query->getResultArray();
 	}

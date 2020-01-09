@@ -1,17 +1,22 @@
+
 <div class="row">
   <div class="col-md-8 offset-md-2">
 
+    <?php if($citizen[0]['user_id'] != 0): ?>
     <div class="row">
       <div class="col-md-12">
-        <span class="field">User ID</span>
-        <span class="field-value"><?= ucfirst($citizen[0]['user_id']) ?></span>
+        <span class="field">Citizen as</span>
+        <span class="field-value"><?= ucwords(name_on_system($citizen[0]['user_id'], $users, 'users')) ?></span>
       </div>
     </div>
+    <?php endif; ?>
 
     <div class="row">
       <div class="col-md-12">
         <span class="field">Citizen Image</span>
-        <span class="field-value"><?= ucfirst($citizen[0]['citizen_image']) ?></span>
+        <span class="field-value">
+          <a href="<?= base_url().'uploads/'.strtoupper($citizen[0]['citizen_image']) ?>" target="_blank"><i class="far fa-file-alt"></i> VIEW IMAGE</a>
+        </span>
       </div>
     </div>
 
