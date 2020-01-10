@@ -29,7 +29,7 @@ class Facilities extends BaseController
 
         $data['facilities'] = $model->getFacilityWithFunction(['status'=> 'a', 'limit' => PERPAGE, 'offset' =>  $offset]);
 
-        $data['function_title'] = "Facilities List";
+        $data['function_title'] = "List of Facilities";
         $data['viewName'] = 'Modules\BaranggaySettings\Views\facilities\index';
         echo view('App\Views\theme\index', $data);
     }
@@ -43,7 +43,7 @@ class Facilities extends BaseController
 
 		$data['facility'] = $model->getFacilityWithCondition(['id' => $id]);
 
-		$data['function_title'] = "facility Details";
+		$data['function_title'] = "Facility Details";
         $data['viewName'] = 'Modules\BaranggaySettings\Views\facilities\facilityDetails';
         echo view('App\Views\theme\index', $data);
 	}
@@ -63,7 +63,6 @@ class Facilities extends BaseController
     	{
 	    	if (!$this->validate('facility'))
 		    {
-
 		    	$data['errors'] = \Config\Services::validation()->getErrors();
 		        $data['function_title'] = "Adding Facility";
 		        $data['viewName'] = 'Modules\BaranggaySettings\Views\facilities\frmFacility';
@@ -118,12 +117,13 @@ class Facilities extends BaseController
 		    {
 		    	if($model->editFacilities($_POST, $id))
 		        {
-					$this->session->markAsFlashdata('success');
+							$_SESSION['success'] = 'You have updated a record';
+							$this->session->markAsFlashdata('success');
 		        	return redirect()->to(base_url('facilities'));
 		        }
 		        else
 		        {
-		        	$_SESSION['error'] = 'You an error in updating a record';
+		        	$_SESSION['error'] = 'You have an error in updating a record';
 					$this->session->markAsFlashdata('error');
 		        	return redirect()->to( base_url('facilities'));
 		        }

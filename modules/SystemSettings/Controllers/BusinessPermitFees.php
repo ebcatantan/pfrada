@@ -33,7 +33,7 @@ class BusinessPermitFees extends BaseController
 
         $data['business_permit_fees'] = $model->getBusinessPermitFeesWithFunction(['status'=> 'a', 'limit' => PERPAGE, 'offset' =>  $offset]);
 
-        $data['function_title'] = "Business Permit Fees List";
+        $data['function_title'] = "List of Business Permit Fees";
         $data['viewName'] = 'Modules\SystemSettings\Views\businesspermitfees\index';//palatandaan
         echo view('App\Views\theme\index', $data);
     }
@@ -92,7 +92,7 @@ class BusinessPermitFees extends BaseController
 		        else
 		        {
 		        	$_SESSION['error'] = 'You have an error in adding a new record';
-					$this->session->markAsFlashdata('error');
+							$this->session->markAsFlashdata('error');
 		        	return redirect()->to(base_url('business-permit-fees'));
 		        }
 		    }

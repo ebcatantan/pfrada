@@ -16,8 +16,8 @@ class ModuleSeeder extends \CodeIgniter\Database\Seeder
                         'created_at' => date('Y-m-d H:i:s')
                     ],
                     [
-                        'module_name' => 'baranggay settings',
-                        'module_description' => 'barrangay settings',
+                        'module_name' => 'barangay settings',
+                        'module_description' => 'barangay settings',
                         'module_icon' => '<i class="fas fa-city"></i>',
                         'order' =>2,
                         'status' => 'a',
@@ -31,6 +31,14 @@ class ModuleSeeder extends \CodeIgniter\Database\Seeder
                         'status' => 'a',
                         'created_at' => date('Y-m-d H:i:s')
                     ],
+                    [
+                      'module_name' => 'citizen management',
+                      'module_description' => 'citizen management',
+                      'module_icon' => '<i class="fas fa-user-cog"></i>',
+                      'order' =>4,
+                      'status' => 'a',
+                      'created_at' => date('Y-m-d H:i:s')
+                    ]
                 ];
                 $db      = \Config\Database::connect();
                 $builder = $db->table($this->table);

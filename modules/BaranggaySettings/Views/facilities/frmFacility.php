@@ -13,8 +13,8 @@
       <div class="row">
         <div class="col-md-6 offset-md-3">
           <div class="form-group">
-            <label for="facility_name">facility name</label>
-            <input name="facility_name" type="text" value="<?= isset($rec['facility_name']) ? $rec['facility_name'] : set_value('facility_name') ?>" class="form-control <?= $errors['facility_name'] ? 'is-invalid':'is-valid' ?>" id="facility_name" placeholder="facility Name">
+            <label for="facility_name">Facility Name</label>
+            <input name="facility_name" type="text" value="<?= isset($rec['facility_name']) ? $rec['facility_name'] : set_value('facility_name') ?>" class="form-control <?= $errors['facility_name'] ? 'is-invalid':'is-valid' ?>" id="facility_name" placeholder="Facility Name">
               <?php if($errors['facility_name']): ?>
                 <div class="invalid-feedback">
                   <?= $errors['facility_name'] ?>
@@ -26,8 +26,8 @@
       <div class="row">
         <div class="col-md-6 offset-md-3">
           <div class="form-group">
-            <label for="description">facility Description</label>
-            <textarea name="description" type="text" class="form-control <?= $errors['description'] ? 'is-invalid':'is-valid'  ?>" id="description" placeholder="facility Description" rows="5"><?= isset($rec['description']) ? $rec['description'] : set_value('description') ?></textarea>
+            <label for="description">Facility Description</label>
+            <textarea name="description" type="text" class="form-control <?= $errors['description'] ? 'is-invalid':'is-valid'  ?>" id="description" placeholder="Facility Description" rows="5"><?= isset($rec['description']) ? $rec['description'] : set_value('description') ?></textarea>
             <?php if($errors['description']): ?>
                 <div class="invalid-feedback">
                   <?= $errors['description'] ?>

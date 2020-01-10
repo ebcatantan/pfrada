@@ -46,7 +46,7 @@ class PermissionBusinessPermitFeesSeeder extends \CodeIgniter\Database\Seeder
                         'name_on_class' => 'index',
                         'page_title' => 'list of business permit fees',
                         'module_id' => '3',
-                        'link_icon' => '<i class="far fa-building"></i>',
+                        'link_icon' => '<i class="far fa-money-bill-alt"></i>',
                         'order' => '102',
                         'table_name' => 'business_permit_fees',
                         'func_action' => 'link',
