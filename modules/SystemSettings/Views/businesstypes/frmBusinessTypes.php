@@ -9,15 +9,15 @@
 <br>
 <div class="row">
   <div class="col-md-12">
-    <form action="<?= base_url() ?>facilities/<?= isset($rec) ? 'edit/'.$rec['id'] : 'add' ?>" method="post">
+    <form action="<?= base_url() ?>business-types/<?= isset($rec) ? 'edit/'.$rec['id'] : 'add' ?>" method="post">
       <div class="row">
         <div class="col-md-6 offset-md-3">
           <div class="form-group">
-            <label for="facility_name">Facility Name</label>
-            <input name="facility_name" type="text" value="<?= isset($rec['facility_name']) ? $rec['facility_name'] : set_value('facility_name') ?>" class="form-control <?= $errors['facility_name'] ? 'is-invalid':'is-valid' ?>" id="facility_name" placeholder="Facility Name">
-              <?php if($errors['facility_name']): ?>
+            <label for="business_type_name">Business Types name</label>
+            <input name="business_type_name" type="text" value="<?= isset($rec['business_type_name']) ? $rec['business_type_name'] : set_value('business_type_name') ?>" class="form-control <?= $errors['business_type_name'] ? 'is-invalid':'is-valid' ?>" id="business_type_name" placeholder="Business Types Name">
+              <?php if($errors['business_type_name']): ?>
                 <div class="invalid-feedback">
-                  <?= $errors['facility_name'] ?>
+                  <?= $errors['business_type_name'] ?>
                 </div>
               <?php endif; ?>
           </div>
@@ -26,8 +26,8 @@
       <div class="row">
         <div class="col-md-6 offset-md-3">
           <div class="form-group">
-            <label for="description">Facility Description</label>
-            <textarea name="description" type="text" class="form-control <?= $errors['description'] ? 'is-invalid':'is-valid'  ?>" id="description" placeholder="Facility Description" rows="5"><?= isset($rec['description']) ? $rec['description'] : set_value('description') ?></textarea>
+            <label for="description">Business Types Description</label>
+            <textarea name="description" type="text" class="form-control <?= $errors['description'] ? 'is-invalid':'is-valid'  ?>" id="description" placeholder="Business Types Description" rows="5"><?= isset($rec['description']) ? $rec['description'] : set_value('description') ?></textarea>
             <?php if($errors['description']): ?>
                 <div class="invalid-feedback">
                   <?= $errors['description'] ?>

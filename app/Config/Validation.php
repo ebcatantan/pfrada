@@ -75,12 +75,13 @@ class Validation
         ],
 
     ];
+
     public $facility = [
         'facility_name' => [
             'label'  => 'Facility Name',
             'rules'  => 'required',
             'errors' => [
-                'required' => 'facility Name field is required.'
+                'required' => 'Facility Name field is required.'
             ]
         ],
 
@@ -88,7 +89,74 @@ class Validation
             'label'  => 'Facility Description',
             'rules'  => 'required',
             'errors' => [
-                'required' => 'facility desciption field is required.'
+                'required' => 'Facility description field is required.'
+            ]
+        ]
+			];
+			
+		public $clearancepurposes = [
+        'purpose' => [
+            'label'  => 'purpose',
+            'rules'  => 'required',
+            'errors' => [
+                'required' => 'purpose field is required.'
+            ]
+        ],
+
+        'description' => [
+            'label'  => 'Purpose Description',
+            'rules'  => 'required',
+            'errors' => [
+                'required' => 'purpose description field is required.'
+            ]
+        ]
+			];
+
+		public $clearance = [
+        'document_id' => [
+            'label'  => 'Document',
+            'rules'  => 'required',
+            'errors' => [
+                'required' => 'Clearance ID field is required.'
+            ]
+        ],
+				'clearance_purpose_id' => [
+						'label'  => 'Document',
+						'rules'  => 'required',
+						'errors' => [
+								'required' => 'Clearance Purpose ID field is required.'
+						]
+				],
+				'voter_fee_amount' => [
+						'label'  => 'Document',
+						'rules'  => 'required',
+						'errors' => [
+								'required' => 'Amount field is required.'
+						]
+				],
+				'non_voter_fee_amount' => [
+						'label'  => 'Document',
+						'rules'  => 'required',
+						'errors' => [
+								'required' => 'Amount field is required.'
+						]
+				]
+    ];
+
+		public $businesstype = [
+        'business_type_name' => [
+            'label'  => 'Business Types Name',
+            'rules'  => 'required',
+            'errors' => [
+                'required' => 'businessTypes Name field is required.'
+            ]
+        ],
+
+        'description' => [
+            'label'  => 'Business Types Description',
+            'rules'  => 'required',
+            'errors' => [
+                'required' => 'businessTypes desciption field is required.'
             ]
         ]
     ];
@@ -107,7 +175,7 @@ class Validation
             'rules'  => 'required|alpha',
             'errors' => [
                 'required' => 'Firstname field is required.',
-                'alpha' => 'Lastname must not have numbers.'
+                'alpha' => 'Firstname must not have numbers.'
             ]
         ],
         'username' => [
@@ -217,7 +285,55 @@ class Validation
 
     ];
 
-	//--------------------------------------------------------------------
+		public $permit = [
+        'document_id' => [
+            'label'  => 'Document Id',
+            'rules'  => 'required',
+            'errors' => [
+                'required' => 'Business Name field is required.'
+            ]
+        ],
+        'business_type_id' => [
+            'label'  => 'Bussiness Type Id',
+            'rules'  => 'required',
+            'errors' => [
+                'required' => 'Business desciption field is required.'
+            ]
+        ],
+				'new_applicant_charge' => [
+						'label'  => 'New Applicant Charge',
+						'rules'  => 'required',
+						'errors' => [
+								'required' => 'Business Name field is required.'
+						]
+				],
+				'nrenewal_charge' => [
+						'label'  => 'Renewal Charge',
+						'rules'  => 'required',
+						'errors' => [
+								'required' => 'Business Name field is required.'
+						]
+				]
+    ];
+
+
+		public $document = [
+				'document_name' => [
+						'label'  => 'Document Name',
+						'rules'  => 'required',
+						'errors' => [
+								'required' => 'Document name field is required.'
+						]
+				],
+
+				'description' => [
+						'label'  => 'Document Description',
+						'rules'  => 'required',
+						'errors' => [
+								'required' => 'Document description field is required.'
+						]
+				]
+		];
 	// Rules
 	//--------------------------------------------------------------------
 }

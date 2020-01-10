@@ -9,15 +9,15 @@
 <br>
 <div class="row">
   <div class="col-md-12">
-    <form action="<?= base_url() ?>facilities/<?= isset($rec) ? 'edit/'.$rec['id'] : 'add' ?>" method="post">
+    <form action="<?= base_url() ?>clearance-purposes/<?= isset($rec) ? 'edit/'.$rec['id'] : 'add' ?>" method="post">
       <div class="row">
         <div class="col-md-6 offset-md-3">
           <div class="form-group">
-            <label for="facility_name">Facility Name</label>
-            <input name="facility_name" type="text" value="<?= isset($rec['facility_name']) ? $rec['facility_name'] : set_value('facility_name') ?>" class="form-control <?= $errors['facility_name'] ? 'is-invalid':'is-valid' ?>" id="facility_name" placeholder="Facility Name">
-              <?php if($errors['facility_name']): ?>
+            <label for="purpose">Clearance Purpose</label>
+            <input name="purpose" type="text" value="<?= isset($rec['purpose']) ? $rec['purpose'] : set_value('purpose') ?>" class="form-control <?= $errors['purpose'] ? 'is-invalid':'is-valid' ?>" id="purpose" placeholder="Purpose">
+              <?php if($errors['purpose']): ?>
                 <div class="invalid-feedback">
-                  <?= $errors['facility_name'] ?>
+                  <?= $errors['purpose'] ?>
                 </div>
               <?php endif; ?>
           </div>
@@ -26,8 +26,8 @@
       <div class="row">
         <div class="col-md-6 offset-md-3">
           <div class="form-group">
-            <label for="description">Facility Description</label>
-            <textarea name="description" type="text" class="form-control <?= $errors['description'] ? 'is-invalid':'is-valid'  ?>" id="description" placeholder="Facility Description" rows="5"><?= isset($rec['description']) ? $rec['description'] : set_value('description') ?></textarea>
+            <label for="description">Description</label>
+            <textarea name="description" type="text" class="form-control <?= $errors['description'] ? 'is-invalid':'is-valid'  ?>" id="description" placeholder="Description" rows="5"><?= isset($rec['description']) ? $rec['description'] : set_value('description') ?></textarea>
             <?php if($errors['description']): ?>
                 <div class="invalid-feedback">
                   <?= $errors['description'] ?>
