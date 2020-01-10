@@ -93,7 +93,7 @@ class Validation
             ]
         ]
 			];
-			
+
 		public $clearancepurposes = [
         'purpose' => [
             'label'  => 'purpose',
@@ -156,10 +156,36 @@ class Validation
             'label'  => 'Business Types Description',
             'rules'  => 'required',
             'errors' => [
-                'required' => 'businessTypes desciption field is required.'
+                'required' => 'businessTypes desciption field'
             ]
         ]
     ];
+
+		public $reservation_fees = [
+				'facility_id' => [
+						'label'  => 'Facility Name',
+						'rules'  => 'required',
+						'errors' => [
+								'required' => 'Facility Name field is required.'
+						]
+				],
+
+				'fee_per_hour' => [
+						'label'  => 'Fee per hour',
+						'rules'  => 'required',
+						'errors' => [
+								'required' => 'Fee per hour field is required.'
+						]
+				],
+
+				'maintenance_fee' => [
+						'label'  => 'Maintenance Fee',
+						'rules'  => 'required',
+						'errors' => [
+								'required' => 'Maintenance fee field is required.'
+						]
+				],
+		];
 
 	public $user = [
         'lastname' => [
