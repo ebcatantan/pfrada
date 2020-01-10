@@ -40,13 +40,13 @@ class PermissionBusinessTypesSeeder extends \CodeIgniter\Database\Seeder
                         'created_at' => date('Y-m-d H:i:s')
                     ],
                     [
-                        'function_name' => 'list of businesstypes',
-                        'function_description' => 'list of businesstypes',
+                        'function_name' => 'list of business types',
+                        'function_description' => 'list of business types',
                         'slugs' => 'list-businesstype',
                         'name_on_class' => 'index',
-                        'page_title' => 'list of businesstypes',
+                        'page_title' => 'list of business types',
                         'module_id' => '3',
-                        'link_icon' => '<i class="fas fa-briefcase"></i>',
+                        'link_icon' => '<i class="fas fa-mail-bulk"></i>',
                         'order' => '82',
                         'table_name' => 'business_types',
                         'func_action' => 'link',

@@ -30,7 +30,7 @@ class Citizen extends BaseController
 
         $data['citizens'] = $model->getCitizenWithFunction(['status'=> 'a', 'limit' => PERPAGE, 'offset' =>  $offset]);
 
-        $data['function_title'] = "Citizens List";
+        $data['function_title'] = "List of Citizens";
         $data['viewName'] = 'Modules\CitizenManagement\Views\citizens\index';
         echo view('App\Views\theme\index', $data);
     }

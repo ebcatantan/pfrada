@@ -21,9 +21,9 @@
       <tr class="text-center">
         <th>#</th>
         <th>Name</th>
-        <th>Address</th>
         <th>Gender</th>
         <th>Contact No.</th>
+        <th>Address</th>
         <th>Action</th>
       </tr>
     </thead>
@@ -33,9 +33,9 @@
       <tr id="<?php echo $citizen['id']; ?>">
         <th scope="row"><?= $cnt++ ?></th>
         <td><?= ucwords($citizen['lastname'] . ', ' . $citizen['firstname'] . ' ' . $citizen['middlename']) ?></td>
-        <td><?= ucwords($citizen['address']) ?></td>
         <td><?= ucwords($citizen['gender']) ?></td>
         <td><?= ucwords($citizen['contact_no']) ?></td>
+        <td><?= ucwords($citizen['address']) ?></td>
         <td class="text-center">
           <?php
             users_action('citizens', $_SESSION['userPermmissions'], $citizen['id']);

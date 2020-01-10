@@ -13,8 +13,8 @@
     <thead class="thead-dark">
       <tr class="text-center">
         <th>ID</th>
-        <th>Document Id</th>
-        <th>Business Type Id</th>
+        <th>Document Name</th>
+        <th>Business Type</th>
         <th>New Applicant Charge</th>
         <th>Renewal Charge</th>
         <th>Action</th>

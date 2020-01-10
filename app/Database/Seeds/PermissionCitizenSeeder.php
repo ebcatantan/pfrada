@@ -1,6 +1,6 @@
 <?php namespace App\Database\Seeds;
 
-class CitizenPermissionSeeder extends \CodeIgniter\Database\Seeder
+class PermissionCitizenSeeder extends \CodeIgniter\Database\Seeder
 {
         public $table = 'permissions';
 

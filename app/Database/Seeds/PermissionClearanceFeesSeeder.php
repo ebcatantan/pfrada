@@ -1,6 +1,6 @@
 <?php namespace App\Database\Seeds;
 
-class PermissionClearanceSeeder extends \CodeIgniter\Database\Seeder
+class PermissionClearanceFeesSeeder extends \CodeIgniter\Database\Seeder
 {
         public $table = 'permissions';
 
@@ -40,13 +40,13 @@ class PermissionClearanceSeeder extends \CodeIgniter\Database\Seeder
                         'created_at' => date('Y-m-d H:i:s')
                     ],
                     [
-                        'function_name' => 'list of clearance',
-                        'function_description' => 'list of clearance',
+                        'function_name' => 'list of clearance fees',
+                        'function_description' => 'list of clearance fees',
                         'slugs' => 'list-clearance',
                         'name_on_class' => 'index',
-                        'page_title' => 'list of clearance',
+                        'page_title' => 'list of clearance fees',
                         'module_id' => '3',
-                        'link_icon' => '<i class="fas fa-money-check-alt"></i>',
+                        'link_icon' => '<i class="fas fa-file-invoice-dollar"></i>',
                         'order' => '202',
                         'table_name' => 'clearance_fees',
                         'func_action' => 'link',

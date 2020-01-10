@@ -29,7 +29,7 @@ class BusinessTypes extends BaseController
 
         $data['businesstypes'] = $model->getBusinessTypesWithFunction(['status'=> 'a', 'limit' => PERPAGE, 'offset' =>  $offset]);
 
-        $data['function_title'] = "Business Types List";
+        $data['function_title'] = "List of Business Types";
         $data['viewName'] = 'Modules\SystemSettings\Views\businesstypes\index';
         echo view('App\Views\theme\index', $data);
     }
@@ -118,13 +118,14 @@ class BusinessTypes extends BaseController
 		    {
 		    	if($model->editBusinessTypes($_POST, $id))
 		        {
-					$this->session->markAsFlashdata('success');
+							$_SESSION['success'] = 'You have updated a record';
+							$this->session->markAsFlashdata('success');
 		        	return redirect()->to(base_url('business-types'));
 		        }
 		        else
 		        {
 		        	$_SESSION['error'] = 'You an error in updating a record';
-					$this->session->markAsFlashdata('error');
+							$this->session->markAsFlashdata('error');
 		        	return redirect()->to( base_url('business-types'));
 		        }
 		    }

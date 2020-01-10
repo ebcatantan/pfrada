@@ -34,7 +34,7 @@ class ModuleSeeder extends \CodeIgniter\Database\Seeder
                     [
                       'module_name' => 'citizen management',
                       'module_description' => 'citizen management',
-                      'module_icon' => '<i class="fas fa-city"></i>',
+                      'module_icon' => '<i class="fas fa-user-cog"></i>',
                       'order' =>4,
                       'status' => 'a',
                       'created_at' => date('Y-m-d H:i:s')

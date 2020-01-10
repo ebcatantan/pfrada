@@ -29,7 +29,7 @@ class Facilities extends BaseController
 
         $data['facilities'] = $model->getFacilityWithFunction(['status'=> 'a', 'limit' => PERPAGE, 'offset' =>  $offset]);
 
-        $data['function_title'] = "Facilities List";
+        $data['function_title'] = "List of Facilities";
         $data['viewName'] = 'Modules\BaranggaySettings\Views\facilities\index';
         echo view('App\Views\theme\index', $data);
     }
@@ -117,7 +117,8 @@ class Facilities extends BaseController
 		    {
 		    	if($model->editFacilities($_POST, $id))
 		        {
-					$this->session->markAsFlashdata('success');
+							$_SESSION['success'] = 'You have updated a record';
+							$this->session->markAsFlashdata('success');
 		        	return redirect()->to(base_url('facilities'));
 		        }
 		        else

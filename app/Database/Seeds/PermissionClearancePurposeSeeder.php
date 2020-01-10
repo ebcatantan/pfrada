@@ -1,6 +1,6 @@
 <?php namespace App\Database\Seeds;
 
-class PermissionPurposeSeeder extends \CodeIgniter\Database\Seeder
+class PermissionClearancePurposeSeeder extends \CodeIgniter\Database\Seeder
 {
         public $table = 'permissions';
 
@@ -46,7 +46,7 @@ class PermissionPurposeSeeder extends \CodeIgniter\Database\Seeder
                         'name_on_class' => 'list_clearancepurpose',
                         'page_title' => 'list of clearance purposes',
                         'module_id' => '3',
-                        'link_icon' => '<i class="fas fa-file-invoice-dollar"></i>',
+                        'link_icon' => '<i class="fas fa-clipboard-list"></i>',
                         'order' => '142',
                         'table_name' => 'clearance_purposes',
                         'func_action' => 'link',
