@@ -43,7 +43,7 @@ facilities <div class="row">
         <div class="col-md-6 offset-md-3">
           <div class="form-group">
             <label for="fee_per_hour">Fee per hour</label>
-            <textarea name="fee_per_hour" type="text" class="form-control <?= $errors['fee_per_hour'] ? 'is-invalid':'is-valid'  ?>" id="fee_per_hour" placeholder="Fee per hour" rows="5"><?= isset($rec['fee_per_hour']) ? $rec['fee_per_hour'] : set_value('fee_per_hour') ?></textarea>
+            <input name="fee_per_hour" type="text" value="<?= isset($rec['fee_per_hour']) ? $rec['fee_per_hour'] : set_value('fee_per_hour') ?>" class="form-control <?= $errors['fee_per_hour'] ? 'is-invalid':'is-valid' ?>" id="fee_per_hour" placeholder="Fee per hour">
             <?php if($errors['fee_per_hour']): ?>
                 <div class="invalid-feedback">
                   <?= $errors['fee_per_hour'] ?>
@@ -56,7 +56,7 @@ facilities <div class="row">
         <div class="col-md-6 offset-md-3">
           <div class="form-group">
             <label for="maintenance_fee">Maintenance fee</label>
-            <textarea name="maintenance_fee" type="text" class="form-control <?= $errors['maintenance_fee'] ? 'is-invalid':'is-valid'  ?>" id="maintenance_fee" placeholder="Maintenance fee" rows="5"><?= isset($rec['maintenance_fee']) ? $rec['maintenance_fee'] : set_value('maintenance_fee') ?></textarea>
+            <input name="maintenance_fee" type="text" value="<?= isset($rec['maintenance_fee']) ? $rec['maintenance_fee'] : set_value('maintenance_fee') ?>" class="form-control <?= $errors['maintenance_fee'] ? 'is-invalid':'is-valid' ?>" id="maintenance_fee" placeholder="Maintenance Fee">  
             <?php if($errors['maintenance_fee']): ?>
                 <div class="invalid-feedback">
                   <?= $errors['maintenance_fee'] ?>

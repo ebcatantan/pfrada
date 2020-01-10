@@ -1,5 +1,5 @@
 System Data Buildup
-- CRUD Business Types 
+- CRUD Business Types
 - CRUD Business Permit Fees
 - CRUD Clearance Fees
 - CRUD Clearance Purpose

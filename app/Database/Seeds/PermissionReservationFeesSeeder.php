@@ -11,7 +11,7 @@ class PermissionReservationFeesSeeder extends \CodeIgniter\Database\Seeder
                         'function_name' => 'show reservation fees details',
                         'function_description' => 'show reservation fees details',
                         'slugs' => 'show-reservation-fees',
-                        'name_on_class' => 'show reservation fees',
+                        'name_on_class' => 'show_reservation_fees',
                         'page_title' =>  'reservation fees details',
                         'module_id' => '3',
                          'link_icon' => '',
