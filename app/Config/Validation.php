@@ -80,7 +80,7 @@ class Validation
             'label'  => 'Facility Name',
             'rules'  => 'required',
             'errors' => [
-                'required' => 'facility Name field is required.'
+                'required' => 'Facility Name field is required.'
             ]
         ],
 
@@ -88,10 +88,36 @@ class Validation
             'label'  => 'Facility Description',
             'rules'  => 'required',
             'errors' => [
-                'required' => 'facility desciption field is required.'
+                'required' => 'Facility desciption field is required.'
             ]
         ]
     ];
+
+		public $reservation_fees = [
+				'facility_id' => [
+						'label'  => 'Facility Name',
+						'rules'  => 'required',
+						'errors' => [
+								'required' => 'Facility Name field is required.'
+						]
+				],
+
+				'fee_per_hour' => [
+						'label'  => 'Fee per hour',
+						'rules'  => 'required',
+						'errors' => [
+								'required' => 'Fee per hour field is required.'
+						]
+				],
+
+				'maintenance_fee' => [
+						'label'  => 'Maintenance Fee',
+						'rules'  => 'required',
+						'errors' => [
+								'required' => 'Maintenance fee field is required.'
+						]
+				],
+		];
 
 	public $user = [
         'lastname' => [
@@ -107,7 +133,7 @@ class Validation
             'rules'  => 'required|alpha',
             'errors' => [
                 'required' => 'Firstname field is required.',
-                'alpha' => 'Lastname must not have numbers.'
+                'alpha' => 'Firstname must not have numbers.'
             ]
         ],
         'username' => [
