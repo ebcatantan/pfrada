@@ -8,3 +8,13 @@ $routes->group('facilities', ['namespace' => 'Modules\BaranggaySettings\Controll
     $routes->match(['get', 'post'], 'edit/(:num)', 'Facilities::edit_facility/$1');
     $routes->delete('delete/(:num)', 'Facilities::delete_facility/$1');
 });
+
+$routes->group('documents', ['namespace' => 'Modules\BaranggaySettings\Controllers'], function($routes)
+{
+    $routes->get('/', 'Documents::index');
+    $routes->get('(:num)', 'Documents::index/$1');
+    $routes->get('show/(:num)', 'Documents::show_document/$1');
+    $routes->match(['get', 'post'], 'add', 'Documents::add_document');
+    $routes->match(['get', 'post'], 'edit/(:num)', 'Documents::edit_document/$1');
+    $routes->delete('delete/(:num)', 'Documents::delete_document/$1');
+});

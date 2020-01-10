@@ -66,7 +66,7 @@ class Facilities extends BaseController
 
 		    	$data['errors'] = \Config\Services::validation()->getErrors();
 		        $data['function_title'] = "Adding Facility";
-		        $data['viewName'] = 'Modules\BaranggaySettings\Views\facilities\frmFacilityz3';
+		        $data['viewName'] = 'Modules\BaranggaySettings\Views\facilities\frmFacility';
 		        echo view('App\Views\theme\index', $data);
 		    }
 		    else
