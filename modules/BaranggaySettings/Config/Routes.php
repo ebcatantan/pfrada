@@ -18,3 +18,13 @@ $routes->group('documents', ['namespace' => 'Modules\BaranggaySettings\Controlle
     $routes->match(['get', 'post'], 'edit/(:num)', 'Documents::edit_document/$1');
     $routes->delete('delete/(:num)', 'Documents::delete_document/$1');
 });
+
+$routes->group('document-requests', ['namespace' => 'Modules\BaranggaySettings\Controllers'], function($routes)
+{
+    $routes->get('/', 'DocumentRequest::index');
+    $routes->get('(:num)', 'DocumentRequest::index/$1');
+    $routes->get('show/(:num)', 'DocumentRequest::show_documentrequest/$1');
+    $routes->match(['get', 'post'], 'add', 'DocumentRequest::add_documentrequest');
+    $routes->match(['get', 'post'], 'edit/(:num)', 'DocumentRequest::edit_documentrequest/$1');
+    $routes->delete('delete/(:num)', 'DocumentRequest::delete_documentrequest/$1');
+});
