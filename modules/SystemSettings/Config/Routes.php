@@ -17,7 +17,7 @@ $routes->group('business-types', ['namespace' => 'Modules\SystemSettings\Control
     $routes->get('show/(:num)', 'BusinessTypes::show_businesstype/$1');
     $routes->match(['get', 'post'], 'add', 'BusinessTypes::add_businesstype');
     $routes->match(['get', 'post'], 'edit/(:num)', 'BusinessTypes::edit_businesstype/$1');
-    $routes->delete('delete/(:num)', 'BusinessTypes::delete_businesstypes/$1');
+    $routes->delete('delete/(:num)', 'BusinessTypes::delete_businesstype/$1');
 });
 
 $routes->group('clearance-fees', ['namespace' => 'Modules\SystemSettings\Controllers'], function($routes)
@@ -38,4 +38,14 @@ $routes->group('clearance-purposes', ['namespace' => 'Modules\SystemSettings\Con
     $routes->match(['get', 'post'], 'add', 'ClearancePurposes::add_clearancepurpose');
     $routes->match(['get', 'post'], 'edit/(:num)', 'ClearancePurposes::edit_clearancepurpose/$1');
     $routes->delete('delete/(:num)', 'ClearancePurposes::delete_clearancepurpose/$1');
+});
+
+$routes->group('reservations', ['namespace' => 'Modules\SystemSettings\Controllers'], function($routes)
+{
+    $routes->get('/', 'Reservations::index');
+    $routes->get('(:num)', 'Reservations::index/$1');
+    $routes->get('show/(:num)', 'Reservations::show_reservation/$1');
+    $routes->match(['get', 'post'], 'add', 'Reservations::add_reservation');
+    $routes->match(['get', 'post'], 'edit/(:num)', 'Reservations::edit_reservation/$1');
+    $routes->delete('delete/(:num)', 'Reservations::delete_reservation/$1');
 });

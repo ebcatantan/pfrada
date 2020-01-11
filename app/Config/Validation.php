@@ -93,7 +93,7 @@ class Validation
             ]
         ]
 			];
-			
+
 		public $clearancepurposes = [
         'purpose' => [
             'label'  => 'purpose',
@@ -160,6 +160,88 @@ class Validation
             ]
         ]
     ];
+
+		public $reservation = [
+				'citizen_id' => [
+						'label'  => 'Citizen Name',
+						'rules'  => 'required',
+						'errors' => [
+								'required' => 'Citizen Name field is required.'
+						]
+				],
+
+				'facility_id' => [
+						'label'  => 'Facility Name',
+						'rules'  => 'required',
+						'errors' => [
+								'required' => 'Facility name field is required.'
+						]
+				],
+
+				'user_id' => [
+						'label'  => 'User ID',
+						'rules'  => 'required',
+						'errors' => [
+								'required' => 'User ID field is required.'
+						]
+				],
+
+				'reservation_date_time_start' => [
+						'label'  => 'Reservation Date Time Start',
+						'rules'  => 'required',
+						'errors' => [
+								'required' => 'Reservation Date Time Start field is required.'
+						]
+				],
+
+				'reservation_date_time_end' => [
+						'label'  => 'Reservation Date Time End',
+						'rules'  => 'required',
+						'errors' => [
+								'required' => 'Reservation Date Time End field is required.'
+						]
+				],
+
+				'reservation_payment' => [
+						'label'  => 'Reservation Payment',
+						'rules'  => 'required',
+						'errors' => [
+								'required' => 'Reservation Payment field is required.'
+						]
+				],
+
+				'is_approved' => [
+						'label'  => 'Approved',
+						'rules'  => 'required',
+						'errors' => [
+								'required' => 'Approved field is required.'
+						]
+				],
+
+				'is_paid' => [
+						'label'  => 'Paid',
+						'rules'  => 'required',
+						'errors' => [
+								'required' => 'Paid is required.'
+						]
+				],
+
+				'processed_by' => [
+						'label'  => 'Processed By',
+						'rules'  => 'required',
+						'errors' => [
+								'required' => 'Processed field is required.'
+						]
+				],
+
+				'date_paid' => [
+						'label'  => 'Date Paid',
+						'rules'  => 'required',
+						'errors' => [
+								'required' => 'Date Paid field is required.'
+						]
+				],
+		];
 
 	public $user = [
         'lastname' => [
