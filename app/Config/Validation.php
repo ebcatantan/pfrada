@@ -93,7 +93,7 @@ class Validation
             ]
         ]
 			];
-			
+
 		public $clearancepurposes = [
         'purpose' => [
             'label'  => 'purpose',
@@ -333,6 +333,72 @@ class Validation
 								'required' => 'Document description field is required.'
 						]
 				]
+		];
+
+		public $blotter = [
+				'citizen_id' => [
+						'label'  => 'Citizen ID',
+						'rules'  => 'required',
+						'errors' => [
+								'required' => 'Citizen ID field is required.'
+						]
+				],
+
+				'person_complained' => [
+						'label'  => 'Person Complained',
+						'rules'  => 'required',
+						'errors' => [
+								'required' => 'Person Complained field is required.'
+						]
+				],
+
+				'reason' => [
+						'label'  => 'Reason',
+						'rules'  => 'required',
+						'errors' => [
+								'required' => 'Reason field is required.'
+						]
+				],
+
+				'additional_details' => [
+						'label'  => 'Additional Details',
+						'rules'  => 'required',
+						'errors' => [
+								'required' => 'Additional Details field is required.'
+						]
+				],
+
+				'filling_date' => [
+						'label'  => 'Filling Date',
+						'rules'  => 'required',
+						'errors' => [
+								'required' => 'Filling Date field is required.'
+						]
+				],
+
+				'processed_by' => [
+						'label'  => 'Processed By',
+						'rules'  => 'required',
+						'errors' => [
+								'required' => 'Processed by field is required.'
+						]
+				],
+
+				'case_assigned_to' => [
+						'label'  => 'Case Assigned To',
+						'rules'  => 'required',
+						'errors' => [
+								'required' => 'Case assigned to field is required.'
+						]
+				],
+
+				'case_status' => [
+						'label'  => 'Case Status',
+						'rules'  => 'required',
+						'errors' => [
+								'required' => 'Case status to field is required.'
+						]
+				],
 		];
 	// Rules
 	//--------------------------------------------------------------------

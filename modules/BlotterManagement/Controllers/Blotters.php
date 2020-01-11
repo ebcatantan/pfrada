@@ -3,6 +3,7 @@ namespace Modules\BlotterManagement\Controllers;
 
 use Modules\BlotterManagement\Models\BlottersModel;
 use Modules\UserManagement\Models\PermissionsModel;
+use Modules\CitizenManagement\Models\CitizenModel;
 use App\Controllers\BaseController;
 
 class Blotters extends BaseController
@@ -36,7 +37,7 @@ class Blotters extends BaseController
 
     public function show_blotter($id)
 	{
-		$this->hasPermissionRedirect('show-blotter-details');
+		$this->hasPermissionRedirect('show-blotter');
 		$data['permissions'] = $this->permissions;
 
 		$model = new BlottersModel();
@@ -72,11 +73,10 @@ class Blotters extends BaseController
 		    {
 		        if($model->addBlotters($_POST))
 		        {
-		        	$blotter_id = $model->insertID();
-		        	$permissions_model->update_permitted_blotter($blotter_id, $_POST['function_id']);
+
 		        	$_SESSION['success'] = 'You have added a new record';
 					$this->session->markAsFlashdata('success');
-		        	return redirect()->to(base_url('roles'));
+		        	return redirect()->to(base_url('blotters'));
 		        }
 		        else
 		        {

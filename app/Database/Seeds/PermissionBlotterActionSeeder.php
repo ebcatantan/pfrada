@@ -1,6 +1,6 @@
 <?php namespace App\Database\Seeds;
 
-class PermissionBlotterSeeder extends \CodeIgniter\Database\Seeder
+class PermissionBlotterActionSeeder extends \CodeIgniter\Database\Seeder
 {
         public $table = 'permissions';
 
@@ -8,14 +8,14 @@ class PermissionBlotterSeeder extends \CodeIgniter\Database\Seeder
         {
                 $data = [
                     [
-                        'function_name' => 'show blotter details',
-                        'function_description' => 'show blotter details',
-                        'slugs' => 'show-blotter',
-                        'name_on_class' => 'show blotter',
-                        'page_title' =>  'blotter details',
+                        'function_name' => 'show blotter action details',
+                        'function_description' => 'show blotter action details',
+                        'slugs' => 'show-blotter-action',
+                        'name_on_class' => 'show blotter action',
+                        'page_title' =>  'blotter action details',
                         'module_id' => '5',
                          'link_icon' => '',
-                        'order' => '180',
+                        'order' => '400',
                         'table_name' => 'blotters',
                         'func_action' => 'show',
                         'func_type' => 3,
@@ -24,14 +24,14 @@ class PermissionBlotterSeeder extends \CodeIgniter\Database\Seeder
                         'created_at' => date('Y-m-d H:i:s')
                     ],
                     [
-                        'function_name' => 'create blotter',
-                        'function_description' => 'create blotter',
-                        'slugs' => 'add-blotter',
-                        'name_on_class' => 'add_blotter',
-                        'page_title' => 'create a blotter',
+                        'function_name' => 'create blotter action',
+                        'function_description' => 'create blotter action',
+                        'slugs' => 'add-blotter-action',
+                        'name_on_class' => 'add_blotter_action',
+                        'page_title' => 'create a blotter action',
                         'module_id' => '5',
                         'link_icon' => '',
-                        'order' => '181',
+                        'order' => '401',
                         'table_name' => 'blotters',
                         'func_action' => 'add',
                         'func_type' => 3,
@@ -40,14 +40,14 @@ class PermissionBlotterSeeder extends \CodeIgniter\Database\Seeder
                         'created_at' => date('Y-m-d H:i:s')
                     ],
                     [
-                        'function_name' => 'list of blotters',
-                        'function_description' => 'list of blotters',
-                        'slugs' => 'list-blotter',
+                        'function_name' => 'list of blotters action',
+                        'function_description' => 'list of blotters action',
+                        'slugs' => 'list-blotter-action',
                         'name_on_class' => 'index',
-                        'page_title' => 'list of blotters',
+                        'page_title' => 'list of blotters action',
                         'module_id' => '5',
                         'link_icon' => '<i class="fas fa-folder-open"></i>',
-                        'order' => '182',
+                        'order' => '402',
                         'table_name' => 'blotters',
                         'func_action' => 'link',
                         'func_type' => 1,
@@ -56,14 +56,14 @@ class PermissionBlotterSeeder extends \CodeIgniter\Database\Seeder
                         'created_at' => date('Y-m-d H:i:s')
                     ],
                     [
-                        'function_name' => 'edit blotter',
-                        'function_description' => 'edit blotter',
-                        'slugs' => 'edit-blotter',
-                        'name_on_class' => 'edit_blotter',
-                        'page_title' => 'edit blotter',
+                        'function_name' => 'edit blotter action',
+                        'function_description' => 'edit blotter action',
+                        'slugs' => 'edit-blotter-action',
+                        'name_on_class' => 'edit_blotter_action',
+                        'page_title' => 'edit blotter action',
                         'module_id' => '5',
                         'link_icon' => '',
-                        'order' => '183',
+                        'order' => '403',
                         'table_name' => 'blotters',
                         'func_action' => 'edit',
                         'func_type' => 3,
@@ -72,14 +72,14 @@ class PermissionBlotterSeeder extends \CodeIgniter\Database\Seeder
                         'created_at' => date('Y-m-d H:i:s')
                     ],
                     [
-                        'function_name' => 'delete blotter',
-                        'function_description' => 'delete blotter',
-                        'slugs' => 'delete-blotter',
-                        'name_on_class' => 'delete_blotter',
-                        'page_title' => 'delete blotter',
+                        'function_name' => 'delete blotter action',
+                        'function_description' => 'delete blotter action',
+                        'slugs' => 'delete-blotter-action',
+                        'name_on_class' => 'delete_blotter_action',
+                        'page_title' => 'delete blotter action',
                         'module_id' => '5',
                         'link_icon' => '',
-                        'order' => '184',
+                        'order' => '404',
                         'table_name' => 'blotters',
                         'func_action' => 'delete',
                         'func_type' => 3,

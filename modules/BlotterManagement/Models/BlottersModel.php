@@ -22,7 +22,7 @@ class BlottersModel extends \CodeIgniter\Model
 	{
 		$db = \Config\Database::connect();
 
-		$str = "SELECT a.*, b.function_name FROM roles a LEFT JOIN permissions b ON a.function_id = b.id WHERE a.status = '".$args['status']."' LIMIT ". $args['offset'] .','.$args['limit'];
+		$str = "SELECT a.*, b.lastname, b.firstname FROM blotters a LEFT JOIN citizens b ON a.citizen_id = b.id  WHERE a.status = '".$args['status']."' LIMIT ". $args['offset'] .','.$args['limit'];
 		// print_r($str); die();
 		$query = $db->query($str);
 
