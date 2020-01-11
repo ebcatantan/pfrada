@@ -11,39 +11,16 @@
  <div class="col-md-12">
    <form action="<?= base_url() ?>citizens/<?= isset($rec) ? 'edit/'.$rec['id'] : 'add' ?>" method="post" enctype="multipart/form-data">
 
-     <div class="row">
-       <div class="col-md-5 offset-md-1">
-         <div class="form-group">
-           <label for="user_id">Citizen Role</label>
-             <select name="user_id" class="form-control <?= $errors['user_id'] ? 'is-invalid':'is-valid' ?>">
-               <?php if(isset($rec['user_id'])): ?>
-                 <option value="<?= $rec['user_id'] ?>"><?= ucwords(name_on_system($rec['user_id'], $users, 'users')) ?></option>
-               <?php else: ?>
-                 <option value="">Choose</option>
-               <?php endif; ?>
 
-               <?php foreach($users as $user): ?>
-                 <option value="<?= $user['id'] ?>"><?= ucwords($user['username']) ?></option>
-               <?php endforeach; ?>
-             </select>
-
-            <?php if($errors['user_id']): ?>
-               <div class="invalid-feedback">
-                 <?= $errors['user_id'] ?>
-               </div>
-             <?php endif; ?>
-         </div>
-       </div>
-       <!-- <div class="row"> -->
-        <div class="col-md-5">
+       <div class="row">
+        <div class="col-md-5 offset-md-1">
           <div class="form-group">
             <label for="is_brgy_employee">Is Barangay Employee?</label>
-              <select name="is_brgy_employee" class="form-control <?= $errors['is_brgy_employee'] ? 'is-invalid':'is-valid' ?>">
-                <option value="">Choose</option>
-                <option value="1">Yes</option>
-                <option value="0">No</option>
+              <select class="form-control <?= $errors['is_brgy_employee'] ? 'is-invalid':'is-valid' ?>" name="is_brgy_employee" id="is_brgy_employee">
+                <option value="">Please Select Your Answer</option>
+                <option value='1'<?= $rec['is_brgy_employee'] == '1'?'selected':'';?>>Yes</option>
+                <option value='0'<?= $rec['is_brgy_employee'] == '0'?'selected':'';?>>No</option>
               </select>
-
               <?php if($errors['is_brgy_employee']): ?>
                 <div class="invalid-feedback">
                   <?= $errors['is_brgy_employee'] ?>
@@ -70,11 +47,11 @@
       <div class="row">
         <div class="col-md-5 offset-md-1">
           <div class="form-group">
-            <label for="firstname">First name</label>
-            <input name="firstname" type="text" value="<?= isset($rec['firstname']) ? $rec['firstname'] : set_value('firstname') ?>" class="form-control <?= $errors['firstname'] ? 'is-invalid':'is-valid' ?>" id="firstname" placeholder="First Name">
-              <?php if($errors['firstname']): ?>
+            <label for="first_name">First name</label>
+            <input name="first_name" type="text" value="<?= isset($rec['first_name']) ? $rec['first_name'] : set_value('first_name') ?>" class="form-control <?= $errors['first_name'] ? 'is-invalid':'is-valid' ?>" id="first_name" placeholder="First Name">
+              <?php if($errors['first_name']): ?>
                 <div class="invalid-feedback">
-                  <?= $errors['firstname'] ?>
+                  <?= $errors['first_name'] ?>
                 </div>
               <?php endif; ?>
           </div>
@@ -83,11 +60,11 @@
      <div class="row"> -->
        <div class="col-md-5">
          <div class="form-group">
-           <label for="lastname">Last name</label>
-           <input name="lastname" type="text" value="<?= isset($rec['lastname']) ? $rec['lastname'] : set_value('lastname') ?>" class="form-control <?= $errors['lastname'] ? 'is-invalid':'is-valid' ?>" id="lastname" placeholder="Last Name">
-             <?php if($errors['lastname']): ?>
+           <label for="last_name">Last name</label>
+           <input name="last_name" type="text" value="<?= isset($rec['last_name']) ? $rec['last_name'] : set_value('last_name') ?>" class="form-control <?= $errors['last_name'] ? 'is-invalid':'is-valid' ?>" id="last_name" placeholder="Last Name">
+             <?php if($errors['last_name']): ?>
                <div class="invalid-feedback">
-                 <?= $errors['lastname'] ?>
+                 <?= $errors['last_name'] ?>
                </div>
              <?php endif; ?>
          </div>
@@ -139,7 +116,7 @@
        <div class="col-md-5 ">
          <div class="form-group">
            <label for="birth_date">Birth Date</label>
-           <input type="date" name="birth_date" type="text" value="<?= isset($rec['birth_date']) ? $rec['birth_date'] : set_value('birth_date') ?>" class="form-control <?= $errors['birth_date'] ? 'is-invalid':'is-valid' ?>" id="birth_date" placeholder="Birth Date">
+           <input name="birth_date" type="date" value="<?= isset($rec['birth_date']) ? $rec['birth_date'] : set_value('birth_date') ?>" class="form-control <?= $errors['birth_date'] ? 'is-invalid':'is-valid' ?>" id="birth_date">
              <?php if($errors['birth_date']): ?>
                <div class="invalid-feedback">
                  <?= $errors['birth_date'] ?>
@@ -153,11 +130,11 @@
        <div class="col-md-5 offset-md-1">
          <div class="form-group">
            <label for="gender">Gender</label>
-           <select name="gender" class="form-control <?= $errors['gender'] ? 'is-invalid':'is-valid' ?>">
-             <option value="">Gender</option>
-             <option value="M">Male</option>
-             <option value="F">Female</option>
-           </select>
+           <select class="form-control <?= $errors['gender'] ? 'is-invalid':'is-valid' ?>" name="gender" id="gender">
+              <option value="">Please Select Your Answer</option>
+              <option value='m'<?= $rec['gender'] == 'm'?'selected':'';?>>Male</option>
+              <option value='f'<?= $rec['gender'] == 'f'?'selected':'';?>>Female</option>
+            </select>
              <?php if($errors['gender']): ?>
                <div class="invalid-feedback">
                  <?= $errors['gender'] ?>

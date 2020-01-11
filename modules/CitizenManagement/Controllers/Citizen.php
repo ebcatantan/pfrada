@@ -2,8 +2,8 @@
 namespace Modules\CitizenManagement\Controllers;
 
 use Modules\CitizenManagement\Models\CitizenModel;
-use Modules\UserManagement\Models\PermissionsModel;
 use Modules\UserManagement\Models\UsersModel;
+use Modules\UserManagement\Models\PermissionsModel;
 use App\Controllers\BaseController;
 
 class Citizen extends BaseController
@@ -13,47 +13,83 @@ class Citizen extends BaseController
 	public function __construct()
 	{
 		parent:: __construct();
-
 		$permissions_model = new PermissionsModel();
 		$this->permissions = $permissions_model->getPermissionsWithCondition(['status' => 'a']);
 	}
 
     public function index($offset = 0) //list of citizen
     {
-    	$this->hasPermissionRedirect('list-of-citizen');
+			$this->hasPermissionRedirect('list-of-citizen');
 
     	$model = new CitizenModel();
 
-    	//kailangan ito para sa pagination
-       	$data['all_items'] = $model->getCitizenWithCondition(['status'=> 'a']);
+			  $data['all_items'] = $model->get([],[],['status'=> 'a'],[]);
        	$data['offset'] = $offset;
 
-        $data['citizens'] = $model->getCitizenWithFunction(['status'=> 'a', 'limit' => PERPAGE, 'offset' =>  $offset]);
+				// print_r($str); die();
+				$fields = [
+					'firstname' => 'users',
+					'lastname' => 'users'
+				];
 
-        $data['function_title'] = "List of Citizens";
+				$tables = [
+					'users' => [
+						'citizens.user_id' => 'users.id'
+					]
+				];
+
+				$conditions = [
+						'citizens.status' => 'a'
+				];
+        $data['citizens'] = $model->get($fields, $tables, $conditions, ['limit' => PERPAGE, 'offset' => $offset]);
+				//n ito para sa pagination
+       	// $data['all_items'] = $model->getCitizenWithCondition(['status'=> 'a']);
+       	// $data['offset'] = $offset;
+				//
+        // $data['citizens'] = $model->getCitizenWithFunction(['status'=> 'a', 'limit' => PERPAGE, 'offset' =>  $offset]);
+
+				$data['function_title'] = "List of Citizens";
         $data['viewName'] = 'Modules\CitizenManagement\Views\citizens\index';
         echo view('App\Views\theme\index', $data);
     }
-
+	//
     public function show_citizen($id)
 	{
 		$this->hasPermissionRedirect('show-citizen');
 		$data['permissions'] = $this->permissions;
-		$user_model = new UsersModel();
-		$data['users'] = $user_model->findAll();
+		// $user_model = new UsersModel();
+		// $data['users'] = $user_model->findAll();
 
 		$model = new CitizenModel();
+		$data['citizen'] = $model->get([],[],['id'=>$id],[]);
+
+		$fields = [
+					'firstname' => 'users',
+					'lastname' => 'users',
+				];
+
+				$tables = [
+					'users' => [
+						'citizens.user_id' => 'users.id'
+					],
+				];
+
+				$conditions = [
+						'citizens.id' => $id
+				];
+
+				$data['citizens'] = $model->get($fields, $tables, $conditions);
 
 		// $data['citizen'] = $model->getCitizenWithFunction(['status'=> 'a']);
+		// $data['citizen'] = $model->getCitizenWithCondition(['id' => $id]);
 
-		$data['citizen'] = $model->getCitizenWithCondition(['id' => $id]);
 		$data['function_title'] = "Citizen Details";
     $data['viewName'] = 'Modules\CitizenManagement\Views\citizens\citizenDetails';
     echo view('App\Views\theme\index', $data);
 		// $data['citizens'] = $model->get($id);
 		// $data['citizen'] = $model->getCitizenWithCondition(['id' => $id]);
 	}
-
+	//
     public function add_citizen()
     {
     	$this->hasPermissionRedirect('add-citizen');
@@ -70,14 +106,6 @@ class Citizen extends BaseController
     	{
 
 				$validated = $this->validate([
-						'user_id' => [
-		            'label'  => 'Roles',
-		            'rules'  => 'required',
-		            'errors' => [
-		                'required' => 'This field is required.'
-		            ]
-		        ],
-
 						'citizen_image' => [
                 'rules' => 'uploaded[citizen_image]',
 								'mime_in[citizen_image,image/jpg,image/jpeg,image/png]',
@@ -85,7 +113,7 @@ class Citizen extends BaseController
 								'label' => 'Citizen Image'
             ],
 
-		        'lastname' => [
+		        'last_name' => [
 		            'label'  => 'Last Name',
 		            'rules'  => 'required|alpha_space',
 		            'errors' => [
@@ -94,7 +122,7 @@ class Citizen extends BaseController
 		            ]
 		        ],
 
-		        'firstname' => [
+		        'first_name' => [
 		            'label'  => 'First Name',
 		            'rules'  => 'required|alpha_space',
 		            'errors' => [
@@ -212,8 +240,8 @@ class Citizen extends BaseController
 					$file_array = [
 												'user_id' => $_SESSION['uid'],
 												'citizen_image' => $_FILES['citizen_image']['name'],
-												'lastname' => $_POST['lastname'],
-												'firstname' => $_POST['firstname'],
+												'last_name' => $_POST['last_name'],
+												'first_name' => $_POST['first_name'],
 												'middlename' => $_POST['middlename'],
 												'extension_name' => $_POST['extension_name'],
 												'maiden_name' => $_POST['maiden_name'],
@@ -230,6 +258,18 @@ class Citizen extends BaseController
 
 		        if($model->addCitizen($file_array))
 		        {
+							$user_id = $model->insertID();
+							$UserModel = new UsersModel();
+							$user_data = [
+								'lastname' => $_POST['last_name'],
+								'firstname' => $_POST['first_name'],
+								'username' => $_POST['last_name'] . $_POST['first_name'],
+								'email' => $_POST['email'],
+								// 'password' => $UserModel->generateRandomString(8),
+								'password' => 'password',
+								'role_id' => 2
+							];
+							$UserModel->addUsers($user_data);
 							$file = $this->request->getFile('citizen_image');
 							$file->move(ROOTPATH."uploads/");
 
@@ -506,13 +546,13 @@ class Citizen extends BaseController
 	        echo view('App\Views\theme\index', $data);
     	}
     }
-
-    public function delete_citizen($id)
-    {
-    	$this->hasPermissionRedirect('delete-citizen');
-
-    	$model = new CitizenModel();
-    	$model->deleteCitizen($id);
-    }
+	//
+  //   public function delete_citizen($id)
+  //   {
+  //   	$this->hasPermissionRedirect('delete-citizen');
+	//
+  //   	$model = new CitizenModel();
+  //   	$model->deleteCitizen($id);
+  //   }
 
 }

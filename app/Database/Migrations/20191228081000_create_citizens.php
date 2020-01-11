@@ -20,12 +20,12 @@ class CreateCitizens extends \CodeIgniter\Database\Migration {
                           'type'           => 'TEXT'
                         ],
 
-                        'lastname'          => [
+                        'last_name'          => [
                                 'type'           => 'VARCHAR',
                                 'constraint'     => '100'
                         ],
 
-                        'firstname'          => [
+                        'first_name'          => [
                                 'type'           => 'VARCHAR',
                                 'constraint'     => '100'
                         ],

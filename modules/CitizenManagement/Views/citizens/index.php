@@ -32,7 +32,7 @@
       <?php foreach($citizens as $citizen): ?>
       <tr id="<?php echo $citizen['id']; ?>">
         <th scope="row"><?= $cnt++ ?></th>
-        <td><?= ucwords($citizen['lastname'] . ', ' . $citizen['firstname'] . ' ' . $citizen['middlename']) ?></td>
+        <td><?= ucwords($citizen['last_name'] . ', ' . $citizen['first_name'] . ' ' . $citizen['middlename']) ?></td>
         <td><?= ucwords($citizen['gender']) ?></td>
         <td><?= ucwords($citizen['contact_no']) ?></td>
         <td><?= ucwords($citizen['address']) ?></td>

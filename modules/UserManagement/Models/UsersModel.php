@@ -1,4 +1,4 @@
-<?php 
+<?php
 namespace Modules\UserManagement\Models;
 
 use CodeIgniter\Model;
@@ -21,11 +21,11 @@ class UsersModel extends \CodeIgniter\Model
 	public function getUsersWithRole($args = [])
 	{
 		$db = \Config\Database::connect();
-		
+
 		$str = "SELECT a.*, b.role_name FROM users a LEFT JOIN roles b ON a.role_id = b.id WHERE a.status = '".$args['status']."' LIMIT ". $args['offset'] .','.$args['limit'];
 		//print_r($str); die();
 		$query = $db->query($str);
-		
+
 		// print_r($query->getResultArray()); die();
 	    return $query->getResultArray();
 	}
@@ -35,6 +35,18 @@ class UsersModel extends \CodeIgniter\Model
 	{
 	    return $this->findAll();
 	}
+
+  public function generateRandomString($length = 8)
+  {
+    	$characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+      $charactersLength = strlen($characters);
+      $randomString = '';
+      for($i = 0; $i < $length; $i++)
+      {
+        $randomString .= $characters[rand(0, $charactersLength - 1)];
+      }
+      return $randomString;
+  }
 
     public function addUsers($val_array = [])
 	{
@@ -48,7 +60,7 @@ class UsersModel extends \CodeIgniter\Model
     public function editUsers($val_array = [], $id)
 	{
 		$user = $this->find($id);
-		
+
 		$val_array['updated_at'] = (new \DateTime())->format('Y-m-d H:i:s');
 		$val_array['status'] = 'a';
 		//print_r($val_array); die();

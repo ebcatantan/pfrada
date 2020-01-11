@@ -2,15 +2,6 @@
 <div class="row">
   <div class="col-md-8 offset-md-2">
 
-    <?php if($citizen[0]['user_id'] != 0): ?>
-    <div class="row">
-      <div class="col-md-12">
-        <span class="field">Citizen as</span>
-        <span class="field-value"><?= ucwords(name_on_system($citizen[0]['user_id'], $users, 'users')) ?></span>
-      </div>
-    </div>
-    <?php endif; ?>
-
     <div class="row">
       <div class="col-md-12">
         <span class="field">Citizen Image</span>
@@ -22,29 +13,8 @@
 
     <div class="row">
       <div class="col-md-12">
-        <span class="field">Last Name</span>
-        <span class="field-value"><?= ucfirst($citizen[0]['lastname']) ?></span>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col-md-12">
-        <span class="field">First Name</span>
-        <span class="field-value"><?= ucfirst($citizen[0]['firstname']) ?></span>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col-md-12">
-        <span class="field">Middle Name</span>
-        <span class="field-value"><?= ucfirst($citizen[0]['middlename']) ?></span>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col-md-12">
-        <span class="field">Extension Name</span>
-        <span class="field-value"><?= ucfirst($citizen[0]['extension_name']) ?></span>
+        <span class="field">Name</span>
+        <span class="field-value"><?= ucfirst($citizen[0]['last_name'].", ".$citizen[0]['first_name']." ".$citizen[0]['middlename']." ".$citizen[0]['extension_name']) ?></span>
       </div>
     </div>
 
@@ -71,22 +41,23 @@
 
     <div class="row">
       <div class="col-md-12">
-        <span class="field">Birth Date</span>
-        <span class="field-value"><?= ucfirst($citizen[0]['birth_date']) ?></span>
+        <span class="field">Age</span>
+        <span class="field-value"><?= $citizen[0]['birth_date'] ?> (<?= floor((time() - strtotime($citizen[0]['birth_date'])) / 31556926) ?> yrs old) </span>
       </div>
     </div>
 
     <div class="row">
       <div class="col-md-12">
         <span class="field">Gender</span>
-        <span class="field-value"><?= ucfirst($citizen[0]['gender']) ?></span>
+        <span class="field-value"><?=$citizen[0]['gender'] == 'M' ? 'Male' : 'Female' ?></span>
       </div>
     </div>
 
     <div class="row">
       <div class="col-md-12">
         <span class="field">Civil Status</span>
-        <span class="field-value"><?= ucfirst($citizen[0]['civil_status']) ?></span>
+        <span class="field-value"><?=$citizen[0]['civil_status'] == 'Single' ? 'Single' : 'Married' ?></span>
+        <!-- <span class="field-value"><?= ucfirst($citizen[0]['civil_status']) ?></span> -->
       </div>
     </div>
 
