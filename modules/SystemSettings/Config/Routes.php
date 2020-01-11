@@ -22,12 +22,12 @@ $routes->group('business-types', ['namespace' => 'Modules\SystemSettings\Control
 
 $routes->group('clearance-fees', ['namespace' => 'Modules\SystemSettings\Controllers'], function($routes)
 {
-    $routes->get('/', 'Clearance::index');
-    $routes->get('(:num)', 'Clearance::index/$1');
-    $routes->get('show/(:num)', 'Clearance::show_clearance/$1');
-    $routes->match(['get', 'post'], 'add', 'Clearance::add_clearance');
-    $routes->match(['get', 'post'], 'edit/(:num)', 'Clearance::edit_clearance/$1');
-    $routes->delete('delete/(:num)', 'Clearance::delete_clearance/$1');
+    $routes->get('/', 'ClearanceFees::index');
+    $routes->get('(:num)', 'ClearanceFees::index/$1');
+    $routes->get('show/(:num)', 'ClearanceFees::show_clearance/$1');
+    $routes->match(['get', 'post'], 'add', 'ClearanceFees::add_clearance');
+    $routes->match(['get', 'post'], 'edit/(:num)', 'ClearanceFees::edit_clearance/$1');
+    $routes->delete('delete/(:num)', 'ClearanceFees::delete_clearance/$1');
 });
 
 $routes->group('clearance-purposes', ['namespace' => 'Modules\SystemSettings\Controllers'], function($routes)

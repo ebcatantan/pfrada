@@ -3,7 +3,7 @@ namespace Modules\SystemSettings\Models;
 
 use CodeIgniter\Model;
 
-class ClearanceModel extends \CodeIgniter\Model
+class ClearanceFeesModel extends \CodeIgniter\Model
 {
     protected $table = 'clearance_fees';
 

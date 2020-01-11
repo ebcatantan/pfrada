@@ -1,13 +1,13 @@
 <?php
 namespace Modules\SystemSettings\Controllers;
 
-use Modules\SystemSettings\Models\ClearanceModel;
+use Modules\SystemSettings\Models\ClearanceFeesModel;
 use Modules\UserManagement\Models\PermissionsModel;
 use Modules\BaranggaySettings\Models\DocumentsModel;
 use Modules\SystemSettings\Models\ClearancePurposesModel;
 use App\Controllers\BaseController;
 
-class Clearance extends BaseController
+class ClearanceFees extends BaseController
 {
 	//private $permissions;
 
@@ -24,14 +24,14 @@ class Clearance extends BaseController
     	$this->hasPermissionRedirect('list-clearance');
 
 			// die("here");
-    	$model = new ClearanceModel();
+    	$model = new ClearanceFeesModel();
     	//kailangan ito para sa pagination
        	$data['all_items'] = $model->getClearanceWithCondition(['status'=> 'a']);
        	$data['offset'] = $offset;
 
         $data['clearance_fees'] = $model->getClearanceWithFunction(['status'=> 'a', 'limit' => PERPAGE, 'offset' =>  $offset]);
         $data['function_title'] = "List of Clearance Fees";
-        $data['viewName'] = 'Modules\SystemSettings\Views\clearance\index';
+        $data['viewName'] = 'Modules\SystemSettings\Views\clearancefees\index';
         echo view('App\Views\theme\index', $data);
     }
 
@@ -40,12 +40,12 @@ class Clearance extends BaseController
 		$this->hasPermissionRedirect('show-clearance');
 		$data['permissions'] = $this->permissions;
 
-		$model = new ClearanceModel();
+		$model = new ClearanceFeesModel();
 
 		$data['clearance_fees'] = $model->getClearanceWithCondition(['id' => $id]);
 
 		$data['function_title'] = "Clearance Fee Details";
-        $data['viewName'] = 'Modules\SystemSettings\Views\clearance\clearanceDetails';
+        $data['viewName'] = 'Modules\SystemSettings\Views\clearancefees\clearanceDetails';
         echo view('App\Views\theme\index', $data);
 	}
 
@@ -63,7 +63,7 @@ class Clearance extends BaseController
 			$data['clearance_purposes'] = $model_purposes->where('status', 'a')->findAll();
 
     	helper(['form', 'url']);
-    	$model = new ClearanceModel();
+    	$model = new ClearanceFeesModel();
 
     	if(!empty($_POST))
     	{
@@ -73,7 +73,7 @@ class Clearance extends BaseController
 
 		    		$data['errors'] = \Config\Services::validation()->getErrors();
 		        $data['function_title'] = "Adding Clearance Fee";
-		        $data['viewName'] = 'Modules\SystemSettings\Views\clearance\frmClearance';
+		        $data['viewName'] = 'Modules\SystemSettings\Views\clearancefees\frmClearance';
 		        echo view('App\Views\theme\index', $data);
 		    }
 		    else
@@ -96,7 +96,7 @@ class Clearance extends BaseController
     	{
 
 	    	$data['function_title'] = "Adding Clearance Fee";
-	        $data['viewName'] = 'Modules\SystemSettings\Views\clearance\frmClearance';
+	        $data['viewName'] = 'Modules\SystemSettings\Views\clearancefees\frmClearance';
 	        echo view('App\Views\theme\index', $data);
     	}
     }
@@ -105,7 +105,7 @@ class Clearance extends BaseController
     {
     	$this->hasPermissionRedirect('edit-clearance');
     	helper(['form', 'url']);
-    	$model = new ClearanceModel();
+    	$model = new ClearanceFeesModel();
     	$data['rec'] = $model->find($id);
 
     	$permissions_model = new PermissionsModel();
@@ -123,7 +123,7 @@ class Clearance extends BaseController
 		    {
 		    	$data['errors'] = \Config\Services::validation()->getErrors();
 		        $data['function_title'] = "Edit Clearance Fee";
-		        $data['viewName'] = 'Modules\SystemSettings\Views\clearance\frmClearance';
+		        $data['viewName'] = 'Modules\SystemSettings\Views\clearancefees\frmClearance';
 		        echo view('App\Views\theme\index', $data);
 		    }
 		    else
@@ -145,7 +145,7 @@ class Clearance extends BaseController
     	else
     	{
 	    	$data['function_title'] = "Editing Clearance Fee";
-	        $data['viewName'] = 'Modules\SystemSettings\Views\clearance\frmClearance';
+	        $data['viewName'] = 'Modules\SystemSettings\Views\clearancefees\frmClearance';
 	        echo view('App\Views\theme\index', $data);
     	}
     }
@@ -154,7 +154,7 @@ class Clearance extends BaseController
     {
     	$this->hasPermissionRedirect('delete-clearance');
 
-    	$model = new ClearanceModel();
+    	$model = new ClearanceFeesModel();
     	$model->deleteClearance($id);
     }
 

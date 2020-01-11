@@ -1,4 +1,4 @@
-<?php
+clearance<?php
 namespace Modules\SystemSettings\Controllers;
 
 use Modules\SystemSettings\Models\ClearancePurposesModel;
@@ -30,7 +30,7 @@ class ClearancePurposes extends BaseController
         $data['clearance_purposes'] = $model->getClearancePurposeWithFunction(['status'=> 'a', 'limit' => PERPAGE, 'offset' =>  $offset]);
 
         $data['function_title'] = "List of Clearance Purpose";
-        $data['viewName'] = 'Modules\SystemSettings\Views\purposes\index';
+        $data['viewName'] = 'Modules\SystemSettings\Views\clearancepurposes\index';
         echo view('App\Views\theme\index', $data);
     }
 
@@ -43,7 +43,7 @@ class ClearancePurposes extends BaseController
 
 			$data['clearance_purposes'] = $model->getClearancePurposesWithCondition(['id' => $id]);
 			$data['function_title'] = "clearancepurpose Details";
-					$data['viewName'] = 'Modules\SystemSettings\Views\purposes\ClearancePurposeDetails';
+					$data['viewName'] = 'Modules\SystemSettings\Views\clearancepurposes\ClearancePurposeDetails';
 					echo view('App\Views\theme\index', $data);
 			}
 
@@ -66,7 +66,7 @@ class ClearancePurposes extends BaseController
 
 		    	$data['errors'] = \Config\Services::validation()->getErrors();
 		        $data['function_title'] = "Adding Clearance Purpose";
-		        $data['viewName'] = 'Modules\SystemSettings\Views\purposes\frmClearancePurpose';
+		        $data['viewName'] = 'Modules\SystemSettings\Views\clearancepurposes\frmClearancePurpose';
 		        echo view('App\Views\theme\index', $data);
 		    }
 		    else
@@ -89,7 +89,7 @@ class ClearancePurposes extends BaseController
     	{
 
 	    	$data['function_title'] = "Adding Clearance Purpose";
-	        $data['viewName'] = 'Modules\SystemSettings\Views\purposes\frmClearancePurpose';
+	        $data['viewName'] = 'Modules\SystemSettings\Views\clearancepurposes\frmClearancePurpose';
 	        echo view('App\Views\theme\index', $data);
     	}
     }
@@ -111,7 +111,7 @@ class ClearancePurposes extends BaseController
 		     {
 		     		$data['errors'] = \Config\Services::validation()->getErrors();
 		         $data['function_title'] = "Edit Clearance Purpose";
-		         $data['viewName'] = 'Modules\SystemSettings\Views\purposes\frmClearancePurpose';
+		         $data['viewName'] = 'Modules\SystemSettings\Views\clearancepurposes\frmClearancePurpose';
 		         echo view('App\Views\theme\index', $data);
 		     }
 		     else
@@ -133,7 +133,7 @@ class ClearancePurposes extends BaseController
      	else
      	{
 	     	$data['function_title'] = "Editing Clearance Purpose";
-	         $data['viewName'] = 'Modules\SystemSettings\Views\purposes\frmClearancePurpose';
+	         $data['viewName'] = 'Modules\SystemSettings\Views\clearancepurposes\frmClearancePurpose';
 	         echo view('App\Views\theme\index', $data);
      	}
      }
