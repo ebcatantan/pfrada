@@ -93,7 +93,7 @@ class Validation
             ]
         ]
 			];
-			
+
 		public $clearancepurposes = [
         'purpose' => [
             'label'  => 'purpose',
@@ -334,6 +334,99 @@ class Validation
 						]
 				]
 		];
+
+		public $officials = [
+			'lastname' => [
+					'label'  => 'Last Name',
+					'rules'  => 'required|alpha_space',
+					'errors' => [
+							'required' => 'Last name field is required.'
+							// 'alpha' => 'Last name must not have numbers.'
+					]
+			],
+
+			'firstname' => [
+					'label'  => 'First Name',
+					'rules'  => 'required|alpha_space',
+					'errors' => [
+							'required' => 'First name field is required.'
+					]
+			],
+
+			'middlename' => [
+					'label'  => 'Middle Name',
+					'rules'  => 'alpha_space',
+					'errors' => [
+							''
+					]
+			],
+
+			'ext_name' => [
+					'label'  => 'Extension Name',
+					'rules'  => 'alpha_space',
+					'errors' => [
+							''
+					]
+			],
+
+			'address' => [
+					'label'  => 'Address',
+					'rules'  => 'required',
+					'errors' => [
+							'required' => 'Address field is required.'
+					]
+			],
+
+			'barangay' => [
+					'label'  => 'Barangay',
+					'rules'  => 'required',
+					'errors' => [
+							'required' => 'Barangay field is required.'
+					]
+			],
+
+			'birth_date' => [
+					'label'  => 'Birth Date',
+					'rules'  => 'required',
+					'errors' => [
+							'required' => 'Birth date field is required.'
+					]
+			],
+
+			'gender' => [
+					'label'  => 'Gender',
+					'rules'  => 'required',
+					'errors' => [
+							'required' => 'Gender field is required.',
+					]
+			],
+
+			'civil_status' => [
+					'label'  => 'Civil Status',
+					'rules'  => 'required',
+					'errors' => [
+							'required' => 'Civil Status field is required.',
+						]
+			],
+
+			'email' => [
+					'label'  => 'Email',
+					'rules'  => 'required|valid_email',
+					'errors' => [
+							'required' => 'Email field is required.',
+							'valid_email' => 'You must provide a valid email address.'
+					]
+			],
+
+			'contact_no' => [
+					'label'  => 'Contact Number',
+					'rules'  => 'required',
+					'errors' => [
+							'required' => 'Contact number field is required.'
+					]
+			]
+		];
+
 	// Rules
 	//--------------------------------------------------------------------
 }

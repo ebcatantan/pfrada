@@ -55,4 +55,5 @@ class BusinessPermitFeesModel extends \CodeIgniter\Model
 		$val_array['status'] = 'd';
 		return $this->update($id, $val_array);
 	}
+
 }

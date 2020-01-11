@@ -165,4 +165,12 @@ class BusinessPermitFees extends BaseController
     	$model->deleteBusinessPermitFees($id);
     }
 
+		public function delete_businesstype($id)
+    {
+    	$this->hasPermissionRedirect('delete-businesstype');
+
+    	$model = new BusinessTypesModel();
+    	$model->deleteBusinessTypes($id);
+    }
+
 }
