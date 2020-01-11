@@ -99,13 +99,12 @@
       <!-- <div class="row"> -->
         <div class="col-md-5">
           <div class="form-group">
-            <label for="is_approved">Approved</label>
+            <label for="is_approved">Is Approved?</label>
             <select name="is_approved" class="form-control <?= $errors['is_approved'] ? 'is-invalid':'is-valid' ?>">
               <option value="">Approved</option>
-              <option value="1">Yes</option>
-              <option value="0">No</option>
+              <option value="Y">Yes</option>
+              <option value="N">No</option>
             </select>
-            <!-- <textarea name="is_approved" type="text" class="form-control <?= $errors['is_approved'] ? 'is-invalid':'is-valid'  ?>" id="is_approved" placeholder="Approved" rows="5"><?= isset($rec['is_approved']) ? $rec['is_approved'] : set_value('is_approved') ?></textarea> -->
             <?php if($errors['is_approved']): ?>
                 <div class="invalid-feedback">
                   <?= $errors['is_approved'] ?>
@@ -118,13 +117,12 @@
       <div class="row">
         <div class="col-md-5 offset-md-1">
           <div class="form-group">
-            <label for="is_paid">Paid</label>
+            <label for="is_paid">Is Paid?</label>
             <select name="is_paid" class="form-control <?= $errors['is_paid'] ? 'is-invalid':'is-valid' ?>">
               <option value="">Paid</option>
-              <option value="1">Yes</option>
-              <option value="0">No</option>
+              <option value="Y">Yes</option>
+              <option value="N">No</option>
             </select>
-            <!-- <textarea name="is_approved" type="text" class="form-control <?= $errors['is_approved'] ? 'is-invalid':'is-valid'  ?>" id="is_approved" placeholder="Approved" rows="5"><?= isset($rec['is_approved']) ? $rec['is_approved'] : set_value('is_approved') ?></textarea> -->
             <?php if($errors['is_paid']): ?>
                 <div class="invalid-feedback">
                   <?= $errors['is_paid'] ?>
@@ -144,7 +142,6 @@
               <option value="N">David Limba</option>
               <option value="N">Pauline Llagas</option>
             </select>
-            <!-- <textarea name="is_approved" type="text" class="form-control <?= $errors['is_approved'] ? 'is-invalid':'is-valid'  ?>" id="is_approved" placeholder="Approved" rows="5"><?= isset($rec['is_approved']) ? $rec['is_approved'] : set_value('is_approved') ?></textarea> -->
             <?php if($errors['processed_by']): ?>
                 <div class="invalid-feedback">
                   <?= $errors['processed_by'] ?>
@@ -154,19 +151,12 @@
         </div>
       </div>
 
-      <div class="row">
+        <div class="row">
         <div class="col-md-6 offset-md-3">
           <div class="form-group">
             <label for="date_paid">Date Paid</label>
-            <!-- <select name="date_paid" class="form-control <?= $errors['date_paid'] ? 'is-invalid':'is-valid' ?>">
-              <option value="">Processed By</option>
-              <option value="Y">Elvin Catantan</option>
-              <option value="N">David Limba</option>
-              <option value="N">Pauline Llagas</option>
-            </select> -->
-            <input name="date_paid" type="text" class="form-control <?= $errors['date_paid'] ? 'is-invalid':'is-valid'  ?>" id="is_approved" value="<?= isset($rec['date_paid']) ? $rec['date_paid'] : set_value('date_paid') ?>
-            " placeholder=Date rows="5">
-            <?php if($errors['date_paid']): ?>
+            <input type="date" name="date_paid" type="text" value="<?= isset($rec['date_paid']) ? $rec['birth_date'] : set_value('date_paid') ?>" class="form-control <?= $errors['date_paid'] ? 'is-invalid':'is-valid' ?>" id="date_paid" placeholder="Date">
+              <?php if($errors['date_paid']): ?>
                 <div class="invalid-feedback">
                   <?= $errors['date_paid'] ?>
                 </div>
@@ -176,7 +166,7 @@
       </div>
 
       <div class="row">
-        <div class="col-md-8 offset-md-3">
+        <div class="col-md-5 offset-md-6">
           <button type="submit" class="btn btn-primary float-right">Submit</button>
         </div>
       </div>
