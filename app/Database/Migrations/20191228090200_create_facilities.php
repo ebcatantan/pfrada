@@ -1,6 +1,6 @@
 <?php namespace App\Database\Migrations;
 
-class CreateFacilities extends \CodeIgniter\Database\Migration {
+class CreateFacilitie extends \CodeIgniter\Database\Migration {
 
         public function up()
         {
