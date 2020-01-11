@@ -79,4 +79,4 @@ defined('EXIT__AUTO_MAX')      || define('EXIT__AUTO_MAX', 125); // highest auto
 
 defined('SYSTEM_NAME') || define('SYSTEM_NAME', 'Pfrada');
 defined('SYSTEM_TITLE') || define('SYSTEM_TITLE', 'pfrada');
-defined('PERPAGE') || define('PERPAGE', 5);
+defined('PERPAGE') || define('PERPAGE', 2);

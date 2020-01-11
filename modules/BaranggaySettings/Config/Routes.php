@@ -18,3 +18,13 @@ $routes->group('documents', ['namespace' => 'Modules\BaranggaySettings\Controlle
     $routes->match(['get', 'post'], 'edit/(:num)', 'Documents::edit_document/$1');
     $routes->delete('delete/(:num)', 'Documents::delete_document/$1');
 });
+
+$routes->group('brgy-officials', ['namespace' => 'Modules\BaranggaySettings\Controllers'], function($routes)
+{
+    $routes->get('/', 'BarangayOfficial::index');
+    $routes->get('(:num)', 'BarangayOfficial::index/$1');
+    $routes->get('show/(:num)', 'BarangayOfficial::show_barangayofficial/$1');
+    $routes->match(['get', 'post'], 'add', 'BarangayOfficial::add_barangayofficial');
+    $routes->match(['get', 'post'], 'edit/(:num)', 'BarangayOfficial::edit_barangayofficial/$1');
+    $routes->delete('delete/(:num)', 'BarangayOfficial::delete_barangayofficial/$1');
+});
