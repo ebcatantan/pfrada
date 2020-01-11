@@ -1,7 +1,7 @@
 <?php namespace App\Database\Migrations;
 
 class CreateRole extends \CodeIgniter\Database\Migration {
-
+ 
         public function up()
         {
                 $this->forge->addField([
@@ -29,7 +29,7 @@ class CreateRole extends \CodeIgniter\Database\Migration {
                                 'constraint'     => '1',
                                 'default'        => 'a'
                         ],
-                        
+
                         'created_at' => [
                                 'type'           => 'DATETIME',
                                 'comment'        => 'Date of creation',
