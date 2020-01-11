@@ -8,7 +8,7 @@ $routes->group('business-permit-fees', ['namespace' => 'Modules\SystemSettings\C
     $routes->match(['get', 'post'], 'add', 'BusinessPermitFees::add_businesspermitfees');
     $routes->match(['get', 'post'], 'edit/(:num)', 'BusinessPermitFees::edit_business/$1');
     $routes->delete('delete/(:num)', 'BusinessPermitFees::delete_businesspermitfees/$1');
-    
+
 });
 
 $routes->group('business-types', ['namespace' => 'Modules\SystemSettings\Controllers'], function($routes)
@@ -49,4 +49,14 @@ $routes->group('reservation-fees', ['namespace' => 'Modules\SystemSettings\Contr
     $routes->match(['get', 'post'], 'add', 'ReservationFees::add_reservation_fees');
     $routes->match(['get', 'post'], 'edit/(:num)', 'ReservationFees::edit_reservation_fees/$1');
     $routes->delete('delete/(:num)', 'ReservationFees::delete_reservation_fees/$1');
+});
+
+$routes->group('reservations', ['namespace' => 'Modules\SystemSettings\Controllers'], function($routes)
+{
+    $routes->get('/', 'Reservations::index');
+    $routes->get('(:num)', 'Reservations::index/$1');
+    $routes->get('show/(:num)', 'Reservations::show_reservation/$1');
+    $routes->match(['get', 'post'], 'add', 'Reservations::add_reservation');
+    $routes->match(['get', 'post'], 'edit/(:num)', 'Reservations::edit_reservation/$1');
+    $routes->delete('delete/(:num)', 'Reservations::delete_reservation/$1');
 });
