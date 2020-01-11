@@ -30,7 +30,7 @@ class Clearance extends BaseController
        	$data['offset'] = $offset;
 
         $data['clearance_fees'] = $model->getClearanceWithFunction(['status'=> 'a', 'limit' => PERPAGE, 'offset' =>  $offset]);
-        $data['function_title'] = "Clearance List";
+        $data['function_title'] = "List of Clearance Fees";
         $data['viewName'] = 'Modules\SystemSettings\Views\clearance\index';
         echo view('App\Views\theme\index', $data);
     }
@@ -130,7 +130,8 @@ class Clearance extends BaseController
 		    {
 		    	if($model->editClearance($_POST, $id))
 		        {
-					$this->session->markAsFlashdata('success');
+							$_SESSION['success'] = 'You have updated a record';
+							$this->session->markAsFlashdata('success');
 		        	return redirect()->to(base_url('clearance-fees'));
 		        }
 		        else

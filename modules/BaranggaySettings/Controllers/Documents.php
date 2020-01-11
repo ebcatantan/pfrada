@@ -29,7 +29,7 @@ class Documents extends BaseController
 
         $data['documents'] = $model->getDocumentWithFunction(['status'=> 'a', 'limit' => PERPAGE, 'offset' =>  $offset]);
 
-        $data['function_title'] = "Documents List";
+        $data['function_title'] = "List of Documents";
         $data['viewName'] = 'Modules\BaranggaySettings\Views\documents\index';
         echo view('App\Views\theme\index', $data);
     }
@@ -118,7 +118,8 @@ class Documents extends BaseController
 		    {
 		    	if($model->editDocuments($_POST, $id))
 		        {
-					$this->session->markAsFlashdata('success');
+							$_SESSION['success'] = 'You have updated a record';
+							$this->session->markAsFlashdata('success');
 		        	return redirect()->to(base_url('documents'));
 		        }
 		        else

@@ -57,8 +57,13 @@ class Autoload extends \CodeIgniter\Config\AutoloadConfig
 			'Modules\Node'  => ROOTPATH.'modules/Node',
 			'Modules\UserManagement'  => ROOTPATH.'modules/UserManagement',
 			'Modules\BaranggaySettings'  => ROOTPATH.'modules/BaranggaySettings',
+<<<<<<< HEAD
 			'Modules\SystemSettings'  => ROOTPATH.'modules/SystemSettings',
 			'Modules\BlotterManagement'  => ROOTPATH.'modules/BlotterManagement'
+=======
+			'Modules\CitizenManagement'  => ROOTPATH.'modules/CitizenManagement',
+			'Modules\SystemSettings'  => ROOTPATH.'modules/SystemSettings'
+>>>>>>> a199e695c2e820cbe797370bcdd27ac58621da5e
 		];
 
 		//echo $psr4['Modules'];  die();

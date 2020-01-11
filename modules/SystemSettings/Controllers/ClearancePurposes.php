@@ -29,7 +29,7 @@ class ClearancePurposes extends BaseController
 
         $data['clearance_purposes'] = $model->getClearancePurposeWithFunction(['status'=> 'a', 'limit' => PERPAGE, 'offset' =>  $offset]);
 
-        $data['function_title'] = "Clearance Purpose List";
+        $data['function_title'] = "List of Clearance Purpose";
         $data['viewName'] = 'Modules\SystemSettings\Views\purposes\index';
         echo view('App\Views\theme\index', $data);
     }
@@ -109,7 +109,7 @@ class ClearancePurposes extends BaseController
      	{
 	     	if (!$this->validate('clearancepurposes'))
 		     {
-		     	$data['errors'] = \Config\Services::validation()->getErrors();
+		     		$data['errors'] = \Config\Services::validation()->getErrors();
 		         $data['function_title'] = "Edit Clearance Purpose";
 		         $data['viewName'] = 'Modules\SystemSettings\Views\purposes\frmClearancePurpose';
 		         echo view('App\Views\theme\index', $data);
@@ -118,7 +118,8 @@ class ClearancePurposes extends BaseController
 		     {
 		     	if($model->editClearancePurposes($_POST, $id))
 		         {
-		 			$this->session->markAsFlashdata('success');
+							$_SESSION['success'] = 'You have updated a record';
+		 				 	$this->session->markAsFlashdata('success');
 		         	return redirect()->to(base_url('clearance-purposes'));
 		         }
 		         else

@@ -75,12 +75,13 @@ class Validation
         ],
 
     ];
+
     public $facility = [
         'facility_name' => [
             'label'  => 'Facility Name',
             'rules'  => 'required',
             'errors' => [
-                'required' => 'facility Name field is required.'
+                'required' => 'Facility Name field is required.'
             ]
         ],
 
@@ -88,10 +89,11 @@ class Validation
             'label'  => 'Facility Description',
             'rules'  => 'required',
             'errors' => [
-                'required' => 'facility desciption field is required.'
+                'required' => 'Facility description field is required.'
             ]
         ]
 			];
+			
 		public $clearancepurposes = [
         'purpose' => [
             'label'  => 'purpose',
@@ -173,7 +175,7 @@ class Validation
             'rules'  => 'required|alpha',
             'errors' => [
                 'required' => 'Firstname field is required.',
-                'alpha' => 'Lastname must not have numbers.'
+                'alpha' => 'Firstname must not have numbers.'
             ]
         ],
         'username' => [
@@ -282,6 +284,7 @@ class Validation
         ],
 
     ];
+
 		public $permit = [
         'document_id' => [
             'label'  => 'Document Id',
@@ -331,7 +334,6 @@ class Validation
 						]
 				]
 		];
-	//--------------------------------------------------------------------
 	// Rules
 	//--------------------------------------------------------------------
 }
