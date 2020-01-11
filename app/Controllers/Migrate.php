@@ -52,8 +52,10 @@ class Migrate extends \CodeIgniter\Controller
         $seeder->call('PermissionBusinessTypesSeeder');
         $seeder->call('PermissionClearanceFeesSeeder');
         $seeder->call('PermissionDocumentSeeder');
+        $seeder->call('PermissionBlotterSeeder');
         $seeder->call('PermissionClearancePurposeSeeder');
         $seeder->call('PermissionReservationFeesSeeder');
+        $seeder->call('PermissionBlotterActionSeeder');
 
     }
 }

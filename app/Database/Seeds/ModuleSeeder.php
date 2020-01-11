@@ -38,6 +38,14 @@ class ModuleSeeder extends \CodeIgniter\Database\Seeder
                       'order' =>4,
                       'status' => 'a',
                       'created_at' => date('Y-m-d H:i:s')
+                    ],
+                    [
+                        'module_name' => 'blotters management',
+                        'module_description' => 'blotters management',
+                        'module_icon' => '<i class="fas fa-cogs"></i>',
+                        'order' =>5,
+                        'status' => 'a',
+                        'created_at' => date('Y-m-d H:i:s')
                     ]
                 ];
                 $db      = \Config\Database::connect();
