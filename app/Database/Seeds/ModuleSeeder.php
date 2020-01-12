@@ -32,23 +32,21 @@ class ModuleSeeder extends \CodeIgniter\Database\Seeder
                         'created_at' => date('Y-m-d H:i:s')
                     ],
                     [
-<<<<<<< HEAD
-                        'module_name' => 'blotters management',
-                        'module_description' => 'blotters management',
-                        'module_icon' => '<i class="fas fa-cogs"></i>',
-                        'order' =>4,
-                        'status' => 'a',
-                        'created_at' => date('Y-m-d H:i:s')
-                    ],
-=======
                       'module_name' => 'citizen management',
                       'module_description' => 'citizen management',
                       'module_icon' => '<i class="fas fa-user-cog"></i>',
                       'order' =>4,
                       'status' => 'a',
                       'created_at' => date('Y-m-d H:i:s')
+                    ],
+                    [
+                        'module_name' => 'blotters management',
+                        'module_description' => 'blotters management',
+                        'module_icon' => '<i class="fas fa-cogs"></i>',
+                        'order' =>5,
+                        'status' => 'a',
+                        'created_at' => date('Y-m-d H:i:s')
                     ]
->>>>>>> a199e695c2e820cbe797370bcdd27ac58621da5e
                 ];
                 $db      = \Config\Database::connect();
                 $builder = $db->table($this->table);
