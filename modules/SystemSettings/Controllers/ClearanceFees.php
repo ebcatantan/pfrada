@@ -66,7 +66,29 @@ class ClearanceFees extends BaseController
 
 		$model = new ClearanceFeesModel();
 
-		$data['clearance_fees'] = $model->getClearanceWithCondition(['id' => $id]);
+		$data['clearance_fees'] = $model->get([],[],['clearance_purpose_id'=>$id],[]);
+
+		$fields = [
+			'document_name' => 'documents',
+			'purpose' => 'clearance_purposes'
+		];
+
+		$tables = [
+			'documents' => [
+				'clearance_fees.document_id' => 'documents.id'
+			],
+			'clearance_purposes' => [
+				'clearance_fees.clearance_purpose_id' => 'clearance_purposes.id'
+			]
+		];
+
+		$conditions = [
+			'clearance_fees.id' => $id
+		];
+
+				$data['clearance_fees'] = $model->get($fields, $tables, $conditions);
+
+		// $data['clearance_fees'] = $model->getClearanceWithCondition(['id' => $id]);
 
 		$data['function_title'] = "Clearance Fee Details";
         $data['viewName'] = 'Modules\SystemSettings\Views\clearancefees\clearanceDetails';

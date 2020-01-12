@@ -553,9 +553,7 @@ class Citizen extends BaseController
     	$this->hasPermissionRedirect('delete-citizen');
 
     	$model = new CitizenModel();
-    	$model = new ReservationsModel();
     	$model->deleteCitizen($id);
-			$model->deleteReservations($id);
     }
 
 }

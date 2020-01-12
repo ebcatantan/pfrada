@@ -2,15 +2,15 @@
   <div class="col-md-8 offset-md-2">
     <div class="row">
       <div class="col-md-12">
-        <span class="field">Document ID</span>
-        <span class="field-value"><?= ucfirst($clearance_fees[0]['document_id']) ?></span>
+        <span class="field">Document Name</span>
+        <span class="field-value"><?= ucfirst($clearance_fees[0]['document_name']) ?></span>
       </div>
     </div>
 
     <div class="row">
       <div class="col-md-12">
-        <span class="field">Clearance Purpose ID</span>
-        <span class="field-value"><?= ucfirst($clearance_fees[0]['clearance_purpose_id']) ?></span>
+        <span class="field">Clearance Purpose</span>
+        <span class="field-value"><?= ucfirst($clearance_fees[0]['purpose']) ?></span>
       </div>
     </div>
 
