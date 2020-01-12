@@ -9,31 +9,26 @@ class BusinessPermitFeesModel extends \CodeIgniter\Model
 
     protected $allowedFields = ['document_id','business_type_id','new_applicant_charge', 'nrenewal_charge', 'status', 'created_at','updated_at',  'deleted_at'];
 
-    public function getBusinessPermitFeesWithCondition($conditions = [])
-	{
-		foreach($conditions as $field => $value)
-		{
-			$this->where($field, $value);
-		}
-	    return $this->findAll();
-	}
-  public function getBusinessPermitFeesWithFunction($args = [])
-	{
-		$db = \Config\Database::connect();
+    public function get($fields = [], $tables = [], $conditions = [], $args = [])
+  {
+    $this->select('business_permit_fees.*');
+    foreach ($fields as $field => $table) {
+      $this->select($table . '.' . $field);
+    }
+    foreach ($tables as $a => $array) {
+      foreach ($array as $fk => $id) {
+        $this->join($a, $fk .'='. $id, 'left');
+      }
+    }
 
-    $str = "SELECT a.*, b.business_type_name, c.document_name FROM business_permit_fees a LEFT JOIN business_types b ON a.business_type_id = b.id LEFT JOIN documents c ON a.document_id = c.id WHERE a.status = '".$args['status']."' LIMIT ". $args['offset'] .','.$args['limit'];
-
-    // print_r($str); die();
-		$query = $db->query($str);
-
-		// print_r($query->getResultArray()); die();
-	    return $query->getResultArray();
-	}
-
-  public function getBusinessPermitFees()
-	{
-	    return $this->findAll();
-	}
+    foreach($conditions as $field => $value) {
+      $this->where($field, $value);
+    }
+    if (!empty($args)) {
+      return $this->findAll($args['limit'], $args['offset']);
+    }
+    return $this->findAll();
+  }
 
     public function addBusinessPermitFees($val_array = [])
 	{

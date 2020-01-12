@@ -6,7 +6,6 @@ use Modules\UserManagement\Models\PermissionsModel;
 use Modules\SystemSettings\Models\BusinessTypesModel;
 use Modules\BaranggaySettings\Models\DocumentsModel;
 
-
 use App\Controllers\BaseController;
 
 class BusinessPermitFees extends BaseController
@@ -27,11 +26,29 @@ class BusinessPermitFees extends BaseController
 
 			// die("here");
     	$model = new BusinessPermitFeesModel();
-    	//kailangan ito para sa pagination
-       	$data['all_items'] = $model->getBusinessPermitFeesWithCondition(['status'=> 'a']);
-       	$data['offset'] = $offset;
 
-        $data['business_permit_fees'] = $model->getBusinessPermitFeesWithFunction(['status'=> 'a', 'limit' => PERPAGE, 'offset' =>  $offset]);
+			$data['all_items'] = $model->get([],[],['status'=> 'a'],[]);
+			$data['offset'] = $offset;
+
+			// print_r($str); die();
+			$fields = [
+				'document_name' => 'documents',
+				'business_type_name' => 'business_types'
+			];
+
+			$tables = [
+				'documents' => [
+					'business_permit_fees.document_id' => 'documents.id'
+				],
+				'business_types' => [
+					'business_permit_fees.business_type_id' => 'business_types.id'
+				]
+			];
+
+			$conditions = [
+					'business_permit_fees.status' => 'a'
+			];
+			$data['business_permit_fees'] = $model->get($fields, $tables, $conditions, ['limit' => PERPAGE, 'offset' => $offset]);
 
         $data['function_title'] = "List of Business Permit Fees";
         $data['viewName'] = 'Modules\SystemSettings\Views\businesspermitfees\index';//palatandaan
@@ -65,7 +82,6 @@ class BusinessPermitFees extends BaseController
 
 			$model_business_types = new BusinessTypesModel();
 			$data['business_types'] = $model_business_types->where('status', 'a')->findAll();
-
 
 			// die('here');
     	helper(['form', 'url']);
