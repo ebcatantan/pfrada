@@ -706,6 +706,95 @@ class Validation
 			]
 		];
 
+
+		public $corporation = [
+				//  'user_id' => [
+				// 		'label'  => 'User Id',
+				// 		'rules'  => 'required',
+				// 		'errors' => [
+				// 				'required' => 'User Id field is required.'
+				// 		]
+				// ],
+				//
+				// 'business_type_id' => [
+				// 		'label'  => 'Business Type Id',
+				// 		'rules'  => 'required',
+				// 		'errors' => [
+				// 				'required' => 'Business Type Id field is required.'
+				// 		]
+				// ],
+				'business_name' => [
+						'label'  => 'Business Name',
+						'rules'  => 'required',
+						'errors' => [
+								'required' => 'Business Name field is required.'
+						]
+				],
+				'date_registered' => [
+						'label'  => 'Date Registered',
+						'rules'  => 'required',
+						'errors' => [
+								'required' => 'Date Registered is field required.'
+						]
+				 ],
+				'bir_no' => [
+						'label'  => 'Bir No',
+						'rules'  => 'required',
+						'errors' => [
+								'required' => 'Bir No field is required.'
+						]
+				],
+				'tin_no' => [
+						'label'  => 'Tin No',
+						'rules'  => 'required',
+						'errors' => [
+								'required' => 'Tin No field is required.'
+						]
+				],
+				'philgeps' => [
+						'label'  => 'Philgeps',
+						'rules'  => 'required',
+						'errors' => [
+								'required' => 'Philgeps field is required.'
+						]
+				],
+				'owner_name' => [
+						'label'  => 'Owner Name',
+						'rules'  => 'required',
+						'errors' => [
+								'required' => 'Owner Name field is required.'
+						]
+				],
+				'address' => [
+						'label'  => 'Address',
+						'rules'  => 'required',
+						'errors' => [
+								'required' => 'Address field is required.'
+						]
+				],
+				'contact_person_name' => [
+						'label'  => 'Contact Person Name',
+						'rules'  => 'required',
+						'errors' => [
+								'required' => 'Contact Person Name field is required.'
+						]
+				],
+				'contact_person_email' => [
+						'label'  => 'Contact Person Email',
+						'rules'  => 'required',
+						'errors' => [
+								'required' => 'Contact Person Email field is required.'
+						]
+				],
+				'contact_no' => [
+						'label'  => 'Contact Number',
+						'rules'  => 'required',
+						'errors' => [
+								'required' => 'Contact Number field is required.'
+						]
+				],
+		];
+
 	// Rules
 	//--------------------------------------------------------------------
 }
