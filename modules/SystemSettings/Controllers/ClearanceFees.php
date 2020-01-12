@@ -26,10 +26,34 @@ class ClearanceFees extends BaseController
 			// die("here");
     	$model = new ClearanceFeesModel();
     	//kailangan ito para sa pagination
-       	$data['all_items'] = $model->getClearanceWithCondition(['status'=> 'a']);
-       	$data['offset'] = $offset;
 
-        $data['clearance_fees'] = $model->getClearanceWithFunction(['status'=> 'a', 'limit' => PERPAGE, 'offset' =>  $offset]);
+			$data['all_items'] = $model->get([],[],['status'=> 'a'],[]);
+			$data['offset'] = $offset;
+
+			// print_r($str); die();
+			$fields = [
+				'document_name' => 'documents',
+				'purpose' => 'clearance_purposes'
+			];
+
+			$tables = [
+				'documents' => [
+					'clearance_fees.document_id' => 'documents.id'
+				],
+				'clearance_purposes' => [
+					'clearance_fees.clearance_purpose_id' => 'clearance_purposes.id'
+				]
+			];
+
+			$conditions = [
+					'clearance_fees.status' => 'a'
+			];
+			$data['clearance_fees'] = $model->get($fields, $tables, $conditions, ['limit' => PERPAGE, 'offset' => $offset]);
+
+				// $data['all_items'] = $model->getClearanceWithCondition(['status'=> 'a']);
+       	// $data['offset'] = $offset;
+				//
+        // $data['clearance_fees'] = $model->getClearanceWithFunction(['status'=> 'a', 'limit' => PERPAGE, 'offset' =>  $offset]);
         $data['function_title'] = "List of Clearance Fees";
         $data['viewName'] = 'Modules\SystemSettings\Views\clearancefees\index';
         echo view('App\Views\theme\index', $data);

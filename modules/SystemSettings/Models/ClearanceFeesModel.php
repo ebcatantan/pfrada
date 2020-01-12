@@ -9,30 +9,53 @@ class ClearanceFeesModel extends \CodeIgniter\Model
 
     protected $allowedFields = ['document_id','clearance_purpose_id', 'voter_fee_amount', 'non_voter_fee_amount', 'status', 'created_at','updated_at', 'deleted_at'];
 
-    public function getClearanceWithCondition($conditions = [])
-	{
-		foreach($conditions as $field => $value)
-		{
-			$this->where($field, $value);
-		}
-	    return $this->findAll();
-	}
-  public function getClearanceWithFunction($args = [])
-	{
-		$db = \Config\Database::connect();
+    public function get($fields = [], $tables = [], $conditions = [], $args = [])
+  {
+    $this->select('clearance_fees.*');
+    foreach ($fields as $field => $table) {
+      $this->select($table . '.' . $field);
+    }
+    foreach ($tables as $a => $array) {
+      foreach ($array as $fk => $id) {
+        $this->join($a, $fk .'='. $id, 'left');
+      }
+    }
 
-		$str = "SELECT a.*, b.purpose, c.document_name FROM clearance_fees a LEFT JOIN clearance_purposes b ON b.id = a.clearance_purpose_id LEFT JOIN documents c ON c.id = a.document_id WHERE a.status = '".$args['status']."' LIMIT ". $args['offset'] .','.$args['limit'];
-		// print_r($str); die();
-		$query = $db->query($str);
+    foreach($conditions as $field => $value) {
+      $this->where($field, $value);
+    }
+    if (!empty($args)) {
+      return $this->findAll($args['limit'], $args['offset']);
+    }
+    return $this->findAll();
+  }
 
-		// print_r($query->getResultArray()); die();
-	    return $query->getResultArray();
-	}
 
-  public function getClearance()
-	{
-	    return $this->findAll();
-	}
+
+  //   public function getClearanceWithCondition($conditions = [])
+	// {
+	// 	foreach($conditions as $field => $value)
+	// 	{
+	// 		$this->where($field, $value);
+	// 	}
+	//     return $this->findAll();
+	// }
+  // public function getClearanceWithFunction($args = [])
+	// {
+	// 	$db = \Config\Database::connect();
+  //
+	// 	$str = "SELECT a.*, b.purpose, c.document_name FROM clearance_fees a LEFT JOIN clearance_purposes b ON b.id = a.clearance_purpose_id LEFT JOIN documents c ON c.id = a.document_id WHERE a.status = '".$args['status']."' LIMIT ". $args['offset'] .','.$args['limit'];
+	// 	// print_r($str); die();
+	// 	$query = $db->query($str);
+  //
+	// 	// print_r($query->getResultArray()); die();
+	//     return $query->getResultArray();
+	// }
+  //
+  // public function getClearance()
+	// {
+	//     return $this->findAll();
+	// }
 
     public function addClearance($val_array = [])
 	{

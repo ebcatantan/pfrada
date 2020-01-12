@@ -3,6 +3,8 @@ namespace Modules\BaranggaySettings\Controllers;
 
 use Modules\BaranggaySettings\Models\DocumentsModel;
 use Modules\UserManagement\Models\PermissionsModel;
+use Modules\SystemSettings\Models\ClearanceFeesModel;
+use Modules\SystemSettings\Models\ClearancePurposesModel;
 use App\Controllers\BaseController;
 
 class Documents extends BaseController
@@ -142,8 +144,12 @@ class Documents extends BaseController
     {
     	$this->hasPermissionRedirect('delete-document');
 
-    	$model = new DocumentsModel();
-    	$model->deleteDocument($id);
+			$model = new DocumentsModel();
+			$clearancefees_model = new ClearanceFeesModel();
+			$clearancepurposes_model = new ClearancePurposesModel();
+			$model->deleteDocument($id);
+    	$clearancefees_model->deleteClearance($id);
+    	$clearancepurposes_model->deleteClearancePurposes($id);
     }
 
 }

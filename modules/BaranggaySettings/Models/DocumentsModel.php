@@ -1,6 +1,8 @@
 <?php
 namespace Modules\BaranggaySettings\Models;
 
+use Modules\SystemSettings\Models\ClearanceFeesModel;
+use Modules\SystemSettings\Models\ClearancePurposesModel;
 use CodeIgniter\Model;
 
 class DocumentsModel extends \CodeIgniter\Model
@@ -52,6 +54,15 @@ class DocumentsModel extends \CodeIgniter\Model
 	{
 		$val_array['deleted_at'] = (new \DateTime())->format('Y-m-d H:i:s');
 		$val_array['status'] = 'd';
+    $clearancefees_model = new ClearanceFeesModel();
+    $clearancepurposes_model = new ClearancePurposesModel();
+    $clearancefees_model->whereIn('document_id', $id)
+    ->set($val_array)
+    ->update();
+    
+    $clearancepurposes_model->whereIn('clearance_purpose_id', $id)
+    ->set($val_array)
+    ->update();
 		return $this->update($id, $val_array);
 	}
 }
