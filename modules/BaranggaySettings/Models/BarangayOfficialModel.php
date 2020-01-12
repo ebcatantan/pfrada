@@ -17,7 +17,7 @@ class BarangayOfficialModel extends \CodeIgniter\Model
     }
     foreach ($tables as $a => $array) {
       foreach ($array as $fk => $id) {
-        $this->join($a, $fk .'='. $id);
+        $this->join($a, $fk .'='. $id, 'left');
       }
     }
 

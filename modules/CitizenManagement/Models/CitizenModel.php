@@ -1,6 +1,7 @@
 <?php
 namespace Modules\CitizenManagement\Models;
 
+use Modules\SystemSettings\Models\ReservationsModel;
 use CodeIgniter\Model;
 
 class CitizenModel extends \CodeIgniter\Model
@@ -30,32 +31,6 @@ class CitizenModel extends \CodeIgniter\Model
     return $this->findAll();
   }
 
-  //   public function getCitizenWithCondition($conditions = [])
-	// {
-	// 	foreach($conditions as $field => $value)
-	// 	{
-	// 		$this->where($field, $value);
-	// 	}
-	//     return $this->findAll();
-	// }
-  //
-	// public function getCitizenWithFunction($args = [])
-	// {
-	// 	$db = \Config\Database::connect();
-  //
-  //   $str = "SELECT a.*, b.username FROM citizens a LEFT JOIN users b ON b.id = a.user_id WHERE a.status = '" .$args['status']."'";
-  //   // '" .$args['status']."''"
-	// 	$query = $db->query($str);
-  //   // print_r($str); die();
-	// 	// print_r($query->getResultArray()); die();
-	//     return $query->getResultArray();
-	// }
-  //
-  //   public function getCitizen()
-	// {
-	//     return $this->findAll();
-	// }
-
     public function addCitizen($val_array = [])
 	{
 		$val_array['created_at'] = (new \DateTime())->format('Y-m-d H:i:s');
@@ -72,8 +47,12 @@ class CitizenModel extends \CodeIgniter\Model
 
     public function deleteCitizen($id)
 	{
-		$val_array['deleted_at'] = (new \DateTime())->format('Y-m-d H:i:s');
+    $val_array['deleted_at'] = (new \DateTime())->format('Y-m-d H:i:s');
 		$val_array['status'] = 'd';
+    $medical_model = new ReservationsModel();
+    $medical_model->whereIn('citizen_id', $id)
+    ->set($val_array)
+    ->update();
 		return $this->update($id, $val_array);
 	}
 }

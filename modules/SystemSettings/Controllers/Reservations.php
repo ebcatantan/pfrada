@@ -4,6 +4,8 @@ namespace Modules\SystemSettings\Controllers;
 use Modules\SystemSettings\Models\ReservationsModel;
 use Modules\UserManagement\Models\PermissionsModel;
 use Modules\CitizenManagement\Models\CitizenModel;
+use Modules\UserManagement\Models\UsersModel;
+use Modules\BaranggaySettings\Models\FacilitiesModel;
 use App\Controllers\BaseController;
 
 class Reservations extends BaseController
@@ -16,7 +18,7 @@ class Reservations extends BaseController
 		$permissions_model = new PermissionsModel();
 		$this->permissions = $permissions_model->getPermissionsWithCondition(['status' => 'a']);
 	}
-	// die();	
+	// die();
 
     public function index($offset = 0)
     {
@@ -24,10 +26,40 @@ class Reservations extends BaseController
 
     	$model = new ReservationsModel();
     	//kailangan ito para sa pagination
-       	$data['all_items'] = $model->getReservationsWithCondition(['status'=> 'a']);
-       	$data['offset'] = $offset;
+		$data['all_items'] = $model->get([],[],['status'=> 'a'],[]);
+		$data['offset'] = $offset;
 
-        $data['reservations'] = $model->getReservationsWithFunction(['status'=> 'a', 'limit' => PERPAGE, 'offset' =>  $offset]);
+		$fields = [
+			'last_name' => 'citizens',
+			'first_name' => 'citizens',
+			'middlename' => 'citizens',
+			'extension_name' => 'citizens',
+			'firstname' => 'users',
+			'lastname' => 'users',
+			'facility_name' => 'facilities'
+		];
+
+		$tables = [
+			'citizens' => [
+				'reservations.citizen_id' => 'citizens.id'
+			],
+			'users' => [
+				'reservations.user_id' => 'users.id'
+			],
+			'facilities' => [
+				'reservations.facility_id' => 'facilities.id'
+			]
+		];
+
+		$conditions = [
+				'reservations.status' => 'a'
+		];
+		$data['reservations'] = $model->get($fields, $tables, $conditions, ['limit' => PERPAGE, 'offset' => $offset]);
+
+				// $data['all_items'] = $model->getReservationsWithCondition(['status'=> 'a']);
+       	// $data['offset'] = $offset;
+				//
+        // $data['reservations'] = $model->getReservationsWithFunction(['status'=> 'a', 'limit' => PERPAGE, 'offset' =>  $offset]);
 
         $data['function_title'] = "List of Reservations";
         $data['viewName'] = 'Modules\SystemSettings\Views\reservations\index';
@@ -40,8 +72,35 @@ class Reservations extends BaseController
 				$data['permissions'] = $this->permissions;
 
 				$model = new ReservationsModel();
+				$data['reservations'] = $model->get([],[],['id'=>$id],[]);
 
-				$data['reservation'] = $model->getReservationsWithCondition(['id' => $id]);
+				$fields = [
+							'last_name' => 'citizens',
+							'first_name' => 'citizens',
+							'middlename' => 'citizens',
+							'extension_name' => 'citizens',
+							'firstname' => 'users',
+							'lastname' => 'users',
+							'facility_name' => 'facilities'
+						];
+
+						$tables = [
+							'citizens' => [
+								'reservations.citizen_id' => 'citizens.id'
+							],
+							'users' => [
+								'reservations.user_id' => 'users.id',
+							],
+							'facilities' => [
+								'reservations.facility_id' => 'facilities.id'
+							]
+						];
+
+						$conditions = [
+							'reservations.id' => $id
+						];
+
+						$data['reservations'] = $model->get($fields, $tables, $conditions);
 
 				$data['function_title'] = "Reservation Details";
 		        $data['viewName'] = 'Modules\SystemSettings\Views\reservations\reservationsDetails';
@@ -57,7 +116,17 @@ class Reservations extends BaseController
 
     	helper(['form', 'url']);
     	$model = new ReservationsModel();
-    	if(!empty($_POST))
+
+			$CitizenModel = new CitizenModel();
+			$data['citizens'] = $CitizenModel->get();
+
+			$UserModel = new UsersModel();
+			$data['users'] = $UserModel->getUsers();
+
+			$FacilityModel = new FacilitiesModel();
+			$data['facilities'] = $FacilityModel->getFacilities();
+
+			if(!empty($_POST))
     	{
 	    	if (!$this->validate('reservation'))
 		    {
@@ -71,7 +140,6 @@ class Reservations extends BaseController
 		    {
 		        if($model->addReservations($_POST))
 		        {
-
 		        	$_SESSION['success'] = 'You have added a new record';
 							$this->session->markAsFlashdata('success');
 		        	return redirect()->to(base_url('reservations'));
@@ -102,6 +170,15 @@ class Reservations extends BaseController
     	$permissions_model = new PermissionsModel();
 
     	$data['permissions'] = $this->permissions;
+
+			$CitizenModel = new CitizenModel();
+			$data['citizens'] = $CitizenModel->get();
+
+			$UserModel = new UsersModel();
+			$data['users'] = $UserModel->getUsers();
+
+			$FacilityModel = new FacilitiesModel();
+			$data['facilities'] = $FacilityModel->getFacilities();
 
     	if(!empty($_POST))
     	{

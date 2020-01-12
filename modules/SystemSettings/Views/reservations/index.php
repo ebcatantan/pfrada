@@ -17,7 +17,7 @@
         <th>Facility Name</th>
         <th>Reservation Date Time Start/End</th>
         <th>Approved</th>
-        <th>Is Paid?</th>
+        <th>Payment</th>
         <th>Action</th>
       </tr>
     </thead>
@@ -26,9 +26,9 @@
       <?php foreach($reservations as $reservation): ?>
       <tr id="<?php echo $reservation['id']; ?>">
         <th scope="row"><?= $cnt++ ?></th>
-        <td><?= ucwords($reservation['lastname'].' , '.$reservation['firstname']) ?></td>
-        <td><?= ucwords($reservation['facility_id']) ?></td>
-        <td><?= ucwords($reservation['reservation_date_time_start'].' - '.$reservation['reservation_date_time_end']) ?></td>
+        <td><?= ucwords($reservation['last_name'].' , '.$reservation['first_name']) ?></td>
+        <td><?= ucwords($reservation['facility_name']) ?></td>
+        <td><?= ucwords($reservation['reservation_date_time_start'].'  -  '.$reservation['reservation_date_time_end']) ?></td>
         <td><?= ucwords($reservation['is_approved']) ?></td>
         <td><?= ucwords($reservation['is_paid']) ?></td>
         <td class="text-center">

@@ -43,7 +43,6 @@ class BarangayOfficial extends BaseController
 				];
 				$data['brgyofficials'] = $model->get($fields, $tables, $conditions, ['limit' => PERPAGE, 'offset' => $offset]);
 
-
         $data['function_title'] = "List of Barangay Official";
         $data['viewName'] = 'Modules\BaranggaySettings\Views\barangayofficial\index';
         echo view('App\Views\theme\index', $data);
@@ -105,19 +104,19 @@ class BarangayOfficial extends BaseController
 		    {
 		        if($model->addBarangayOfficial($_POST))
 		        {
-							// $user_id = $model->insertID();
-							// $UserModel = new UsersModel();
-							// $user_data = [
-							// 	'lastname' => $_POST['last_name'],
-							// 	'firstname' => $_POST['first_name'],
-							// 	'username' => $_POST['last_name'] . $_POST['first_name'],
-							// 	'email' => $_POST['email'],
-							// 	'password' => $UserModel->generateRandomString(8),
-							// 	// 'password' => 'password',
-							// 	'role_id' => 2,
-							// 	'birthdate' => $_POST['birth_date']
-							// ];
-							// $UserModel->addUsers($user_data);
+							$user_id = $model->insertID();
+							$UserModel = new UsersModel();
+							$user_data = [
+								'lastname' => $_POST['last_name'],
+								'firstname' => $_POST['first_name'],
+								'username' => $_POST['last_name'] . $_POST['first_name'],
+								'email' => $_POST['email'],
+								'password' => $UserModel->generateRandomString(8),
+								// 'password' => 'password',
+								'role_id' => 2,
+								'birthdate' => $_POST['birth_date']
+							];
+							$UserModel->addUsers($user_data);
 
 		        	$_SESSION['success'] = 'You have added a new record';
 							$this->session->markAsFlashdata('success');
@@ -150,6 +149,9 @@ class BarangayOfficial extends BaseController
     	$permissions_model = new PermissionsModel();
 
     	$data['permissions'] = $this->permissions;
+
+			$user_model = new UsersModel();
+			$data['users'] = $user_model->where('status', 'a')->findAll();
 
     	if(!empty($_POST))
     	{

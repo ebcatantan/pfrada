@@ -4,6 +4,7 @@ namespace Modules\CitizenManagement\Controllers;
 use Modules\CitizenManagement\Models\CitizenModel;
 use Modules\UserManagement\Models\UsersModel;
 use Modules\UserManagement\Models\PermissionsModel;
+use Modules\SystemSettings\Models\ReservationsModel;
 use App\Controllers\BaseController;
 
 class Citizen extends BaseController
@@ -546,13 +547,15 @@ class Citizen extends BaseController
 	        echo view('App\Views\theme\index', $data);
     	}
     }
-	//
-  //   public function delete_citizen($id)
-  //   {
-  //   	$this->hasPermissionRedirect('delete-citizen');
-	//
-  //   	$model = new CitizenModel();
-  //   	$model->deleteCitizen($id);
-  //   }
+
+    public function delete_citizen($id)
+    {
+    	$this->hasPermissionRedirect('delete-citizen');
+
+    	$model = new CitizenModel();
+    	$model = new ReservationsModel();
+    	$model->deleteCitizen($id);
+			$model->deleteReservations($id);
+    }
 
 }

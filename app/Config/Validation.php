@@ -204,13 +204,7 @@ class Validation
 							]
 					],
 
-				'user_id' => [
-						'label'  => 'User ID',
-						'rules'  => 'required',
-						'errors' => [
-								'required' => 'User ID field is required.'
-						]
-				],
+				
 
 				'reservation_date_time_start' => [
 						'label'  => 'Reservation Date Time Start',

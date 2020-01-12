@@ -9,30 +9,26 @@ class ReservationsModel extends \CodeIgniter\Model
 
     protected $allowedFields = ['citizen_id','user_id','facility_id','reservation_date_time_start','reservation_date_time_end','reservation_payment','is_approved','is_paid','process_by','date_paid','status','created_at','updated_at', 'deleted_at'];
 
-    public function getReservationsWithCondition($conditions = [])
-	{
-		foreach($conditions as $field => $value)
-		{
-			$this->where($field, $value);
-		}
-	    return $this->findAll();
-	}
-  public function getReservationsWithFunction($args = [])
-	{
-		$db = \Config\Database::connect();
+    public function get($fields = [], $tables = [], $conditions = [], $args = [])
+  {
+    $this->select('reservations.*');
+    foreach ($fields as $field => $table) {
+      $this->select($table . '.' . $field);
+    }
+    foreach ($tables as $a => $array) {
+      foreach ($array as $fk => $id) {
+        $this->join($a, $fk .'='. $id, 'left');
+      }
+    }
 
-    // print_r($str); die();
-		$str = "SELECT a.*, b.last_name, b.first_name FROM reservations a LEFT JOIN citizens b ON a.citizen_id = b.id WHERE a.status = '".$args['status']."' LIMIT ". $args['offset'] .','.$args['limit'];
-		$query = $db->query($str);
-
-		// print_r($query->getResultArray()); die();
-	    return $query->getResultArray();
-	}
-
-  public function getReservations()
-	{
-	    return $this->findAll();
-	}
+    foreach($conditions as $field => $value) {
+      $this->where($field, $value);
+    }
+    if (!empty($args)) {
+      return $this->findAll($args['limit'], $args['offset']);
+    }
+    return $this->findAll();
+  }
 
     public function addReservations($val_array = [])
 	{

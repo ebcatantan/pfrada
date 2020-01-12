@@ -14,6 +14,7 @@
    </div>
  </div>
 <br>
+
   <?php $uri = new \CodeIgniter\HTTP\URI(current_url()); ?>
  <div class="table-responsive">
    <table class="table table-bordered">
@@ -32,7 +33,7 @@
       <?php foreach($brgyofficials as $barangayofficial): ?>
       <tr id="<?php echo $barangayofficial['id']; ?>">
         <th scope="row"><?= $cnt++ ?></th>
-        <td><?= ucwords($barangayofficial['last_name'] . ', ' . $barangayofficial['first_name'] . $barangayofficial['middlename']) ?></td>
+        <td><?= ucwords($barangayofficial['last_name'] . ', ' . $barangayofficial['first_name'] .' '. $barangayofficial['middlename'].' '.$barangayofficial['ext_name']) ?></td>
         <td><?= ucwords($barangayofficial['gender']) ?></td>
         <td><?= ucwords($barangayofficial['contact_no']) ?></td>
         <td><?= ucwords($barangayofficial['address']) ?></td>
