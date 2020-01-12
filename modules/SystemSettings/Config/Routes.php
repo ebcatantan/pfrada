@@ -1,5 +1,4 @@
 <?php
-
 $routes->group('business-permit-fees', ['namespace' => 'Modules\SystemSettings\Controllers'], function($routes)
 {
     $routes->get('/', 'BusinessPermitFees::index');

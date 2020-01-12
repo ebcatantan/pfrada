@@ -389,7 +389,7 @@ class Validation
             'errors' => [
                 'required' => 'Role field is required.'
             ]
-        ],
+        ]
 
     ];
 
@@ -506,7 +506,7 @@ class Validation
 						'errors' => [
 								'required' => 'Case status to field is required.'
 						]
-				],
+				]
 		];
 
 
@@ -642,7 +642,7 @@ class Validation
 						'errors' => [
 								'required' => 'Date Action Taken field is required.'
 						]
-				],
+				]
 		];
 
 	// Rules
