@@ -17,6 +17,7 @@
         <th>Facility Name</th>
         <th>Reservation Date Time Start/End</th>
         <th>Approved</th>
+        <th>Is Paid?</th>
         <th>Action</th>
       </tr>
     </thead>
@@ -29,6 +30,7 @@
         <td><?= ucwords($reservation['facility_id']) ?></td>
         <td><?= ucwords($reservation['reservation_date_time_start'].' - '.$reservation['reservation_date_time_end']) ?></td>
         <td><?= ucwords($reservation['is_approved']) ?></td>
+        <td><?= ucwords($reservation['is_paid']) ?></td>
         <td class="text-center">
           <?php
             users_action('reservations', $_SESSION['userPermmissions'], $reservation['id']);
