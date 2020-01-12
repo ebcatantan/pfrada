@@ -29,7 +29,7 @@ $routes->group('clearance-fees', ['namespace' => 'Modules\SystemSettings\Control
     $routes->match(['get', 'post'], 'edit/(:num)', 'ClearanceFees::edit_clearance/$1');
     $routes->delete('delete/(:num)', 'ClearanceFees::delete_clearance/$1');
 });
-
+// die();
 $routes->group('clearance-purposes', ['namespace' => 'Modules\SystemSettings\Controllers'], function($routes)
 {
     $routes->get('/', 'ClearancePurposes::index');
@@ -49,7 +49,7 @@ $routes->group('reservation-fees', ['namespace' => 'Modules\SystemSettings\Contr
     $routes->match(['get', 'post'], 'edit/(:num)', 'ReservationFees::edit_reservation_fees/$1');
     $routes->delete('delete/(:num)', 'ReservationFees::delete_reservation_fees/$1');
 });
-
+// die();
 $routes->group('reservations', ['namespace' => 'Modules\SystemSettings\Controllers'], function($routes)
 {
     $routes->get('/', 'Reservations::index');

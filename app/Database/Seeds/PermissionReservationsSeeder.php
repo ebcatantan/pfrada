@@ -86,7 +86,7 @@ class PermissionReservationsSeeder extends \CodeIgniter\Database\Seeder
                         'allowed_roles' => "[1]",
                         'status' => 'a',
                         'created_at' => date('Y-m-d H:i:s')
-                    ],
+                    ]
                 ];
                 // print_r($data); die();
                 $db      = \Config\Database::connect();

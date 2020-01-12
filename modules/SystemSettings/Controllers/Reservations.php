@@ -8,8 +8,7 @@ use App\Controllers\BaseController;
 
 class Reservations extends BaseController
 {
-	//private $permissions;
-
+	//private $permissions
 	public function __construct()
 	{
 		parent:: __construct();
@@ -17,6 +16,7 @@ class Reservations extends BaseController
 		$permissions_model = new PermissionsModel();
 		$this->permissions = $permissions_model->getPermissionsWithCondition(['status' => 'a']);
 	}
+	// die();	
 
     public function index($offset = 0)
     {

@@ -1,4 +1,4 @@
-clearance<?php
+<?php
 namespace Modules\SystemSettings\Controllers;
 
 use Modules\SystemSettings\Models\ClearancePurposesModel;
@@ -21,7 +21,6 @@ class ClearancePurposes extends BaseController
     {
     	$this->hasPermissionRedirect('list-clearancepurpose');
 
-			// die("here");
     	$model = new ClearancePurposesModel();
     	//kailangan ito para sa pagination
        	$data['all_items'] = $model->getClearancePurposesWithCondition(['status'=> 'a']);

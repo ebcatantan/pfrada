@@ -11,6 +11,7 @@ class ClearancePurposesModel extends \CodeIgniter\Model
 
     public function getClearancePurposesWithCondition($conditions = [])
 	{
+    // die();
 		foreach($conditions as $field => $value)
 		{
 			$this->where($field, $value);

@@ -22,7 +22,7 @@ class ReservationsModel extends \CodeIgniter\Model
 		$db = \Config\Database::connect();
 
     // print_r($str); die();
-		$str = "SELECT a.*, b.lastname, b.firstname FROM reservations a LEFT JOIN citizens b ON a.citizen_id = b.id WHERE a.status = '".$args['status']."' LIMIT ". $args['offset'] .','.$args['limit'];
+		$str = "SELECT a.*, b.last_name, b.first_name FROM reservations a LEFT JOIN citizens b ON a.citizen_id = b.id WHERE a.status = '".$args['status']."' LIMIT ". $args['offset'] .','.$args['limit'];
 		$query = $db->query($str);
 
 		// print_r($query->getResultArray()); die();
