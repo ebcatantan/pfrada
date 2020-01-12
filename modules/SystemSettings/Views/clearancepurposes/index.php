@@ -15,6 +15,7 @@
        <th>#</th>
        <th>Purpose</th>
        <th>Description</th>
+       <th>Purpose</th>
        <th>Action</th>
      </tr>
    </thead>
@@ -25,6 +26,7 @@
        <th scope="row"><?= $cnt++ ?></th>
        <td><?= ucwords($clearancepurpose['purpose']) ?></td>
        <td><?= ucwords($clearancepurpose['description']) ?></td>
+       <td><?= ucwords($clearancepurpose['purpose']) ?></td>
        <td class="text-center">
          <?php
            users_action('clearance_purposes', $_SESSION['userPermmissions'], $clearancepurpose['id']);
