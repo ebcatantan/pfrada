@@ -509,6 +509,7 @@ class Validation
 				],
 		];
 
+
 		public $officials = [
 			'lastname' => [
 					'label'  => 'Last Name',
@@ -599,6 +600,49 @@ class Validation
 							'required' => 'Contact number field is required.'
 					]
 			]
+		];
+
+
+		public $blotteractions = [
+				'blotter_id' => [
+						'label'  => 'Blotter ID',
+						'rules'  => 'required',
+						'errors' => [
+								'required' => 'Blotter ID field is required.'
+						]
+				],
+
+				'handled_by' => [
+						'label'  => 'Handled By',
+						'rules'  => 'required',
+						'errors' => [
+								'required' => 'Handled By field is required.'
+						]
+				],
+
+				'remarks' => [
+						'label'  => 'Remarks',
+						'rules'  => 'required',
+						'errors' => [
+								'required' => 'Remarks field is required.'
+						]
+				],
+
+				'additional_details' => [
+						'label'  => 'Additional Details',
+						'rules'  => 'required',
+						'errors' => [
+								'required' => 'Additional Details field is required.'
+						]
+				],
+
+				'date_action_taken' => [
+						'label'  => 'Date Action Taken',
+						'rules'  => 'required',
+						'errors' => [
+								'required' => 'Date Action Taken field is required.'
+						]
+				],
 		];
 
 	// Rules
