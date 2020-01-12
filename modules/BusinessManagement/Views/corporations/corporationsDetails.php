@@ -1,17 +1,5 @@
 <div class="row">
   <div class="col-md-8 offset-md-2">
-    <!-- <div class="row">
-      <div class="col-md-12">
-        <span class="field">User Id</span>
-        <span class="field-value"><?= ucfirst($corporations[0]['user_id']) ?></span>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-md-12">
-        <span class="field">Business Type Id</span>
-        <span class="field-value"><?= ucfirst($corporations[0]['business_type_id']) ?></span>
-      </div>
-    </div> -->
     <div class="row">
       <div class="col-md-12">
         <span class="field">Business Name</span>
