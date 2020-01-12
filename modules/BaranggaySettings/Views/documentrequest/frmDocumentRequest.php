@@ -1,5 +1,6 @@
 <div class="row">
   <div class="col-md-10">
+     search here
   </div>
   <div class="col-md-2">
     <!--  <a href="<?= base_url() ?>node/add" class="btn btn-sm btn-primary btn-block float-right">Add Node</a> -->
@@ -17,15 +18,15 @@
            <?php if (isset($rec['document_id'])): ?>
              <?php foreach ($documents as $document): ?>
                <?php if ($document['id'] == $rec['document_id']): ?>
-                 <option value="<?= $document['id'] ?>" selected><?= strtoupper($document['document_name'])?></option>
+                 <option value="<?= $document['id'] ?>" selected><?= strtoupper($document['document_id'])?></option>
                <?php else: ?>
-                 <option value="<?= $document['id'] ?>" ><?= strtoupper($document['document_name'])?></option>
+                 <option value="<?= $document['id'] ?>" ><?= strtoupper($document['document_id'])?></option>
                <?php endif; ?>
              <?php endforeach; ?>
            <?php else: ?>
              <option value="">Select Document Name</option>
              <?php foreach ($documents as $document): ?>
-               <option value="<?= $document['id'] ?>" ><?= strtoupper($document['document_name'])?></option>
+               <option value="<?= $document['id'] ?>" ><?= strtoupper($document['document_id'])?></option>
              <?php endforeach; ?>
            <?php endif; ?>
            </select>
@@ -40,72 +41,79 @@
 
      <div class="row">
        <div class="col-md-6 offset-md-3">
-         <div class="form-group">
-           <label for="clearance_purpose_id">Clearance Purpose</label>
-           <select name="clearance_purpose_id" class="form-control <? $errors['clearance_purpose_id'] ? 'is-invalid':'is-valid' ?>">
-           <?php if (isset($rec['clearance_purpose_id'])): ?>
-             <?php foreach ($clearance_purposes as $clearance_purpose): ?>
-               <?php if ($clearance_purpose['id'] == $rec['clearance_purpose_id']): ?>
-                 <option value="<?= $clearance_purpose['id'] ?>" selected><?= strtoupper($clearance_purpose['purpose'])?></option>
-               <?php else: ?>
-                 <option value="<?= $clearance_purpose['id'] ?>" ><?= strtoupper($clearance_purpose['purpose'])?></option>
-               <?php endif; ?>
-             <?php endforeach; ?>
-           <?php else: ?>
-             <option value="">Select Clearance Name</option>
-             <?php foreach ($clearance_purposes as $clearance_purpose): ?>
-               <option value="<?= $clearance_purpose['id'] ?>" ><?= strtoupper($clearance_purpose['purpose'])?></option>
-             <?php endforeach; ?>
+       <div class="form-group">
+         <label for="is_citizen">Is Citizen?</label>
+         <select name="is_citizen" class="form-control <?= $errors['is_citizen'] ? 'is-invalid':'is-valid' ?>">
+           <option value="">Choose</option>
+           <option value="1">Citizen</option>
+           <option value="2d">Corporation</option>
+         </select>
+           <?php if($errors['is_citizen']): ?>
+             <div class="invalid-feedback">
+               <?= $errors['is_citizen'] ?>
+             </div>
            <?php endif; ?>
-           </select>
-
-           <!-- <select name="clearance_purpose_id" class="form-control <? $errors['clearance_purpose_id'] ? 'is-invalid':'is-valid' ?>">
-           <?php if (isset($rec['clearance_purpose_id'])): ?>
-             <option value="<?= $rec['clearance_purpose_id'] ?>"><?= strtoupper(name_on_system($rec['clearance_purpose_id'], $clearance_purposes, 'clearance_purposes')) ?></option>
-           <?php else: ?>
-             <option value="">Select Clearance Purpose</option>
-           <?php endif; ?>
-
-             <?php foreach ($clearance_purposes as $clearance_purpose): ?>
-               <option value="<?= $clearance_purpose['id'] ?>" ><?= strtoupper($clearance_purpose['purpose'])?></option>
-             <?php endforeach; ?>
-           </select> -->
-             <?php if($errors['clearance_purpose_id']): ?>
-               <div class="invalid-feedback">
-                 <?= $errors['clearance_purpose_id'] ?>
-               </div>
-             <?php endif; ?>
-         </div>
        </div>
      </div>
+   </div>
 
-     <div class="row">
-       <div class="col-md-6 offset-md-3">
-         <div class="form-group">
-           <label for="voter_fee_amount">Voter fee amount</label>
-           <input name="voter_fee_amount" type="text" value="<?= isset($rec['voter_fee_amount']) ? $rec['voter_fee_amount'] : set_value('voter_fee_amount') ?>" class="form-control <?= $errors['voter_fee_amount'] ? 'is-invalid':'is-valid' ?>" id="voter_fee_amount" placeholder="Voter fee amount">
-             <?php if($errors['voter_fee_amount']): ?>
-               <div class="invalid-feedback">
-                 <?= $errors['voter_fee_amount'] ?>
-               </div>
-             <?php endif; ?>
-         </div>
-       </div>
+   <div class="row">
+     <div class="col-md-6 offset-md-3">
+     <div class="form-group">
+       <label for="date_requested">Date Requested</label>
+       <input type="date" name="date_requested" type="text" value="<?= isset($rec['date_requested']) ? $rec['date_requested'] : set_value('date_requested') ?>" class="form-control <?= $errors['date_requested'] ? 'is-invalid':'is-valid' ?>" id="date_requested" placeholder="Date Requested">
+         <?php if($errors['date_requested']): ?>
+           <div class="invalid-feedback">
+             <?= $errors['date_requested'] ?>
+           </div>
+         <?php endif; ?>
      </div>
+   </div>
+ </div>
 
-     <div class="row">
-       <div class="col-md-6 offset-md-3">
-         <div class="form-group">
-           <label for="non_voter_fee_amount">Non-voter fee amount</label>
-           <input name="non_voter_fee_amount" type="text" value="<?= isset($rec['non_voter_fee_amount']) ? $rec['non_voter_fee_amount'] : set_value('non_voter_fee_amount') ?>" class="form-control <?= $errors['non_voter_fee_amount'] ? 'is-invalid':'is-valid' ?>" id="non_voter_fee_amount" placeholder="Voter fee amount">
-             <?php if($errors['non_voter_fee_amount']): ?>
-               <div class="invalid-feedback">
-                 <?= $errors['non_voter_fee_amount'] ?>
-               </div>
-             <?php endif; ?>
+ <div class="row">
+   <div class="col-md-6 offset-md-3">
+   <div class="form-group">
+     <label for="citizen_date_needed">Citizen Date Needed</label>
+     <input type="date" name="citizen_date_needed" type="text" value="<?= isset($rec['citizen_date_needed']) ? $rec['citizen_date_needed'] : set_value('citizen_date_needed') ?>" class="form-control <?= $errors['citizen_date_needed'] ? 'is-invalid':'is-valid' ?>" id="citizen_date_needed" placeholder="Citizen Date Needed">
+       <?php if($errors['citizen_date_needed']): ?>
+         <div class="invalid-feedback">
+           <?= $errors['citizen_date_needed'] ?>
          </div>
-       </div>
-     </div>
+       <?php endif; ?>
+   </div>
+ </div>
+</div>
+
+<div class="row">
+  <div class="col-md-6 offset-md-3">
+  <div class="form-group">
+    <label for="date_available">Date Available</label>
+    <input type="date" name="date_available" type="text" value="<?= isset($rec['date_available']) ? $rec['date_available'] : set_value('date_available') ?>" class="form-control <?= $errors['date_available'] ? 'is-invalid':'is-valid' ?>" id="date_available" placeholder="Date Available">
+      <?php if($errors['date_available']): ?>
+        <div class="invalid-feedback">
+          <?= $errors['date_available'] ?>
+        </div>
+      <?php endif; ?>
+  </div>
+</div>
+</div>
+
+<div class="row">
+  <div class="col-md-6 offset-md-3">
+  <div class="form-group">
+    <label for="date_released">Date Available</label>
+    <input type="date" name="date_released" type="text" value="<?= isset($rec['date_released']) ? $rec['date_released'] : set_value('date_released') ?>" class="form-control <?= $errors['date_released'] ? 'is-invalid':'is-valid' ?>" id="date_released" placeholder="Date Available">
+      <?php if($errors['date_released']): ?>
+        <div class="invalid-feedback">
+          <?= $errors['date_released'] ?>
+        </div>
+      <?php endif; ?>
+  </div>
+</div>
+</div>
+
+
      <div class="row">
        <div class="col-md-6 offset-md-3">
          <button type="submit" class="btn btn-primary float-right">Submit</button>

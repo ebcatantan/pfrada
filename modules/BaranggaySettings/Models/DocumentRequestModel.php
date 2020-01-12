@@ -7,7 +7,7 @@ class DocumentRequestModel extends \CodeIgniter\Model
 {
     protected $table = 'document_requests';
 
-    protected $allowedFields = ['document_id','user_id','is_citizen','date_requested','citizen_date_needed','data_available','date_released','processed_by','released_by','status', 'created_at','updated_at', 'deleted_at'];
+    protected $allowedFields = ['document_id','user_id', 'is_citizen', 'date_requested','citizen_date_needed','data_available','date_released','processed_by','released by', 'status', 'created_at','updated_at', 'deleted_at'];
 
     public function getDocumentRequestWithCondition($conditions = [])
 	{
@@ -21,7 +21,7 @@ class DocumentRequestModel extends \CodeIgniter\Model
 	{
 		$db = \Config\Database::connect();
 
-		$str = "SELECT *  FROM document_requests WHERE status = '".$args['status']."' LIMIT ". $args['offset'] .','.$args['limit'];
+		$str = "SELECT a.*, b.document_name, c.username FROM document_requests a LEFT JOIN documents b ON b.id = a.document_id LEFT JOIN users c ON c.id = a.user_id WHERE a.status = '".$args['status']."' LIMIT ". $args['offset'] .','.$args['limit'];
 		// print_r($str); die();
 		$query = $db->query($str);
 
@@ -36,11 +36,12 @@ class DocumentRequestModel extends \CodeIgniter\Model
 
     public function addDocumentRequest($val_array = [])
 	{
-		$val_array['created_at'] = (new \DateTime())->format('Y-m-d H:i:s');
+
+    $val_array['created_at'] = (new \DateTime())->format('Y-m-d H:i:s');
 		$val_array['status'] = 'a';
 	    return $this->save($val_array);
 	}
-  //
+
     public function editDocumentRequest($val_array = [], $id)
 	{
 		$val_array['updated_at'] = (new \DateTime())->format('Y-m-d H:i:s');

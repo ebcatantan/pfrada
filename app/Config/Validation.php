@@ -93,7 +93,7 @@ class Validation
             ]
         ]
 			];
-			
+
 		public $clearancepurposes = [
         'purpose' => [
             'label'  => 'purpose',
@@ -333,6 +333,72 @@ class Validation
 								'required' => 'Document description field is required.'
 						]
 				]
+		];
+
+		public $documentrequests = [
+			'document_id' => [
+					'label'  => 'document_id',
+					'rules'  => 'required',
+					'errors' => [
+							'required' => 'document field is required.'
+					]
+			 ],
+			'user_id' => [
+					'label'  => 'user_id',
+					'rules'  => 'required',
+					'errors' => [
+							'required' => 'name field is required.'
+					]
+			],
+			'is_citizen' => [
+					'label'  => 'is_citizen',
+					'rules'  => 'required',
+					'errors' => [
+							'required' => 'this field is required.'
+					]
+			],
+			'date_requested' => [
+					'label'  => 'date_requested',
+					'rules'  => 'required',
+					'errors' => [
+							'required' => 'this field is required.'
+					]
+			],
+			'citizen_date_needed' => [
+					'label'  => 'citizen_date_needed',
+					'rules'  => 'required',
+					'errors' => [
+							'required' => 'this field is required.'
+					]
+			],
+			'data_available' => [
+					'label'  => 'data_available',
+					'rules'  => 'required',
+					'errors' => [
+							'required' => 'this field is required.'
+					]
+			],
+			'date_released' => [
+					'label'  => 'date_released',
+					'rules'  => 'required',
+					'errors' => [
+							'required' => 'this field is required.'
+					]
+			],
+			'processed_by' => [
+					'label'  => 'processed_by',
+					'rules'  => 'required',
+					'errors' => [
+							'required' => 'this field is required.'
+					]
+			],
+			'released_by' => [
+					'label'  => 'released_by',
+					'rules'  => 'required',
+					'errors' => [
+							'required' => 'this field is required.'
+					]
+			]
 		];
 	// Rules
 	//--------------------------------------------------------------------

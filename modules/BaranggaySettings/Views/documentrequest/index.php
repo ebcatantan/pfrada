@@ -13,15 +13,13 @@
     <thead class="thead-dark">
       <tr class="text-center">
         <th>#</th>
-        <th>Document ID</th>
-        <th>User ID</th>
-        <th>Is Citizen?</th>
-        <th>Date Requested</th>
+        <th>Document Name</th>
+        <th>User Name</th>
         <th>Citizen Date Needed</th>
-        <th>Data Available</th>
-        <th>Data Released</th>
-        <th>Processed By</th>
-        <th>Released By</th>
+        <!-- <th>Data Available</th> -->
+        <!-- <th>Data Released</th> -->
+        <!-- <th>Processed By</th>
+        <th>Released By</th> -->
         <th>Action</th>
       </tr>
     </thead>
@@ -32,13 +30,7 @@
         <th scope="row"><?= $cnt++ ?></th>
         <td><?= ucwords($documentrequest['document_name']) ?></td>
         <td><?= ucwords($documentrequest['user_id']) ?></td>
-        <td><?= ucwords($documentrequest['is_citizen']) ?></td>
-        <td><?= ucwords($documentrequest['date_requested']) ?></td>
         <td><?= ucwords($documentrequest['citizen_date_needed']) ?></td>
-        <td><?= ucwords($documentrequest['data_available']) ?></td>
-        <td><?= ucwords($documentrequest['date_released']) ?></td>
-        <td><?= ucwords($documentrequest['processed_by']) ?></td>
-        <td><?= ucwords($documentrequest['released_by']) ?></td>
         <td class="text-center">
           <?php
             users_action('document_requests', $_SESSION['userPermmissions'], $document['id']);
