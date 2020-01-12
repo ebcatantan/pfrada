@@ -7,35 +7,28 @@ class BarangayOfficialModel extends \CodeIgniter\Model
 {
     protected $table = 'brgy_officials';
 
-    protected $allowedFields = ['user_id', 'lastname','firstname', 'middlename','ext_name','address','barangay','birth_date', 'gender','civil_status', 'email', 'contact_no','status', 'created_at', 'updated_at', 'deleted_at'];
+    protected $allowedFields = ['user_id', 'last_name','first_name', 'middlename','ext_name','address','barangay','birth_date', 'gender','civil_status', 'email', 'contact_no','status', 'created_at', 'updated_at', 'deleted_at'];
 
-    public function getBarangayOfficialWithCondition($conditions = [])
-	{
-		foreach($conditions as $field => $value)
-		{
-			$this->where($field, $value);
-		}
-	    return $this->findAll();
-	}
+    public function get($fields = [], $tables = [], $conditions = [], $args = [])
+  {
+    $this->select('brgy_officials.*');
+    foreach ($fields as $field => $table) {
+      $this->select($table . '.' . $field);
+    }
+    foreach ($tables as $a => $array) {
+      foreach ($array as $fk => $id) {
+        $this->join($a, $fk .'='. $id);
+      }
+    }
 
-	public function getBarangayOfficialWithFunction($args = [])
-	{
-		$db = \Config\Database::connect();
-    // $str = "SELECT * FROM brgy_officials WHERE status = '".$args['status']."' LIMIT ". $args['offset'] .','.$args['limit'];
-
-
-  //  print_r($str); die();
-    $str = "SELECT a.*, b.username FROM brgy_officials a LEFT JOIN users b ON b.id = a.user_id WHERE a.status = '" .$args['status']."'";
-    // '" .$args['status']."''"
-		$query = $db->query($str);
-		// print_r($query->getResultArray()); die();
-	    return $query->getResultArray();
-	}
-
-    public function getBarangayOfficial()
-	{
-	    return $this->findAll();
-	}
+    foreach($conditions as $field => $value) {
+      $this->where($field, $value);
+    }
+    if (!empty($args)) {
+      return $this->findAll($args['limit'], $args['offset']);
+    }
+    return $this->findAll();
+  }
 
     public function addBarangayOfficial($val_array = [])
 	{

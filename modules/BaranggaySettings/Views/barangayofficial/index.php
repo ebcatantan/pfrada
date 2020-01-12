@@ -29,10 +29,10 @@
     </thead>
     <tbody>
       <?php $cnt = 1; ?>
-      <?php foreach($brgy_officials as $barangayofficial): ?>
+      <?php foreach($brgyofficials as $barangayofficial): ?>
       <tr id="<?php echo $barangayofficial['id']; ?>">
         <th scope="row"><?= $cnt++ ?></th>
-        <td><?= ucwords($barangayofficial['lastname'] . ', ' . $barangayofficial['firstname'] . $barangayofficial['middlename']) ?></td>
+        <td><?= ucwords($barangayofficial['last_name'] . ', ' . $barangayofficial['first_name'] . $barangayofficial['middlename']) ?></td>
         <td><?= ucwords($barangayofficial['gender']) ?></td>
         <td><?= ucwords($barangayofficial['contact_no']) ?></td>
         <td><?= ucwords($barangayofficial['address']) ?></td>

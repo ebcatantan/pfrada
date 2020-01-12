@@ -13,11 +13,11 @@
       <div class="row">
         <div class="col-md-5 offset-md-1">
           <div class="form-group">
-            <label for="firstname">First name</label>
-            <input name="firstname" type="text" value="<?= isset($rec['firstname']) ? $rec['firstname'] : set_value('firstname') ?>" class="form-control <?= $errors['firstname'] ? 'is-invalid':'is-valid' ?>" id="firstname" placeholder="First Name">
-              <?php if($errors['firstname']): ?>
+            <label for="first_name">First name</label>
+            <input name="first_name" type="text" value="<?= isset($rec['first_name']) ? $rec['first_name'] : set_value('first_name') ?>" class="form-control <?= $errors['first_name'] ? 'is-invalid':'is-valid' ?>" id="first_name" placeholder="First Name">
+              <?php if($errors['first_name']): ?>
                 <div class="invalid-feedback">
-                  <?= $errors['firstname'] ?>
+                  <?= $errors['first_name'] ?>
                 </div>
               <?php endif; ?>
           </div>
@@ -26,11 +26,11 @@
      <div class="row"> -->
        <div class="col-md-5">
          <div class="form-group">
-           <label for="lastname">Last name</label>
-           <input name="lastname" type="text" value="<?= isset($rec['lastname']) ? $rec['lastname'] : set_value('lastname') ?>" class="form-control <?= $errors['lastname'] ? 'is-invalid':'is-valid' ?>" id="lastname" placeholder="Last Name">
-             <?php if($errors['lastname']): ?>
+           <label for="last_name">Last name</label>
+           <input name="last_name" type="text" value="<?= isset($rec['last_name']) ? $rec['last_name'] : set_value('last_name') ?>" class="form-control <?= $errors['last_name'] ? 'is-invalid':'is-valid' ?>" id="last_name" placeholder="Last Name">
+             <?php if($errors['last_name']): ?>
                <div class="invalid-feedback">
-                 <?= $errors['lastname'] ?>
+                 <?= $errors['last_name'] ?>
                </div>
              <?php endif; ?>
          </div>
@@ -83,11 +83,11 @@
        <div class="col-md-5">
          <div class="form-group">
            <label for="gender">Gender</label>
-           <select name="gender" class="form-control <?= $errors['gender'] ? 'is-invalid':'is-valid' ?>">
-             <option value="">Gender</option>
-             <option value="M">Male</option>
-             <option value="F">Female</option>
-           </select>
+            <select class="form-control <?= $errors['gender'] ? 'is-invalid':'is-valid' ?>" name="gender" id="gender">
+              <option value="">-- Select a Gender --</option>
+              <option value='M' <?= $rec['gender'] == 'M'?'selected':'';?>>Male</option>
+              <option value='F' <?= $rec['gender'] == 'F'?'selected':'';?>>Female</option>
+            </select>
              <?php if($errors['gender']): ?>
                <div class="invalid-feedback">
                  <?= $errors['gender'] ?>
@@ -101,10 +101,10 @@
        <div class="col-md-5 offset-md-1">
          <div class="form-group">
            <label for="civil_status">Civil Status</label>
-           <select name="civil_status" class="form-control <?= $errors['civil_status'] ? 'is-invalid':'is-valid' ?>">
-             <option value="">Civil Status</option>
-             <option value="single">Single</option>
-             <option value="married">Married</option>
+           <select class="form-control <?= $errors['civil_status'] ? 'is-invalid':'is-valid' ?>" name="civil_status" id="civil_status">
+             <option value="">-- Select a Civil Status --</option>
+             <option value='Single' <?= $rec['civil_status'] == 'Single'?'selected':'';?>>Single</option>
+             <option value='Married' <?= $rec['civil_status'] == 'Married'?'selected':'';?>>Married</option>
            </select>
              <?php if($errors['civil_status']): ?>
                <div class="invalid-feedback">
@@ -170,7 +170,6 @@
          </div>
        </div>
      </div>
-     <!-- <div class="row"> -->
 
      <div class="row">
        <div class="col-md-6 offset-md-5">

@@ -2,6 +2,7 @@
 namespace Modules\BaranggaySettings\Controllers;
 
 use Modules\BaranggaySettings\Models\BarangayOfficialModel;
+use Modules\UserManagement\Models\UsersModel;
 use Modules\UserManagement\Models\PermissionsModel;
 use App\Controllers\BaseController;
 
@@ -22,11 +23,25 @@ class BarangayOfficial extends BaseController
     	$this->hasPermissionRedirect('list-of-barangayofficial');
 
 			$model = new BarangayOfficialModel();
-    	//kailangan ito para sa pagination
-       	$data['all_items'] = $model->getBarangayOfficialWithCondition(['status'=> 'a']);
-       	$data['offset'] = $offset;
 
-        $data['brgy_officials'] = $model->getBarangayOfficialWithFunction(['status'=> 'a', 'limit' => PERPAGE, 'offset' =>  $offset]);
+				$data['all_items'] = $model->get([],[],['status'=> 'a'],[]);
+				$data['offset'] = $offset;
+
+				$fields = [
+					'lastname' => 'users',
+					'firstname' => 'users'
+				];
+
+				$tables = [
+					'users' => [
+						'brgy_officials.user_id' => 'users.id'
+					],
+				];
+
+				$conditions = [
+						'brgy_officials.status' => 'a'
+				];
+				$data['brgyofficials'] = $model->get($fields, $tables, $conditions, ['limit' => PERPAGE, 'offset' => $offset]);
 
 
         $data['function_title'] = "List of Barangay Official";
@@ -41,10 +56,26 @@ class BarangayOfficial extends BaseController
 
 		$model = new BarangayOfficialModel();
 
-		$data['brgy_officials'] = $model->getBarangayOfficialWithCondition(['id' => $id]);
+		$data['brgyofficials'] = $model->get([],[],['id'=>$id],[]);
 
-		
-		$data['function_title'] = "Barangay Official Details";
+		$fields = [
+					'firstname' => 'users',
+					'lastname' => 'users',
+				];
+
+				$tables = [
+					'users' => [
+						'brgy_officials.user_id' => 'users.id'
+					],
+				];
+
+				$conditions = [
+						'brgy_officials.id' => $id
+				];
+
+				$data['brgyofficials'] = $model->get($fields, $tables, $conditions);
+
+				$data['function_title'] = "Barangay Official Details";
         $data['viewName'] = 'Modules\BaranggaySettings\Views\barangayofficial\barangayofficialDetails';
         echo view('App\Views\theme\index', $data);
 	}
@@ -55,6 +86,9 @@ class BarangayOfficial extends BaseController
     	$permissions_model = new PermissionsModel();
     	$data['permissions'] = $this->permissions;
 
+			$user_model = new UsersModel();
+			$data['users'] = $user_model->where('status', 'a')->findAll();
+
     	helper(['form', 'url']);
     	$model = new BarangayOfficialModel();
 
@@ -62,7 +96,6 @@ class BarangayOfficial extends BaseController
     	{
 	    	if (!$this->validate('officials'))
 		    {
-
 		    	$data['errors'] = \Config\Services::validation()->getErrors();
 		        $data['function_title'] = "Adding Barangay Officials";
 		        $data['viewName'] = 'Modules\BaranggaySettings\Views\barangayofficial\frmBarangayOfficial';
@@ -72,6 +105,20 @@ class BarangayOfficial extends BaseController
 		    {
 		        if($model->addBarangayOfficial($_POST))
 		        {
+							// $user_id = $model->insertID();
+							// $UserModel = new UsersModel();
+							// $user_data = [
+							// 	'lastname' => $_POST['last_name'],
+							// 	'firstname' => $_POST['first_name'],
+							// 	'username' => $_POST['last_name'] . $_POST['first_name'],
+							// 	'email' => $_POST['email'],
+							// 	'password' => $UserModel->generateRandomString(8),
+							// 	// 'password' => 'password',
+							// 	'role_id' => 2,
+							// 	'birthdate' => $_POST['birth_date']
+							// ];
+							// $UserModel->addUsers($user_data);
+
 		        	$_SESSION['success'] = 'You have added a new record';
 							$this->session->markAsFlashdata('success');
 		        	return redirect()->to(base_url('brgy-officials'));

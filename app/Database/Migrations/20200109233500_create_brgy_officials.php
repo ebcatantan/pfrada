@@ -17,12 +17,12 @@ class CreateBrgyOfficials extends \CodeIgniter\Database\Migration {
                                 'constraint'     => '20'
                         ],
 
-                        'lastname'       => [
+                        'last_name'       => [
                                 'type'           => 'VARCHAR',
                                 'constraint'     => '50',
                         ],
 
-                        'firstname'       => [
+                        'first_name'       => [
                                 'type'           => 'VARCHAR',
                                 'constraint'     => '50',
                         ],

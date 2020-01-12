@@ -511,7 +511,7 @@ class Validation
 
 
 		public $officials = [
-			'lastname' => [
+			'last_name' => [
 					'label'  => 'Last Name',
 					'rules'  => 'required|alpha_space',
 					'errors' => [
@@ -520,7 +520,7 @@ class Validation
 					]
 			],
 
-			'firstname' => [
+			'first_name' => [
 					'label'  => 'First Name',
 					'rules'  => 'required|alpha_space',
 					'errors' => [
