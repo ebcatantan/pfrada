@@ -3,7 +3,7 @@
     <div class="row">
       <div class="col-md-12">
         <span class="field">Facility Name</span>
-        <span class="field-value"><?= ucfirst($reservation_fees[0]['facility_id']) ?></span>
+        <span class="field-value"><?= ucfirst($reservation_fees[0]['facility_name']) ?></span>
       </div>
     </div>
     <div class="row">

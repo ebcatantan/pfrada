@@ -15,9 +15,7 @@
         <th>#</th>
         <th>Citizen Name</th>
         <th>Facility Name</th>
-        <th>Reservation Date Time Start/End</th>
-        <th>Approved</th>
-        <th>Payment</th>
+        <th>Reservation Date/Time</th>
         <th>Action</th>
       </tr>
     </thead>
@@ -29,8 +27,6 @@
         <td><?= ucwords($reservation['last_name'].' , '.$reservation['first_name']) ?></td>
         <td><?= ucwords($reservation['facility_name']) ?></td>
         <td><?= ucwords($reservation['reservation_date_time_start'].'  -  '.$reservation['reservation_date_time_end']) ?></td>
-        <td><?= ucwords($reservation['is_approved']) ?></td>
-        <td><?= ucwords($reservation['is_paid']) ?></td>
         <td class="text-center">
           <?php
             users_action('reservations', $_SESSION['userPermmissions'], $reservation['id']);

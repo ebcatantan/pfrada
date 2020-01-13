@@ -9,30 +9,26 @@ class ReservationFeesModel extends \CodeIgniter\Model
 
     protected $allowedFields = ['facility_id','fee_per_hour','maintenance_fee','status', 'created_at','updated_at', 'deleted_at'];
 
-    public function getReservationFeesWithCondition($conditions = [])
-	{
-		foreach($conditions as $field => $value)
-		{
-			$this->where($field, $value);
-		}
-	    return $this->findAll();
-	}
-  public function getReservationFeesWithFunction($args = [])
-	{
-		$db = \Config\Database::connect();
+    public function get($fields = [], $tables = [], $conditions = [], $args = [])
+  {
+    $this->select('reservation_fees.*');
+    foreach ($fields as $field => $table) {
+      $this->select($table . '.' . $field);
+    }
+    foreach ($tables as $a => $array) {
+      foreach ($array as $fk => $id) {
+        $this->join($a, $fk .'='. $id, 'left');
+      }
+    }
 
-		$str = "SELECT a.*, b.facility_name FROM reservation_fees a LEFT JOIN facilities b ON b.id = a.facility_id WHERE a.status = '".$args['status']."' LIMIT ". $args['offset'] .','.$args['limit'];
-		// print_r($str); die();
-		$query = $db->query($str);
-
-		// print_r($query->getResultArray()); die();
-	    return $query->getResultArray();
-	}
-
-  public function getReservationFees()
-	{
-	    return $this->findAll();
-	}
+    foreach($conditions as $field => $value) {
+      $this->where($field, $value);
+    }
+    if (!empty($args)) {
+      return $this->findAll($args['limit'], $args['offset']);
+    }
+    return $this->findAll();
+  }
 
     public function addReservationFees($val_array = [])
 	{

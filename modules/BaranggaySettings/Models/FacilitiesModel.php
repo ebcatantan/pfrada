@@ -1,5 +1,6 @@
 <?php
 namespace Modules\BaranggaySettings\Models;
+use Modules\SystemSettings\Models\ReservationFeesModel;
 
 use CodeIgniter\Model;
 
@@ -52,6 +53,10 @@ class FacilitiesModel extends \CodeIgniter\Model
 	{
 		$val_array['deleted_at'] = (new \DateTime())->format('Y-m-d H:i:s');
 		$val_array['status'] = 'd';
+    $reservationfees_model = new ReservationFeesModel();
+    $reservationfees_model->whereIn('facility_id', $id)
+    ->set($val_array)
+    ->update();
 		return $this->update($id, $val_array);
 	}
 }

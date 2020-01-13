@@ -24,11 +24,24 @@ class ReservationFees extends BaseController
 
 			// die("here");
     	$model = new ReservationFeesModel();
-    	//kailangan ito para sa pagination
-       	$data['all_items'] = $model->getReservationFeesWithCondition(['status'=> 'a']);
-       	$data['offset'] = $offset;
 
-        $data['reservation_fees'] = $model->getReservationFeesWithFunction(['status'=> 'a', 'limit' => PERPAGE, 'offset' =>  $offset]);
+			$data['all_items'] = $model->get([],[],['status'=> 'a'],[]);
+			$data['offset'] = $offset;
+
+			$fields = [
+				'facility_name' => 'facilities'
+			];
+
+			$tables = [
+				'facilities' => [
+					'reservation_fees.facility_id' => 'facilities.id'
+				]
+			];
+
+			$conditions = [
+					'reservation_fees.status' => 'a'
+			];
+			$data['reservation_fees'] = $model->get($fields, $tables, $conditions, ['limit' => PERPAGE, 'offset' => $offset]);
 
         $data['function_title'] = "Reservation Fees List";
         $data['viewName'] = 'Modules\SystemSettings\Views\reservationfees\index';
@@ -42,9 +55,25 @@ class ReservationFees extends BaseController
 
 		$model = new ReservationFeesModel();
 
-		$data['reservation_fees'] = $model->getReservationFeesWithCondition(['id' => $id]);
+			$data['reservation_fees'] = $model->get([],[],['id'=>$id],[]);
 
-		$data['function_title'] = "R\eservation Details";
+			$fields = [
+				'facility_name' => 'facilities'
+			];
+
+			$tables = [
+				'facilities' => [
+					'reservation_fees.facility_id' => 'facilities.id'
+				]
+			];
+
+			$conditions = [
+				'reservation_fees.id' => $id
+			];
+
+			$data['reservation_fees'] = $model->get($fields, $tables, $conditions);
+
+			$data['function_title'] = "Reservation Details";
         $data['viewName'] = 'Modules\SystemSettings\Views\reservationfees\reservationfeeDetails';
         echo view('App\Views\theme\index', $data);
 	}

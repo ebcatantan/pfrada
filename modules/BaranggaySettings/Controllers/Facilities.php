@@ -2,6 +2,7 @@
 namespace Modules\BaranggaySettings\Controllers;
 
 use Modules\BaranggaySettings\Models\FacilitiesModel;
+use Modules\SystemSettings\Models\ReservationFeesModel;
 use Modules\UserManagement\Models\PermissionsModel;
 use App\Controllers\BaseController;
 
@@ -141,8 +142,11 @@ class Facilities extends BaseController
     {
     	$this->hasPermissionRedirect('delete-facility');
 
-    	$model = new FacilitiesModel();
+			$model = new FacilitiesModel();
+			$reservationfees_model = new ReservationFeesModel();
     	$model->deleteFacility($id);
+			$reservationfees_model->deleteReservationFees($id);
+
     }
 
 }
