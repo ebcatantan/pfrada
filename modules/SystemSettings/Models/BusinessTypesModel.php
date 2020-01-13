@@ -1,6 +1,7 @@
 <?php
 namespace Modules\SystemSettings\Models;
 
+use Modules\SystemSettings\Models\BusinessPermitFeesModel;
 use CodeIgniter\Model;
 
 class BusinessTypesModel extends \CodeIgniter\Model
@@ -52,6 +53,10 @@ class BusinessTypesModel extends \CodeIgniter\Model
 	{
 		$val_array['deleted_at'] = (new \DateTime())->format('Y-m-d H:i:s');
 		$val_array['status'] = 'd';
+    $businesspermitfees_model = new BusinessPermitFeesModel();
+    $businesspermitfees_model->whereIn('business_type_id', $id)
+    ->set($val_array)
+    ->update();
 		return $this->update($id, $val_array);
 	}
 }

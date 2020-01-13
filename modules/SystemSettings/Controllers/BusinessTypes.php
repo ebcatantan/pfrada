@@ -2,6 +2,7 @@
 namespace Modules\SystemSettings\Controllers;
 
 use Modules\SystemSettings\Models\BusinessTypesModel;
+use Modules\SystemSettings\Models\BusinessPermitFeesModel;
 use Modules\UserManagement\Models\PermissionsModel;
 use App\Controllers\BaseController;
 
@@ -143,7 +144,9 @@ class BusinessTypes extends BaseController
     	$this->hasPermissionRedirect('delete-businesstype');
 
     	$model = new BusinessTypesModel();
+			$businesspermitfees_model = new BusinessPermitFeesModel();
     	$model->deleteBusinessTypes($id);
+			$businesspermitfees_model->deleteBusinessPermitFees($id);
     }
 
 }

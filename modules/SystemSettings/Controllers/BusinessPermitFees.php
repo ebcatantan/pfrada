@@ -62,11 +62,31 @@ class BusinessPermitFees extends BaseController
 
 			$model = new BusinessPermitFeesModel();
 
-			$data['business_permit_fees'] = $model->getBusinessPermitFeesWithCondition(['id' => $id]);
+			$data['reservations'] = $model->get([],[],['id'=>$id],[]);
+
+			$fields = [
+						'document_name' => 'documents',
+						'business_type_name' => 'business_types'
+					];
+
+			$tables = [
+				'documents' => [
+					'business_permit_fees.document_id' => 'documents.id'
+				],
+				'business_types' => [
+					'business_permit_fees.business_type_id' => 'business_types.id',
+				]
+			];
+
+			$conditions = [
+				'business_permit_fees.id' => $id
+			];
+
+			$data['business_permit_fees'] = $model->get($fields, $tables, $conditions);
 
 			$data['function_title'] = "Business Permit Fees Details";
-					$data['viewName'] = 'Modules\SystemSettings\Views\businesspermitfees\businesspermitfeesDetails';
-					echo view('App\Views\theme\index', $data);
+			$data['viewName'] = 'Modules\SystemSettings\Views\businesspermitfees\businesspermitfeesDetails';
+			echo view('App\Views\theme\index', $data);
 			}
 //end ng show
 
@@ -179,14 +199,6 @@ class BusinessPermitFees extends BaseController
 
     	$model = new BusinessPermitFeesModel();
     	$model->deleteBusinessPermitFees($id);
-    }
-
-		public function delete_businesstype($id)
-    {
-    	$this->hasPermissionRedirect('delete-businesstype');
-
-    	$model = new BusinessTypesModel();
-    	$model->deleteBusinessTypes($id);
     }
 
 }

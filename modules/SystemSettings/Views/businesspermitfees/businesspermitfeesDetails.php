@@ -2,14 +2,14 @@
   <div class="col-md-8 offset-md-2">
     <div class="row">
       <div class="col-md-12">
-        <span class="field">Document Id</span>
-        <span class="field-value"><?= ucfirst($business_permit_fees[0]['document_id']) ?></span>
+        <span class="field">Document Name</span>
+        <span class="field-value"><?= ucfirst($business_permit_fees[0]['document_name']) ?></span>
       </div>
     </div>
     <div class="row">
       <div class="col-md-12">
-        <span class="field">Business Type Id</span>
-        <span class="field-value"><?= ucfirst($business_permit_fees[0]['business_type_id']) ?></span>
+        <span class="field">Business Type</span>
+        <span class="field-value"><?= ucfirst($business_permit_fees[0]['business_type_name']) ?></span>
       </div>
     </div>
     <div class="row">

@@ -24,7 +24,7 @@
                <?php endif; ?>
              <?php endforeach; ?>
            <?php else: ?>
-             <option value="">Select Document Name</option>
+             <option value="">-- Select Document Name --</option>
              <?php foreach ($documents as $document): ?>
                <option value="<?= $document['id'] ?>" ><?= strtoupper($document['document_name'])?></option>
              <?php endforeach; ?>
@@ -53,7 +53,7 @@
                     <?php endif; ?>
                     <?php endforeach; ?>
                     <?php else: ?>
-                    <option value="">Select Business Type Name</option>
+                    <option value="">-- Select Business Type Name --</option>
                     <?php foreach ($business_types as $business_type): ?>
                     <option value="<?= $business_type['id'] ?>" ><?= strtoupper($business_type['business_type_name'])?></option>
                     <?php endforeach; ?>
