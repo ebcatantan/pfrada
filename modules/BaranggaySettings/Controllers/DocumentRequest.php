@@ -2,7 +2,6 @@
 namespace Modules\BaranggaySettings\Controllers;
 
 use Modules\BaranggaySettings\Models\DocumentRequestModel;
-use Modules\CitizenManagement\Models\CitizenModel;
 use Modules\UserManagement\Models\PermissionsModel;
 use Modules\UserManagement\Models\UsersModel;
 use Modules\BaranggaySettings\Models\DocumentsModel;
@@ -20,8 +19,6 @@ class DocumentRequest extends BaseController
 		$this->permissions = $permissions_model->getPermissionsWithCondition(['status' => 'a']);
 	}
 
-
-
     public function index($offset = 0)
     {
     	$this->hasPermissionRedirect('list-documentrequest');
@@ -29,23 +26,75 @@ class DocumentRequest extends BaseController
 			// die("here");
     	$model = new DocumentRequestModel();
     	//kailangan ito para sa pagination
-       	$data['all_items'] = $model->getDocumentRequestWithCondition(['status'=> 'a']);
-       	$data['offset'] = $offset;
+			$data['all_items'] = $model->get([],[],['status'=> 'a'],[]);
+			$data['offset'] = $offset;
 
-        $data['document_requests'] = $model->getDocumentRequestWithFunction(['status'=> 'a', 'limit' => PERPAGE, 'offset' =>  $offset]);
+			// print_r($str); die();
+			$fields = [
+				'document_name' => 'documents',
+				'lastname' => 'users',
+				'firstname' => 'users'
+			];
+
+			$tables = [
+				'users' => [
+					'document_requests.user_id' => 'users.id'
+				],
+				'users' => [
+					'document_requests.processed_by' => 'users.id'
+				],
+				'users' => [
+					'document_requests.released_by' => 'users.id'
+				],
+				'documents' => [
+					'document_requests.document_id' => 'documents.id'
+				]
+			];
+
+			$conditions = [
+					'document_requests.status' => 'a'
+			];
+			$data['document_requests'] = $model->get($fields, $tables, $conditions, ['limit' => PERPAGE, 'offset' => $offset]);
+
         $data['function_title'] = "List of Document Request";
         $data['viewName'] = 'Modules\BaranggaySettings\Views\documentrequest\index';
         echo view('App\Views\theme\index', $data);
     }
 
-    public function show_documentRequest($id)
+    public function show_documentrequest($id)
 	{
 		$this->hasPermissionRedirect('show-documentrequest');
 		$data['permissions'] = $this->permissions;
 
 		$model = new DocumentRequestModel();
+		$data['document_requests'] = $model->get([],[],['document_id'=>$id],[]);
 
-		$data['document_requests'] = $model->getDocumentRequestWithCondition(['id' => $id]);
+		$fields = [
+			'document_name' => 'documents',
+			'lastname' => 'users',
+			'firstname' => 'users'
+		];
+
+		$tables = [
+			'users' => [
+				'document_requests.user_id' => 'users.id'
+			],
+			'users' => [
+				'document_requests.processed_by' => 'users.id'
+			],
+			'users' => [
+				'document_requests.released_by' => 'users.id'
+			],
+			'documents' => [
+				'document_requests.document_id' => 'documents.id'
+			]
+		];
+
+		$conditions = [
+			'document_requests.id' => $id
+
+		];
+				$data['document_requests'] = $model->get($fields, $tables, $conditions);
 
 		$data['function_title'] = "Document Request Details";
         $data['viewName'] = 'Modules\SystemSettings\Views\documentrequest\documentrequestDetails';

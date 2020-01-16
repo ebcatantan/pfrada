@@ -648,13 +648,7 @@ class Validation
 							'required' => 'document field is required.'
 					]
 			 ],
-			'user_id' => [
-					'label'  => 'user_id',
-					'rules'  => 'required',
-					'errors' => [
-							'required' => 'name field is required.'
-					]
-			],
+
 			'is_citizen' => [
 					'label'  => 'is_citizen',
 					'rules'  => 'required',
@@ -676,7 +670,7 @@ class Validation
 							'required' => 'this field is required.'
 					]
 			],
-			'data_available' => [
+			'date_available' => [
 					'label'  => 'data_available',
 					'rules'  => 'required',
 					'errors' => [

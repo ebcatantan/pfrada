@@ -38,5 +38,4 @@ $routes->group('document-requests', ['namespace' => 'Modules\BaranggaySettings\C
     $routes->match(['get', 'post'], 'add', 'DocumentRequest::add_documentrequest');
     $routes->match(['get', 'post'], 'edit/(:num)', 'DocumentRequest::edit_documentrequest/$1');
     $routes->delete('delete/(:num)', 'DocumentRequest::delete_documentrequest/$1');
-
 });

@@ -11,7 +11,7 @@ class PermissionDocumentRequestSeeder extends \CodeIgniter\Database\Seeder
                         'function_name' => 'show document request details',
                         'function_description' => 'show document request details',
                         'slugs' => 'show-documentrequest',
-                        'name_on_class' => 'show document request',
+                        'name_on_class' => 'show_documentrequest',
                         'page_title' =>  'document details',
                         'module_id' => '2',
                          'link_icon' => '',

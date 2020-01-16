@@ -9,30 +9,26 @@ class DocumentRequestModel extends \CodeIgniter\Model
 
     protected $allowedFields = ['document_id','user_id', 'is_citizen', 'date_requested','citizen_date_needed','data_available','date_released','processed_by','released by', 'status', 'created_at','updated_at', 'deleted_at'];
 
-    public function getDocumentRequestWithCondition($conditions = [])
-	{
-		foreach($conditions as $field => $value)
-		{
-			$this->where($field, $value);
-		}
-	    return $this->findAll();
-	}
-  public function getDocumentRequestWithFunction($args = [])
-	{
-		$db = \Config\Database::connect();
+    public function get($fields = [], $tables = [], $conditions = [], $args = [])
+  {
+    $this->select('document_requests.*');
+    foreach ($fields as $field => $table) {
+      $this->select($table . '.' . $field);
+    }
+    foreach ($tables as $a => $array) {
+      foreach ($array as $fk => $id) {
+        $this->join($a, $fk .'='. $id, 'left');
+      }
+    }
 
-		$str = "SELECT a.*, b.document_name, c.username FROM document_requests a LEFT JOIN documents b ON b.id = a.document_id LEFT JOIN users c ON c.id = a.user_id WHERE a.status = '".$args['status']."' LIMIT ". $args['offset'] .','.$args['limit'];
-		// print_r($str); die();
-		$query = $db->query($str);
-
-		// print_r($query->getResultArray()); die();
-	    return $query->getResultArray();
-	}
-
-  public function getDocumentRequest()
-	{
-	    return $this->findAll();
-	}
+    foreach($conditions as $field => $value) {
+      $this->where($field, $value);
+    }
+    if (!empty($args)) {
+      return $this->findAll($args['limit'], $args['offset']);
+    }
+    return $this->findAll();
+  }
 
     public function addDocumentRequest($val_array = [])
 	{
